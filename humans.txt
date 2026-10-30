@@ -1,0 +1,16 @@
+/* TEAM */
+  Who: Sergio Bendaña (Bendi)
+  Role: Automation Platform Engineer
+  Site: https://bendi.dev
+  LinkedIn: https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/
+  GitHub: https://github.com/serbenda
+  From: Madrid, Spain
+
+/* THANKS */
+  My daughters, chief game testers.
+
+/* SITE */
+  Standards: HTML5, CSS3, JavaScript, no frameworks, no cookies
+  Fonts: Bricolage Grotesque, Atkinson Hyperlegible, JetBrains Mono, Press Start 2P, VT323 (SIL OFL)
+  Hosting: GitHub Pages
+  Easter eggs: try the terminal, or the Konami code

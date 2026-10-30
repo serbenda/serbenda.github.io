@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bendi · Sergio Bendaña</title>
-<meta name="description" content="20 años automatizando infraestructura, juegos de 8 bits hechos en casa y las visitas de cada proyecto.">
+<meta name="description" content="20 años automatizando infraestructura, Máster en Blockchain con el proyecto ganador (FrameBlock) y juegos de 8 bits hechos en casa.">
 <link rel="icon" href="img/bendi.svg" type="image/svg+xml">
 <link rel="canonical" href="https://bendi.dev/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bendi">
 <meta property="og:title" content="Bendi · Sergio Bendaña">
-<meta property="og:description" content="20 años automatizando infraestructura, juegos de 8 bits hechos en casa y las visitas de cada proyecto.">
+<meta property="og:description" content="20 años automatizando infraestructura, Máster en Blockchain con el proyecto ganador (FrameBlock) y juegos de 8 bits hechos en casa.">
 <meta property="og:url" content="https://bendi.dev/">
 <meta property="og:image" content="https://bendi.dev/og.png?v=3">
 <meta property="og:image:width" content="1200">
@@ -20,6 +20,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@serbenda">
 <meta name="theme-color" content="#0e1324">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Sergio Bendaña", "alternateName": "Bendi", "url": "https://bendi.dev/", "image": "https://bendi.dev/og.png", "jobTitle": "Automation Platform Engineer", "sameAs": ["https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/", "https://github.com/serbenda"], "knowsAbout": ["Infrastructure as Code", "Terraform", "Ansible", "Packer", "AWS", "Azure", "OpenStack", "UNIX", "Blockchain", "Solidity", "IPFS"], "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universidad Europea"}, "award": "FrameBlock: best project, Master's in Blockchain, Universidad Europea (2023)"}</script>
+<link rel="preload" href="fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Atkinson-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* =========================================================
@@ -48,8 +51,10 @@ h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-hei
 h2 { font-size: clamp(28px, 4vw, 40px); font-variation-settings: "wdth" 85; font-weight: 750; }
 h3 { font-size: 21px; font-weight: 700; }
 p { margin: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gut); }
 section { padding: 72px 0; border-top: 1px solid var(--line); }
+
 .lead { color: var(--muted); max-width: 62ch; margin-top: 12px; }
 
 /* top bar */
@@ -57,7 +62,7 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 .bar nav { display: flex; gap: 20px; flex-wrap: wrap; }
 .bar nav a { color: var(--muted); text-decoration: none; }
 .bar nav a:hover { color: var(--text); }
-.bar nav a.arc { font: 9px/1 "Press Start 2P", monospace; color: #ffec27; align-self: center; }
+.bar nav a.arc { font: 9px/1 "Press Start 2P", monospace; color: #ffec27; align-self: center; padding: 8px 0; }
 .lang { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 14px; cursor: pointer; }
 
 /* hero */
@@ -188,7 +193,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .arcade a:hover { color: var(--a-yellow); }
 .arcade :focus-visible { outline: 4px solid var(--a-yellow); outline-offset: 2px; border-radius: 0; }
 .a-hud { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; padding: 36px 0 8px; font: 11px/1.7 "Press Start 2P", monospace; }
-.a-hud .l { color: var(--a-red); display: block; }
+.a-hud .l { color: #ff6680; display: block; }
 .a-hud .c { text-align: center; }
 .a-hud .r { text-align: right; }
 .a-title { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; padding: 40px 0 24px; }
@@ -371,6 +376,52 @@ section.chain > .wrap { position: relative; }
   .fb-links a { flex: 1 1 calc(50% - 12px); text-align: center; }
 }
 
+/* stats strip */
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; margin-top: 40px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.stats div { background: var(--panel); padding: 16px 18px; }
+.stats strong { display: block; font: 800 clamp(26px, 3.4vw, 38px)/1.05 "Bricolage Grotesque", sans-serif; font-variation-settings: "wdth" 85; color: var(--text); }
+.stats div:nth-child(1) strong { color: var(--repo); } .stats div:nth-child(2) strong { color: var(--pages); }
+.stats div:nth-child(3) strong { color: var(--violet); } .stats div:nth-child(4) strong { color: #fbbf24; } .stats div:nth-child(5) strong { color: var(--plays); }
+.stats span { display: block; color: var(--muted); font-size: 14px; line-height: 1.35; margin-top: 6px; }
+.links a.cv { border-color: var(--pages); color: var(--pages); }
+.links a.cv:hover { background: var(--pages); color: var(--ink); }
+/* interactive terminal */
+.term-sec { padding-top: 24px; border-top: 0; }
+.term { border-radius: 14px; overflow: hidden; border: 1px solid #2a3356; background: #080b16; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); font: 15px/1.6 "JetBrains Mono", ui-monospace, monospace; }
+.term .tbar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #121831; border-bottom: 1px solid #2a3356; color: var(--muted); font-size: 13px; }
+.term .tbar i { width: 11px; height: 11px; border-radius: 50%; background: #3b4468; }
+.term .tbar i:nth-child(1) { background: #ff5f57; } .term .tbar i:nth-child(2) { background: #febc2e; } .term .tbar i:nth-child(3) { background: #28c840; }
+.term .tbar span { margin-left: 8px; }
+.term .tout { padding: 16px 18px 4px; max-height: 420px; overflow-y: auto; white-space: pre-wrap; word-break: break-word; color: #cfd8ea; }
+.term .tout .cmd { color: #e6ebf5; }
+.term .tout .ok { color: #4ade80; } .term .tout .hl { color: #fbbf24; } .term .tout .dim { color: #7e8aa6; } .term .tout .c2 { color: #38bdf8; } .term .tout .c3 { color: #a78bfa; }
+.term .tout a { color: #38bdf8; }
+.term form { display: flex; align-items: center; gap: 8px; padding: 6px 18px 16px; }
+.term .ps { color: #4ade80; white-space: nowrap; } .term .ps b { color: #60a5fa; font-weight: 400; }
+.term input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: #e6ebf5; font: inherit; caret-color: #38bdf8; }
+.qcmds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.qcmds button { font: 13px "JetBrains Mono", monospace; color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; min-height: 32px; }
+.qcmds button:hover { color: var(--text); border-color: var(--repo); }
+.term-hint { color: var(--muted); font-size: 14px; margin-top: 10px; }
+/* how I work */
+.how { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+.how article { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px; position: relative; }
+.how .n { font: 600 13px "JetBrains Mono", monospace; color: var(--violet); }
+.how h3 { margin-top: 6px; font-size: 22px; }
+.how p { color: var(--muted); margin-top: 8px; }
+.how .ex { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--text); }
+.how .ex b { color: var(--pages); font-weight: 700; }
+@keyframes flashc { 0%, 100% { filter: none; } 50% { filter: hue-rotate(180deg) saturate(2); } }
+.konami .arcade { animation: flashc .3s steps(2) 6; }
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats div:last-child { grid-column: 1 / -1; }
+  .term { font-size: 13.5px; }
+  .term .tout { max-height: 360px; padding: 14px 14px 4px; }
+  .term form { padding: 6px 14px 14px; }
+  .how { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 760px) {
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .exp { grid-template-columns: 1fr; gap: 32px; }
@@ -405,6 +456,7 @@ section.chain > .wrap { position: relative; }
   <header class="bar">
     <nav aria-label="Secciones">
       <a href="#sobre-mi" data-t="nav.about">Sobre mí</a>
+      <a href="#como-trabajo" data-t="nav.how">Cómo trabajo</a>
       <a href="#blockchain" data-t="nav.chain">Blockchain</a>
       <a class="arc" href="#arcade" data-t="nav.arcade">ARCADE</a>
       <a href="#visitas" data-t="nav.visits">Visitas</a>
@@ -421,8 +473,17 @@ section.chain > .wrap { position: relative; }
       <div class="links">
         <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">LinkedIn</a>
         <a href="https://github.com/serbenda">GitHub</a>
+        <a class="cv" id="cvlink" href="cv/Sergio-Bendana-CV-es.pdf" data-t="hero.cv">⬇ CV</a>
         <a class="sp" href="https://github.com/sponsors/serbenda" data-t="hero.sp">❤ Patrocinar</a>
         <a class="play" href="#arcade" data-t="hero.play">▶ JUGAR</a>
+      </div>
+
+      <div class="stats">
+        <div><strong>20+</strong><span data-t="sx.1">años en sistemas y automatización</span></div>
+        <div><strong>12.000</strong><span data-t="sx.2">servidores en una sola granja UNIX</span></div>
+        <div><strong>3</strong><span data-t="sx.3">nubes: AWS, Azure y privada, como código</span></div>
+        <div><strong>🏆</strong><span data-t="sx.4">mejor proyecto del Máster en Blockchain</span></div>
+        <div><strong>6</strong><span data-t="sx.5">juegos hechos en casa con mis hijas</span></div>
       </div>
 
       <div class="pipe" aria-label="De 2005 a hoy" data-t-aria="hero.pipe">
@@ -435,6 +496,22 @@ section.chain > .wrap { position: relative; }
         </div>
       </div>
     </div>
+
+    <section id="terminal" class="term-sec" aria-labelledby="term-title">
+      <h2 id="term-title" class="sr" data-t="term.title">Terminal</h2>
+      <div class="term">
+        <div class="tbar" aria-hidden="true"><i></i><i></i><i></i><span>bendi@localhost: ~</span></div>
+        <div class="tout" id="tout" role="log" aria-live="polite"></div>
+        <form id="tform" autocomplete="off">
+          <label class="ps" for="tin"><span>bendi@localhost</span>:<b>~</b>$</label>
+          <input id="tin" type="text" spellcheck="false" autocapitalize="off" enterkeyhint="send" aria-label="Escribe un comando" data-t-aria="term.aria">
+        </form>
+      </div>
+      <div class="qcmds" id="qcmds">
+        <button type="button">help</button><button type="button">whoami</button><button type="button">skills</button><button type="button">experience</button>
+        <button type="button">projects</button><button type="button">frameblock</button><button type="button">contact</button><button type="button">sudo hire-me</button>
+      </div>
+    </section>
 
     <section id="sobre-mi">
       <h2 data-t="about.title">Sobre mí</h2>
@@ -454,6 +531,17 @@ section.chain > .wrap { position: relative; }
       </div>
       <h3 class="ctitle" data-t="career.title">Lo que he hecho</h3>
       <ol class="career" id="career"></ol>
+    </section>
+
+    <section id="como-trabajo">
+      <h2 data-t="how.title">Cómo trabajo</h2>
+      <p class="lead" data-t="how.lead">Cuatro reglas que me han servido en 20 años de producción.</p>
+      <div class="how">
+        <article><span class="n">01</span><h3 data-t="how.1">Si se hace dos veces, se automatiza</h3><p data-t="how.1d">Lo manual no escala y se olvida. Cada tarea repetida acaba en un script, un playbook o una imagen base.</p><p class="ex"><b data-t="how.ex">Ejemplo:</b> <span data-t="how.1e">imágenes de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.</span></p></article>
+        <article><span class="n">02</span><h3 data-t="how.2">Infraestructura como código, o no existe</h3><p data-t="how.2d">Si no está versionada y revisada, no se puede repetir. La infraestructura se define, se revisa y se aplica como cualquier software.</p><p class="ex"><b data-t="how.ex">Ejemplo:</b> <span data-t="how.2e">la plataforma de Terraform Enterprise que aprovisiona en AWS, Azure y nube privada.</span></p></article>
+        <article><span class="n">03</span><h3 data-t="how.3">Producción manda</h3><p data-t="how.3d">Años de guardias 24x7 enseñan a medir antes de que duela y a dejar las cosas más estables de lo que estaban.</p><p class="ex"><b data-t="how.ex">Ejemplo:</b> <span data-t="how.3e">planificación de capacidad con OpenTSDB y Grafana para una granja de 12.000 servidores.</span></p></article>
+        <article><span class="n">04</span><h3 data-t="how.4">Hacer fácil el trabajo de los demás</h3><p data-t="how.4d">La mejor automatización es la que otros equipos usan sin pensar. Plataformas, plantillas y pipelines antes que heroicidades.</p><p class="ex"><b data-t="how.ex">Ejemplo:</b> <span data-t="how.4e">ayudar a los equipos de desarrollo con sus pipelines de CI/CD y unificar equipos de entrega UNIX.</span></p></article>
+      </div>
     </section>
 
   </main>
@@ -592,6 +680,7 @@ section.chain > .wrap { position: relative; }
         </div>
         <div class="ctas">
           <a class="cta" href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/" data-t="c.cta">Escríbeme en LinkedIn</a>
+          <a class="cta" id="cvlink2" href="cv/Sergio-Bendana-CV-es.pdf" data-t="c.cv">⬇ Descargar CV</a>
           <a class="cta sp" href="https://github.com/sponsors/serbenda" data-t="c.sp">❤ Apoya los juegos</a>
         </div>
       </div>
@@ -607,6 +696,7 @@ const T = {
     "nav.about": "Sobre mí", "nav.arcade": "ARCADE", "nav.visits": "Visitas",
     "hero.pitch": "Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.",
     "hero.play": "▶ JUGAR",
+    "hero.cv": "⬇ CV", "c.cv": "⬇ Descargar CV", "nav.how": "Cómo trabajo", "sx.1": "años en sistemas y automatización", "sx.2": "servidores en una sola granja UNIX", "sx.3": "nubes: AWS, Azure y privada, como código", "sx.4": "mejor proyecto del Máster en Blockchain", "sx.5": "juegos hechos en casa con mis hijas", "term.title": "Terminal", "term.aria": "Escribe un comando", "how.title": "Cómo trabajo", "how.lead": "Cuatro reglas que me han servido en 20 años de producción.", "how.ex": "Ejemplo:", "how.1": "Si se hace dos veces, se automatiza", "how.1d": "Lo manual no escala y se olvida. Cada tarea repetida acaba en un script, un playbook o una imagen base.", "how.1e": "imágenes de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.", "how.2": "Infraestructura como código, o no existe", "how.2d": "Si no está versionada y revisada, no se puede repetir. La infraestructura se define, se revisa y se aplica como cualquier software.", "how.2e": "la plataforma de Terraform Enterprise que aprovisiona en AWS, Azure y nube privada.", "how.3": "Producción manda", "how.3d": "Años de guardias 24x7 enseñan a medir antes de que duela y a dejar las cosas más estables de lo que estaban.", "how.3e": "planificación de capacidad con OpenTSDB y Grafana para una granja de 12.000 servidores.", "how.4": "Hacer fácil el trabajo de los demás", "how.4d": "La mejor automatización es la que otros equipos usan sin pensar. Plataformas, plantillas y pipelines antes que heroicidades.", "how.4e": "ayudar a los equipos de desarrollo con sus pipelines de CI/CD y unificar equipos de entrega UNIX.",
     "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Proyecto final del máster", "bc.award": "🏆 Mejor proyecto · Máster en Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain sigue siendo difícil de usar y difícil de confiar para la mayoría de personas y empresas: hay que elegir una cadena, aprender sus herramientas, gestionar carteras y pagar en cripto.", "bc.p2a": "FrameBlock es un framework para conectar cualquier aplicación con cualquier blockchain,", "bc.p2b": "sea del proveedor o la tecnología que sea. Esconde esas decisiones detrás de una sola capa: la misma aplicación funciona en varias cadenas y el usuario no necesita saber cuál hay debajo.", "bc.with": "Hecho junto a", "bc.code": "Ver el código", "bc.video": "▶ Vídeo demo", "bc.tech": "Presentación técnica", "bc.biz": "Presentación de negocio", "bc.shot1": "Conecta la cartera que ya tienes: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Crea tu colección a partir de imágenes generadas por IA.", "bc.f1": "semanas de máster", "bc.f2": "proyectos finales", "bc.f3": "blockchains desde una sola app", "bc.f4": "elegido por el jurado", "bc.how": "Cómo funciona: Simple AI Collection", "bc.howlead": "Para demostrarlo construimos una dApp real, de principio a fin. Cada paso es un bloque de la cadena:", "bc.s1": "Conecta tu cartera", "bc.s1d": "Con Web3 Onboard: MetaMask, Ledger, Trezor y muchas más.", "bc.s2": "Busca imágenes con IA", "bc.s2d": "Escribes unas palabras y la IA genera las imágenes.", "bc.s3": "Guarda en IPFS", "bc.s3d": "Las imágenes y sus metadatos, en almacenamiento descentralizado.", "bc.s4": "Paga con tarjeta", "bc.s4d": "El coste del despliegue con Stripe, sin necesidad de cripto.", "bc.s5": "Acuña tu colección NFT", "bc.s5d": "Un contrato ERC-721 en Ethereum, BNB Smart Chain o Polygon.", "bc.edge": "Lo que lo hace distinto", "bc.e1": "Agnóstico del proveedor", "bc.e1d": "Una sola integración, varias cadenas, y hueco para añadir más.", "bc.e2": "Usable sin saber de cripto", "bc.e2d": "Entras con la cartera que ya tienes o pagas con tarjeta.", "bc.e3": "Confianza de serie", "bc.e3d": "Piezas auditadas de OpenZeppelin, un registro on-chain de quién es dueño de qué y archivos en IPFS que nadie puede cambiar a escondidas.", "bc.e4": "Un producto, no solo diapositivas", "bc.e4d": "Un MVP que funciona, enseñado de principio a fin en la demo.", "bc.prize": "El premio", "bc.prized": "Tras 14 intensas semanas, los alumnos del Máster en Blockchain de la Universidad Europea defendieron sus proyectos finales ante un jurado de expertos del sector. Después de una deliberación complicada por el nivel de todos los proyectos, FrameBlock fue elegido ganador.", "bc.prizel": "Ver el anuncio en LinkedIn →", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
     "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
@@ -640,6 +730,7 @@ const T = {
     "nav.about": "About", "nav.arcade": "ARCADE", "nav.visits": "Visits",
     "hero.pitch": "I've been automating infrastructure for 20 years: I started running production UNIX and today I define it as code. At home I make 8-bit games with my daughters.",
     "hero.play": "▶ PLAY",
+    "hero.cv": "⬇ CV", "c.cv": "⬇ Download CV", "nav.how": "How I work", "sx.1": "years in systems and automation", "sx.2": "servers in a single UNIX farm", "sx.3": "clouds: AWS, Azure and private, as code", "sx.4": "best project of the Master's in Blockchain", "sx.5": "games made at home with my daughters", "term.title": "Terminal", "term.aria": "Type a command", "how.title": "How I work", "how.lead": "Four rules that have served me through 20 years of production.", "how.ex": "Example:", "how.1": "If it's done twice, it gets automated", "how.1d": "Manual work doesn't scale and gets forgotten. Every repeated task ends up as a script, a playbook or a base image.", "how.1e": "OS images with Packer and the repetitive work with Ansible, Python and Bash.", "how.2": "Infrastructure as code, or it doesn't exist", "how.2d": "If it isn't versioned and reviewed, it can't be repeated. Infrastructure is defined, reviewed and applied like any other software.", "how.2e": "the Terraform Enterprise platform that provisions on AWS, Azure and private cloud.", "how.3": "Production rules", "how.3d": "Years of 24x7 on-call teach you to measure before it hurts and to leave things more stable than you found them.", "how.3e": "capacity planning with OpenTSDB and Grafana for a 12,000-server farm.", "how.4": "Make other people's work easy", "how.4d": "The best automation is the one other teams use without thinking. Platforms, templates and pipelines rather than heroics.", "how.4e": "helping development teams with their CI/CD pipelines and merging UNIX delivery teams.",
     "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Master's final project", "bc.award": "🏆 Best project · Master's in Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain is still hard to use and hard to trust for most people and companies: you have to pick a chain, learn its tools, manage wallets and pay in crypto.", "bc.p2a": "FrameBlock is a framework to plug any application into any blockchain,", "bc.p2b": "whatever the vendor or technology. It hides those choices behind a single layer, so the same app works on several chains and users never need to know which one is underneath.", "bc.with": "Built together with", "bc.code": "See the code", "bc.video": "▶ Demo video", "bc.tech": "Technical deck", "bc.biz": "Business deck", "bc.shot1": "Connect the wallet you already have: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Build your collection from AI-generated images.", "bc.f1": "weeks of Master's", "bc.f2": "final projects", "bc.f3": "blockchains from a single app", "bc.f4": "picked by the jury", "bc.how": "How it works: Simple AI Collection", "bc.howlead": "To prove it we built a real dApp, end to end. Each step is a block in the chain:", "bc.s1": "Connect your wallet", "bc.s1d": "With Web3 Onboard: MetaMask, Ledger, Trezor and many more.", "bc.s2": "Search AI images", "bc.s2d": "Type a few words and the AI generates the images.", "bc.s3": "Store on IPFS", "bc.s3d": "Images and their metadata, on decentralised storage.", "bc.s4": "Pay by card", "bc.s4d": "The deployment fee through Stripe, no crypto needed.", "bc.s5": "Mint your NFT collection", "bc.s5d": "An ERC-721 contract on Ethereum, BNB Smart Chain or Polygon.", "bc.edge": "What makes it different", "bc.e1": "Vendor-agnostic", "bc.e1d": "One integration, several chains, and room to add more.", "bc.e2": "Usable without knowing crypto", "bc.e2d": "Sign in with the wallet you already have, or pay by card.", "bc.e3": "Trust built in", "bc.e3d": "Audited OpenZeppelin building blocks, an on-chain registry of who owns what, and files on IPFS that nobody can quietly change.", "bc.e4": "A product, not just slides", "bc.e4d": "A working MVP, shown end to end in the demo.", "bc.prize": "The award", "bc.prized": "After 14 intense weeks, the students of the Master's in Blockchain at Universidad Europea defended their final projects before a jury of industry experts. After a tough deliberation, given the level of every project, FrameBlock was picked as the winner.", "bc.prizel": "See the announcement on LinkedIn →", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
     "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
@@ -753,7 +844,7 @@ const nf = n => new Intl.NumberFormat(loc()).format(n);
 const pad = (n, w = 6) => String(Math.min(n, 10 ** w - 1)).padStart(w, "0");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-let DATA = { repos: {} }, PROJ = { games: [], tools: [] }, selected = "";
+let DATA = { repos: {} }, PROJ = { games: [], tools: [] }, selected = "", dashSeen = false;
 /* Games hang from the same host the visitor used: bendi.dev or serbenda.github.io both work */
 const GAMES_BASE = /(^|\.)bendi\.dev$|^serbenda\.github\.io$/.test(location.hostname) ? "" : "https://serbenda.github.io";
 const SHOW_FROM = 10;   // game cartridges hide counts below this; the tables show everything
@@ -948,12 +1039,148 @@ function renderChain() {
   });
 }
 
+/* ---------- interactive terminal ---------- */
+const TERM = { hist: [], at: 0 };
+const L = (es, en) => (lang === "es" ? es : en);
+const cvURL = () => `cv/Sergio-Bendana-CV-${lang}.pdf`;
+const TCMDS = ["help", "whoami", "skills", "experience", "projects", "play", "frameblock", "how", "contact", "cv", "ls", "cat", "lang", "clear", "coffee", "sudo", "exit", "date", "uptime", "neofetch"];
+function tline(html, cls = "") { const o = document.getElementById("tout"); const d = document.createElement("div"); if (cls) d.className = cls; d.innerHTML = html; o.appendChild(d); o.scrollTop = o.scrollHeight; }
+const TRUN = {
+  help: () => L(
+`<span class="hl">Comandos disponibles</span>
+  <span class="c2">whoami</span>       quién soy
+  <span class="c2">skills</span>       con qué trabajo
+  <span class="c2">experience</span>   mi trayectoria
+  <span class="c2">how</span>          cómo trabajo
+  <span class="c2">projects</span>     juegos y proyectos
+  <span class="c2">play</span> <span class="dim">&lt;juego&gt;</span> abre un juego
+  <span class="c2">frameblock</span>   el proyecto ganador del máster
+  <span class="c2">cv</span>           descarga mi CV
+  <span class="c2">contact</span>      cómo hablar conmigo
+  <span class="c2">lang en</span>      switch to English
+  <span class="c2">clear</span>        limpia la pantalla
+<span class="dim">Tab autocompleta · ↑ ↓ historial · hay algún comando secreto 😉</span>`,
+`<span class="hl">Available commands</span>
+  <span class="c2">whoami</span>       who I am
+  <span class="c2">skills</span>       what I work with
+  <span class="c2">experience</span>   my career
+  <span class="c2">how</span>          how I work
+  <span class="c2">projects</span>     games and projects
+  <span class="c2">play</span> <span class="dim">&lt;game&gt;</span>  open a game
+  <span class="c2">frameblock</span>   my award-winning Master's project
+  <span class="c2">cv</span>           download my CV
+  <span class="c2">contact</span>      how to reach me
+  <span class="c2">lang es</span>      cambiar a español
+  <span class="c2">clear</span>        clear the screen
+<span class="dim">Tab completes · ↑ ↓ history · there are a few secret commands 😉</span>`),
+  whoami: () => L(
+`<span class="ok">Sergio Bendaña</span> · <span class="hl">Bendi</span>
+Automation Platform Engineer. 20+ años en sistemas: de guardias 24x7 en UNIX
+a definir la infraestructura como código en AWS, Azure y nube privada.
+Máster en Blockchain (proyecto ganador 🏆) y juegos de 8 bits con mis hijas.`,
+`<span class="ok">Sergio Bendaña</span> · <span class="hl">Bendi</span>
+Automation Platform Engineer. 20+ years in systems: from 24x7 UNIX on-call
+to defining infrastructure as code on AWS, Azure and private cloud.
+Master's in Blockchain (award-winning project 🏆) and 8-bit games with my daughters.`),
+  skills: () => (innerWidth < 640 ? s => s.replace(/<\/span>\s+/g, "</span>\n  ") : s => s)(
+`<span class="c3">IaC & automation</span>  Terraform · Terraform Enterprise · Ansible · Packer · Python · Bash
+<span class="c3">${L("Nube", "Cloud")}</span>             AWS · Azure · ${L("nube privada", "private cloud")} · OpenStack · VMware
+<span class="c3">${L("Sistemas", "Systems")}</span>          Red Hat · Solaris · AIX · HP-UX · Docker
+<span class="c3">Data & ${L("observ.", "observ.")}</span>   Cloudera · Hortonworks · Kerberos · OpenTSDB · Grafana
+<span class="c3">Web3</span>              Solidity · ERC-721 · OpenZeppelin · IPFS · ethers.js
+<span class="c3">${L("Juegos", "Games")}</span>            HTML · CSS · JavaScript, ${L("sin dependencias", "no dependencies")}`),
+  experience: () => CAREER.map(c => `<span class="hl">${c.from}–${c.to || t("now")}</span>  <span class="ok">${esc(c[lang][0])}</span>\n            <span class="dim">${esc(c[lang][1])}</span>`).join("\n") + `\n${L("Detalle completo", "Full detail")} → <a href="#sobre-mi">#sobre-mi</a> · ${L("o", "or")} <span class="c2">cv</span>`,
+  how: () => [1, 2, 3, 4].map(i => `<span class="hl">0${i}</span> <span class="ok">${esc(t("how." + i))}</span>\n   <span class="dim">${esc(t("how." + i + "d"))}</span>`).join("\n"),
+  projects: () => PROJ.games.map(g => `<span class="ok">▸</span> ${esc(g.title)} <span class="dim">·</span> <span class="c2">${g.repo === "deploy-quest" ? "github" : "play " + g.repo}</span>`).join("\n")
+    + `\n<span class="ok">▸</span> FrameBlock 🏆 <span class="dim">·</span> <span class="c2">frameblock</span>`,
+  play: a => {
+    const g = PROJ.games.find(x => x.repo === a || x.repo.startsWith(a || "\u0000"));
+    if (!a || !g) return L("Uso: play &lt;juego&gt;. Prueba: ", "Usage: play &lt;game&gt;. Try: ") + PROJ.games.filter(x => x.repo !== "deploy-quest").map(x => `<span class="c2">${x.repo}</span>`).join(" · ");
+    if (g.repo === "deploy-quest") return L("Deploy Quest aún no está publicado: ", "Deploy Quest isn't published yet: ") + `<a href="https://github.com/serbenda/deploy-quest">github.com/serbenda/deploy-quest</a>`;
+    const url = `${GAMES_BASE}/${g.repo}/`; setTimeout(() => { location.href = url; }, 700);
+    return `<span class="ok">▶ ${L("Cargando", "Loading")} ${esc(g.title)}…</span> <a href="${url}">${url}</a>`;
+  },
+  frameblock: () => L(
+`<span class="hl">🏆 FrameBlock</span> · mejor proyecto del Máster en Blockchain (Universidad Europea, 2023)
+Framework para conectar cualquier app con cualquier blockchain.
+Caso de uso: colecciones NFT (ERC-721) de imágenes IA en IPFS, en Ethereum, BNB Chain o Polygon, pagando con tarjeta.
+→ <a href="#blockchain">#blockchain</a> · <a href="https://github.com/serbenda/frameblock">código</a>`,
+`<span class="hl">🏆 FrameBlock</span> · best project, Master's in Blockchain (Universidad Europea, 2023)
+A framework to plug any app into any blockchain.
+Use case: NFT collections (ERC-721) of AI images on IPFS, on Ethereum, BNB Chain or Polygon, paid by card.
+→ <a href="#blockchain">#blockchain</a> · <a href="https://github.com/serbenda/frameblock">code</a>`),
+  cv: () => `<span class="ok">⬇</span> <a href="${cvURL()}" download>${cvURL().split("/").pop()}</a>  <span class="dim">(${L("también en", "also in")} ${lang === "es" ? `<a href="cv/Sergio-Bendana-CV-en.pdf" download>English</a>` : `<a href="cv/Sergio-Bendana-CV-es.pdf" download>español</a>`})</span>`,
+  contact: () =>
+`LinkedIn  <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">linkedin.com/in/sergio-santiago-bendaña-quesada</a>
+GitHub    <a href="https://github.com/serbenda">github.com/serbenda</a>
+Sponsor   <a href="https://github.com/sponsors/serbenda">github.com/sponsors/serbenda</a> ❤`,
+  ls: () => `<span class="c2">about.txt</span>  <span class="c2">how-i-work.md</span>  <span class="c2">frameblock.md</span>  <span class="ok">cv.pdf</span>  <span class="c3">games/</span>`,
+  cat: a => ({ "about.txt": TRUN.whoami, "how-i-work.md": TRUN.how, "frameblock.md": TRUN.frameblock, "cv.pdf": () => L("Es binario 😅 mejor: ", "It's binary 😅 try: ") + `<span class="c2">cv</span>` }[a] || (() => `cat: ${esc(a || "")}: ${L("no existe. Prueba", "no such file. Try")} <span class="c2">ls</span>`))(),
+  lang: a => { const to = a === "en" || a === "es" ? a : (lang === "es" ? "en" : "es"); if (to !== lang) { lang = to; try { localStorage.setItem("lang", lang); } catch (e) {} render(); } return to === "es" ? "Idioma: español" : "Language: English"; },
+  clear: () => { document.getElementById("tout").innerHTML = ""; return null; },
+  coffee: () => L("☕ ¿Me invitas a un café? ", "☕ Buy me a coffee? ") + `<a href="https://github.com/sponsors/serbenda">github.com/sponsors/serbenda</a> ❤`,
+  sudo: a => a === "hire-me" || a === "hire me"
+    ? L(`<span class="hl">[sudo] contraseña para recruiter:</span> ********\n<span class="ok">✔ Acceso concedido.</span> Hablemos: <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">LinkedIn</a> · CV: <a href="${cvURL()}" download>PDF</a>`,
+        `<span class="hl">[sudo] password for recruiter:</span> ********\n<span class="ok">✔ Access granted.</span> Let's talk: <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">LinkedIn</a> · CV: <a href="${cvURL()}" download>PDF</a>`)
+    : L("bendi no está en el fichero sudoers. Este incidente será reportado. 😄 (prueba: sudo hire-me)", "bendi is not in the sudoers file. This incident will be reported. 😄 (try: sudo hire-me)"),
+  exit: () => L("Buen intento. De aquí no se sale sin jugar una partida: <span class=\"c2\">play chapas</span>", "Nice try. Nobody leaves without playing a round: <span class=\"c2\">play chapas</span>"),
+  date: () => new Date().toLocaleString(loc()),
+  uptime: () => `up ${new Date().getFullYear() - 2005} ${L("años en sistemas", "years in systems")}, load average: 🧒 🧒 🕹️`,
+  neofetch: () =>
+`<span class="c3">  ▄▄▄▄▄▄▄  </span>  <span class="ok">bendi</span>@<span class="ok">localhost</span>
+<span class="c3">  █ ▀ ▀ █  </span>  OS: Linux (${L("desde siempre", "since forever")})
+<span class="c3">  █ ▄▄▄ █  </span>  Shell: bash · ansible · terraform
+<span class="c3">  ▀▀▀▀▀▀▀  </span>  Uptime: ${new Date().getFullYear() - 2005}y · Awards: 🏆 FrameBlock
+             Hobbies: ${L("juegos de 8 bits, homelab", "8-bit games, homelab")}`,
+};
+function trun(raw) {
+  const line = raw.trim(); if (!line) return;
+  TERM.hist.push(line); TERM.at = TERM.hist.length;
+  tline(`<span class="ps">bendi@localhost</span>:<span style="color:#60a5fa">~</span>$ <span class="cmd">${esc(line)}</span>`);
+  const [c, ...rest] = line.split(/\s+/); const arg = rest.join(" ").toLowerCase();
+  const fn = TRUN[c.toLowerCase()];
+  const out = fn ? fn(arg) : `${esc(c)}: ${L("comando no encontrado. Escribe", "command not found. Type")} <span class="c2">help</span>`;
+  if (out !== null && out !== undefined) tline(out);
+}
+function termInit() {
+  const inp = document.getElementById("tin"); if (!inp) return;
+  tline(L(`<span class="ok">Bienvenido/a a bendi.dev</span> · escribe <span class="c2">help</span> o pulsa un comando de abajo.`,
+          `<span class="ok">Welcome to bendi.dev</span> · type <span class="c2">help</span> or tap a command below.`), "dim");
+  document.getElementById("tform").addEventListener("submit", e => { e.preventDefault(); trun(inp.value); inp.value = ""; });
+  inp.addEventListener("keydown", e => {
+    if (e.key === "ArrowUp" && TERM.at > 0) { inp.value = TERM.hist[--TERM.at]; e.preventDefault(); }
+    else if (e.key === "ArrowDown") { TERM.at = Math.min(TERM.hist.length, TERM.at + 1); inp.value = TERM.hist[TERM.at] || ""; e.preventDefault(); }
+    else if (e.key === "Tab") {
+      const [c, a] = inp.value.split(/\s+/);
+      if (a !== undefined && c === "play") { const m = PROJ.games.map(g => g.repo).filter(r => r.startsWith(a)); if (m.length === 1) inp.value = "play " + m[0]; }
+      else { const m = TCMDS.filter(x => x.startsWith(c || "")); if (m.length === 1) inp.value = m[0] + " "; else if (m.length > 1) tline(m.join("  "), "dim"); }
+      e.preventDefault();
+    }
+  });
+  document.getElementById("qcmds").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { trun(b.textContent); } });
+  document.querySelector(".term").addEventListener("click", e => { if (!e.target.closest("a")) inp.focus({ preventScroll: true }); });
+}
+
+/* ---------- easter eggs ---------- */
+(() => {
+  const K = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"]; let i = 0;
+  addEventListener("keydown", e => {
+    i = e.key === K[i] ? i + 1 : (e.key === K[0] ? 1 : 0);
+    if (i === K.length) { i = 0; document.body.classList.add("konami"); document.getElementById("arcade").scrollIntoView({ behavior: "smooth" });
+      const h = document.getElementById("hiscore"); if (h) h.textContent = "999999"; setTimeout(() => document.body.classList.remove("konami"), 2500); }
+  });
+  try { console.log("%c bendi.dev %c\n\n¿Curioseando el código? Me caes bien.\nCurious about the code? I like you already.\n\n→ github.com/serbenda · sudo hire-me en la terminal 😉\n",
+    "background:#38bdf8;color:#0e1324;font:700 16px monospace;padding:4px 8px;border-radius:4px", "color:#93a0b8;font:13px monospace"); } catch (e) {}
+})();
+
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach(n => { n.textContent = t(n.dataset.t); });
   document.querySelectorAll("[data-t-aria]").forEach(n => n.setAttribute("aria-label", t(n.dataset.tAria)));
   document.getElementById("lang").textContent = lang === "es" ? "EN" : "ES";
-  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderDash(); renderChain();
+  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderChain();
+  ["cvlink", "cvlink2"].forEach(id => { const a = document.getElementById(id); if (a) a.href = cvURL(); });
+  if (dashSeen) renderDash();
   document.getElementById("updated").textContent = DATA.updated
     ? `${t("updated")} ${new Date(DATA.updated).toLocaleString(loc(), { dateStyle: "medium", timeStyle: "short" })}` : "";
 }
@@ -966,11 +1193,16 @@ document.getElementById("filter").addEventListener("change", e => { selected = e
 let resizeTimer, lastW = window.innerWidth;
 window.addEventListener("resize", () => {
   if (window.innerWidth === lastW) return;   // ignore mobile address-bar height changes
-  lastW = window.innerWidth; clearTimeout(resizeTimer); resizeTimer = setTimeout(renderDash, 150);
+  lastW = window.innerWidth; clearTimeout(resizeTimer); if (dashSeen) resizeTimer = setTimeout(renderDash, 150);
 });
 
 const getJSON = url => fetch(url, { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null);
 render();
+termInit();
+const dashIO = "IntersectionObserver" in window ? new IntersectionObserver(es => {
+  if (es.some(e => e.isIntersecting)) { dashSeen = true; dashIO.disconnect(); renderDash(); }
+}, { rootMargin: "600px 0px" }) : null;
+if (dashIO) dashIO.observe(document.getElementById("visitas")); else { dashSeen = true; renderDash(); }
 /* Visits are collected every morning by the workflow in github.com/serbenda/serbenda */
 const TRAFFIC_URL = "https://raw.githubusercontent.com/serbenda/serbenda/main/data/traffic.json";
 Promise.all([getJSON(TRAFFIC_URL).then(d => d || getJSON("data/traffic.json")), getJSON("data/projects.json")]).then(([d, p]) => {
