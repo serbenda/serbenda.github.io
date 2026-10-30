@@ -111,6 +111,7 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 .ctitle { margin-top: 56px; }
 .career { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .career > li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.career .sum { color: var(--text); margin-top: 4px; }
 .career ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 4px; }
 .career ul li::marker { color: var(--violet); }
 .career .y { color: var(--muted); font-size: 15px; }
@@ -267,7 +268,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
       <p class="prompt" aria-hidden="true"><span class="u">bendi@localhost</span>:<span class="d">~</span>$ whoami</p>
       <h1>Bendi<span class="cur" aria-hidden="true">_</span></h1>
       <p class="who">Sergio Bendaña · Automation Platform Engineer</p>
-      <p class="pitch" data-t="hero.pitch">Llevo 20 años automatizando infraestructura: de los servidores UNIX en producción a la infraestructura como código. En casa hago juegos de 8 bits con mis hijas.</p>
+      <p class="pitch" data-t="hero.pitch">Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.</p>
       <div class="links">
         <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">LinkedIn</a>
         <a href="https://github.com/serbenda">GitHub</a>
@@ -280,7 +281,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
           <div class="token" aria-hidden="true"></div>
           <div class="stage"><b>2005</b><span data-t="st.1">Soporte de hardware, software y redes</span></div>
           <div class="stage"><b>2009</b><span data-t="st.2">UNIX en producción 24x7</span></div>
-          <div class="stage"><b>2016</b><span data-t="st.3">Granjas de 12.000 servidores y OpenStack</span></div>
+          <div class="stage"><b>2016</b><span data-t="st.3">UNIX a gran escala y OpenStack</span></div>
           <div class="stage"><b data-t="st.4">Hoy</b><span data-t="st.4d">Infraestructura como código</span></div>
         </div>
       </div>
@@ -293,9 +294,9 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
           <div class="me">
             <div><div class="years">20+</div><span data-t="exp.years">años en sistemas y automatización</span></div>
           </div>
-          <p data-t="exp.lead">Hoy automatizo infraestructura a gran escala con Terraform Enterprise, Ansible y Packer, sobre AWS, Azure y nube privada. Antes administré UNIX en producción, migré entornos a OpenStack y monté plataformas Big Data. Tengo un máster en Blockchain.</p>
+          <p data-t="exp.lead">Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain.</p>
           <ul class="chips" aria-label="Stack">
-            <li>Terraform</li><li>Terraform Enterprise</li><li>Ansible</li><li>Packer</li><li>Python</li><li>Bash</li>
+            <li>Terraform</li><li>Terraform Enterprise</li><li>Ansible</li><li>Packer</li><li>Rundeck</li><li>Python</li><li>Bash</li>
             <li>AWS</li><li>Azure</li><li>VMware</li><li>OpenStack</li><li>Docker</li><li>Red Hat</li>
             <li>Solaris</li><li>AIX</li><li>Cloudera</li><li>Kerberos</li><li>Grafana</li><li>Solidity</li>
           </ul>
@@ -366,12 +367,12 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 const T = {
   es: {
     "nav.about": "Sobre mí", "nav.arcade": "ARCADE", "nav.visits": "Visitas",
-    "hero.pitch": "Llevo 20 años automatizando infraestructura: de los servidores UNIX en producción a la infraestructura como código. En casa hago juegos de 8 bits con mis hijas.",
+    "hero.pitch": "Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.",
     "hero.play": "▶ JUGAR", "hero.pipe": "De 2005 a hoy",
-    "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "Granjas de 12.000 servidores y OpenStack",
+    "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
     "about.title": "Sobre mí", "career.title": "Lo que he hecho", "exp.years": "años en sistemas y automatización",
-    "exp.lead": "Hoy automatizo infraestructura a gran escala con Terraform Enterprise, Ansible y Packer, sobre AWS, Azure y nube privada. Antes administré UNIX en producción, migré entornos a OpenStack y monté plataformas Big Data. Tengo un máster en Blockchain.",
+    "exp.lead": "Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain.",
     "now": "hoy",
     "a.title": "ZONA ARCADE", "a.coin": "INSERTA MONEDA", "a.select": "SELECCIONA JUEGO", "a.hs": "TABLA DE RÉCORDS",
     "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
@@ -398,12 +399,12 @@ const T = {
   },
   en: {
     "nav.about": "About", "nav.arcade": "ARCADE", "nav.visits": "Visits",
-    "hero.pitch": "20 years automating infrastructure: from production UNIX servers to infrastructure as code. At home I make 8-bit games with my daughters.",
+    "hero.pitch": "I've been automating infrastructure for 20 years: I started running production UNIX and today I define it as code. At home I make 8-bit games with my daughters.",
     "hero.play": "▶ PLAY", "hero.pipe": "From 2005 to today",
-    "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "12,000-server farms and OpenStack",
+    "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
     "about.title": "About me", "career.title": "What I have done", "exp.years": "years in systems and automation",
-    "exp.lead": "Today I automate infrastructure at scale with Terraform Enterprise, Ansible and Packer, on AWS, Azure and private cloud. Before that I ran production UNIX, migrated platforms to OpenStack and built Big Data platforms. I hold a Master's in Blockchain.",
+    "exp.lead": "I started on 24x7 UNIX on-call, grew into running farms of thousands of servers, and today I make infrastructure build itself: as code, versioned and repeatable. Along the way I built Big Data platforms and earned a Master's in Blockchain.",
     "now": "now",
     "a.title": "ARCADE ZONE", "a.coin": "INSERT COIN", "a.select": "SELECT GAME", "a.hs": "HIGH SCORES",
     "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
@@ -432,89 +433,73 @@ const T = {
 
 /* From the LinkedIn profile */
 const WINS = [
-  { es: ["12.000 servidores", "Administración UNIX en producción en una granja de 12.000 servidores."],
-    en: ["12,000 servers", "Production UNIX administration on a 12,000-server farm."] },
-  { es: ["Terraform Enterprise", "Arquitectura y administración de la plataforma, y aprovisionamiento en AWS y Azure."],
-    en: ["Terraform Enterprise", "Architecture and administration of the platform, and provisioning on AWS and Azure."] },
-  { es: ["De VMware a OpenStack", "Migración de servidores y despliegues sobre infraestructura IaaS."],
-    en: ["VMware to OpenStack", "Server migrations and deployments on IaaS infrastructure."] },
-  { es: ["Big Data seguro", "Clusters Cloudera y Hortonworks con Kerberos, LDAP y Active Directory."],
-    en: ["Secure Big Data", "Cloudera and Hortonworks clusters with Kerberos, LDAP and Active Directory."] },
-  { es: ["Capacidad a la vista", "Diseño de la planificación de capacidad con OpenTSDB y Grafana."],
-    en: ["Capacity in sight", "Capacity planning design with OpenTSDB and Grafana."] },
+  { es: ["12.000 servidores", "Administración senior de UNIX en producción en una granja de 12.000 servidores."],
+    en: ["12,000 servers", "Senior production UNIX administration on a 12,000-server farm."] },
+  { es: ["Terraform Enterprise", "Diseño y administración de la plataforma que aprovisiona la infraestructura en AWS, Azure y nube privada."],
+    en: ["Terraform Enterprise", "Designing and running the platform that provisions infrastructure on AWS, Azure and private cloud."] },
+  { es: ["De VMware a OpenStack", "Migración de servidores y despliegue de cargas sobre IaaS."],
+    en: ["VMware to OpenStack", "Server migrations and workloads deployed on IaaS."] },
+  { es: ["Big Data seguro", "Plataformas Cloudera y Hortonworks protegidas con Kerberos, LDAP y Active Directory."],
+    en: ["Secure Big Data", "Cloudera and Hortonworks platforms secured with Kerberos, LDAP and Active Directory."] },
+  { es: ["Capacidad a la vista", "Planificación de capacidad con OpenTSDB y Grafana para anticiparse a los problemas."],
+    en: ["Capacity in sight", "Capacity planning with OpenTSDB and Grafana to get ahead of problems."] },
   { es: ["Máster en Blockchain", "Universidad Europea, 2023."],
     en: ["Master's in Blockchain", "Universidad Europea, 2023."] }
 ];
 const CAREER = [
   { from: 2019, to: 0,
-    es: ["Automation Engineer", [
-      "Automatización de la infraestructura de servidores Windows y Linux.",
-      "Aprovisionamiento como código con Terraform en AWS, Azure y nube privada.",
-      "Arquitectura y administración de Terraform Enterprise.",
-      "Imágenes base de sistema operativo automatizadas con Packer.",
-      "Automatización de tareas con Bash, Python y Ansible, y aplicaciones en contenedores con Docker.",
-      "Operación de la virtualización con VMware, VMware Cloud y nube privada.",
-      "Trabajo con los equipos de desarrollo para mejorar su CI/CD."]],
-    en: ["Automation Engineer", [
-      "Automation of Windows and Linux server infrastructure.",
-      "Infrastructure as code with Terraform on AWS, Azure and private cloud.",
-      "Terraform Enterprise architecture and administration.",
-      "Automated OS base images with Packer.",
-      "Task automation with Bash, Python and Ansible, and containerised apps with Docker.",
-      "Operating VMware, VMware Cloud and private cloud virtualisation.",
-      "Working with development teams to improve their CI/CD."]] },
+    es: ["Automation Engineer", "Infraestructura como código para servidores Windows y Linux, en AWS, Azure y nube privada.", [
+      "Diseño y administro Terraform Enterprise, la plataforma con la que se aprovisiona la infraestructura.",
+      "Automatizo las imágenes base de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.",
+      "Opero la virtualización con VMware, VMware Cloud y nube privada, y llevo aplicaciones a contenedores con Docker.",
+      "Ayudo a los equipos de desarrollo a mejorar sus pipelines de CI/CD."]],
+    en: ["Automation Engineer", "Infrastructure as code for Windows and Linux servers, on AWS, Azure and private cloud.", [
+      "I design and run Terraform Enterprise, the platform that provisions the infrastructure.",
+      "I automate OS base images with Packer and repetitive work with Ansible, Python and Bash.",
+      "I operate VMware, VMware Cloud and private cloud virtualisation, and move apps into Docker containers.",
+      "I help development teams improve their CI/CD pipelines."]] },
   { from: 2016, to: 2019,
-    es: ["IT Expert · UNIX a gran escala", [
-      "Administración senior de UNIX en producción en una granja de 12.000 servidores.",
-      "Diseño de la planificación de capacidad con OpenTSDB y Grafana.",
-      "Diseño de entrega continua con Ansible sobre OpenStack.",
-      "Migración de servidores de VMware a OpenStack y despliegues sobre IaaS.",
-      "Inventario dinámico con Ansible y CMDBuild.",
-      "Líder técnico UNIX en la unificación de varios equipos de entrega."]],
-    en: ["IT Expert · UNIX at scale", [
-      "Senior production UNIX administration on a 12,000-server farm.",
-      "Capacity planning design with OpenTSDB and Grafana.",
-      "Continuous delivery design with Ansible on OpenStack.",
-      "Migrating servers from VMware to OpenStack and deploying on IaaS.",
-      "Dynamic inventory with Ansible and CMDBuild.",
-      "UNIX technical lead unifying several delivery teams."]] },
+    es: ["IT Expert · UNIX a gran escala", "Administración senior de UNIX en producción en una granja de 12.000 servidores.", [
+      "Diseñé la planificación de capacidad con OpenTSDB y Grafana.",
+      "Diseñé la entrega continua sobre OpenStack con Rundeck y Ansible.",
+      "Migré servidores de VMware a OpenStack y desplegué cargas sobre IaaS.",
+      "Desarrollé un inventario dinámico con Ansible y CMDBuild.",
+      "Lideré técnicamente la unificación de varios equipos de entrega UNIX."]],
+    en: ["IT Expert · UNIX at scale", "Senior production UNIX administration on a 12,000-server farm.", [
+      "Designed capacity planning with OpenTSDB and Grafana.",
+      "Designed continuous delivery on OpenStack with Rundeck and Ansible.",
+      "Migrated servers from VMware to OpenStack and deployed workloads on IaaS.",
+      "Built a dynamic inventory with Ansible and CMDBuild.",
+      "Technical lead for merging several UNIX delivery teams."]] },
   { from: 2015, to: 2016,
-    es: ["Big Data Engineer", [
-      "Definición, instalación y administración de entornos Cloudera y Hortonworks.",
-      "Seguridad con Kerberos integrado con LDAP, Active Directory e IPA, con autenticación múltiple.",
-      "Hadoop, HDFS, Hive, Impala, Spark, HBase, Sqoop, Oozie, YARN y ZooKeeper.",
-      "Evaluación de nuevas soluciones y soporte a usuarios en producción."]],
-    en: ["Big Data Engineer", [
-      "Defining, installing and running Cloudera and Hortonworks platforms.",
-      "Security with Kerberos integrated with LDAP, Active Directory and IPA, with multiple authentication.",
-      "Hadoop, HDFS, Hive, Impala, Spark, HBase, Sqoop, Oozie, YARN and ZooKeeper.",
-      "Evaluating new solutions and supporting users in production."]] },
+    es: ["Big Data Engineer", "Puse en marcha y aseguré plataformas Big Data en producción.", [
+      "Definí, instalé y administré entornos Cloudera y Hortonworks: Hadoop, Hive, Impala, Spark y HBase, entre otros.",
+      "Los protegí con Kerberos integrado con LDAP, Active Directory e IPA, en entornos con varios sistemas de autenticación.",
+      "Evalué nuevas soluciones y di soporte a los usuarios en producción."]],
+    en: ["Big Data Engineer", "Set up and secured Big Data platforms in production.", [
+      "Defined, installed and ran Cloudera and Hortonworks platforms: Hadoop, Hive, Impala, Spark and HBase, among others.",
+      "Secured them with Kerberos integrated with LDAP, Active Directory and IPA, across several authentication systems.",
+      "Evaluated new solutions and supported users in production."]] },
   { from: 2009, to: 2015,
-    es: ["Administrador y consultor senior de sistemas", [
-      "UNIX y Linux en producción 24x7 para una docena de clientes: Solaris, Red Hat, SUSE, HP-UX y AIX.",
-      "Granjas de hasta 5.000 servidores, con scripts para automatizar instalaciones, validaciones y actualizaciones.",
-      "Gestión masiva con Ansible y BladeLogic.",
-      "Alta disponibilidad con Pacemaker, Corosync, Heartbeat, HAProxy y Keepalived.",
-      "Almacenamiento, backup y servidores web y de aplicaciones: Apache, Tomcat, JBoss y NGINX.",
-      "Incidencias críticas, cambios, guardias y análisis de rendimiento con propuestas de mejora."]],
-    en: ["Senior systems administrator and consultant", [
-      "24x7 production UNIX and Linux for a dozen clients: Solaris, Red Hat, SUSE, HP-UX and AIX.",
-      "Farms of up to 5,000 servers, with scripts to automate installs, validation and updates.",
-      "Fleet management with Ansible and BladeLogic.",
-      "High availability with Pacemaker, Corosync, Heartbeat, HAProxy and Keepalived.",
-      "Storage, backup and web and application servers: Apache, Tomcat, JBoss and NGINX.",
-      "Critical incidents, changes, on-call and performance analysis with improvement proposals."]] },
+    es: ["Administrador y consultor senior de sistemas", "UNIX y Linux en producción 24x7 para una docena de clientes.", [
+      "Solaris, Red Hat, SUSE, HP-UX y AIX en granjas de hasta 5.000 servidores.",
+      "Automaticé instalaciones, validaciones y actualizaciones con scripts, Ansible y BladeLogic.",
+      "Alta disponibilidad con Pacemaker, Corosync, HAProxy y Keepalived, además de almacenamiento, backup y servidores web y de aplicaciones.",
+      "Incidencias críticas, cambios y guardias, con análisis de rendimiento y propuestas de mejora."]],
+    en: ["Senior systems administrator and consultant", "24x7 production UNIX and Linux for a dozen clients.", [
+      "Solaris, Red Hat, SUSE, HP-UX and AIX on farms of up to 5,000 servers.",
+      "Automated installs, validation and updates with scripts, Ansible and BladeLogic.",
+      "High availability with Pacemaker, Corosync, HAProxy and Keepalived, plus storage, backup and web and application servers.",
+      "Critical incidents, changes and on-call, with performance analysis and improvement proposals."]] },
   { from: 2005, to: 2009,
-    es: ["Técnico y administrador de sistemas", [
-      "Administración de sistemas en producción: HP-UX, Solaris, Tru64 y Red Hat.",
-      "Almacenamiento EMC con fibra óptica (Brocade), DNS y gestión remota de servidores.",
-      "Proyectos de red de transmisión para mejorar la cobertura de un operador móvil.",
-      "Mis comienzos: soporte de hardware, software, usuarios y redes."]],
-    en: ["Systems technician and administrator", [
-      "Production systems administration: HP-UX, Solaris, Tru64 and Red Hat.",
-      "EMC storage over fibre (Brocade), DNS and remote server management.",
-      "Transmission network projects to improve a mobile operator's coverage.",
-      "Where it started: hardware, software, user and network support."]] }
+    es: ["Técnico y administrador de sistemas", "Mis primeros años: del soporte a usuarios a administrar sistemas en producción.", [
+      "Administré HP-UX, Solaris, Tru64 y Red Hat, con almacenamiento EMC sobre fibra óptica.",
+      "Trabajé en proyectos de red de transmisión para mejorar la cobertura de un operador móvil.",
+      "Empecé dando soporte de hardware, software, usuarios y redes."]],
+    en: ["Systems technician and administrator", "The early years: from user support to running production systems.", [
+      "Ran HP-UX, Solaris, Tru64 and Red Hat, with EMC storage over fibre.",
+      "Worked on transmission network projects to improve a mobile operator's coverage.",
+      "Started out supporting hardware, software, users and networks."]] }
 ];
 
 let lang = "es";
@@ -555,7 +540,7 @@ function renderAbout() {
   document.getElementById("wins").innerHTML = WINS.map(w => `<li><b>${esc(w[lang][0])}</b><span>${esc(w[lang][1])}</span></li>`).join("");
   document.getElementById("career").innerHTML = CAREER.map(c => `
     <li class="${c.to === 0 ? "now" : ""}"><span class="y">${c.from}–${c.to || t("now")}</span>
-      <div><b>${esc(c[lang][0])}</b><ul>${c[lang][1].map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></li>`).join("");
+      <div><b>${esc(c[lang][0])}</b><p class="sum">${esc(c[lang][1])}</p><ul>${c[lang][2].map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></li>`).join("");
 }
 
 /* ---------- arcade ---------- */
