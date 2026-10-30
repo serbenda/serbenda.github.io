@@ -109,6 +109,13 @@
  ],
  "tools": [
   {
+   "repo": "bolsillo",
+   "title": "bolsillo",
+   "url": "https://bendi.dev/bolsillo/",
+   "es": "Luz hora a hora y cuándo poner la lavadora, gasolineras más baratas y abiertas cerca de ti, y cuánto te sube la hipoteca con el Euríbor. Datos oficiales, sin cookies.",
+   "en": "Hourly electricity prices and when to run the washing machine, the cheapest open petrol stations near you, and how much your mortgage changes with the Euribor. Official Spanish data, no cookies."
+  },
+  {
    "repo": "bankinter-visa-pdf-to-csv",
    "title": "Bankinter VISA → CSV",
    "es": "Saca los movimientos de los extractos PDF de la VISA de Bankinter a un CSV limpio.",
