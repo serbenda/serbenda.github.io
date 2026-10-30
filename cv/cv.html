@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Sergio Bendaña · CV</title>
+<!-- Template for cv/Sergio-Bendana-CV-es.pdf and -en.pdf.
+     Open cv.html?lang=es or ?lang=en and print to PDF (A4, no margins, backgrounds on). -->
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  @page { size: A4; margin: 12mm 0 10mm; }
+  :root { --ink: #0e1324; --text: #1f2937; --muted: #4b5563; --dim: #6b7280; --blue: #2563eb; --teal: #0f766e; --purple: #7c3aed; --chip: #eef2ff; --line: #d1d5db; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; }
+  body { width: 210mm; padding: 1mm 14.5mm 0; color: var(--text); font: 9.6pt/1.5 "Atkinson Hyperlegible", sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 7px; border-bottom: 2.5px solid var(--ink); }
+  .prompt { font: 600 8.6pt "JetBrains Mono", monospace; color: var(--teal); }
+  h1 { margin: 2px 0 0; font: 800 27pt/1.05 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; color: var(--ink); }
+  .role { font: 700 11.5pt "Bricolage Grotesque", sans-serif; color: var(--blue); margin-top: 3px; }
+  .links { text-align: right; font: 400 8.4pt/1.75 "JetBrains Mono", monospace; color: var(--text); }
+  .summary { margin: 10px 0 9px; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 14px; }
+  .facts div { background: var(--chip); border-radius: 6px; padding: 6px 9px; font: 700 8.3pt/1.3 "Atkinson Hyperlegible", sans-serif; color: var(--ink); }
+  h2 { font: 800 12pt "Bricolage Grotesque", sans-serif; letter-spacing: 0.04em; color: var(--ink); margin: 12px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--line); }
+  .job { margin-bottom: 7px; break-inside: avoid; }
+  .job .t { display: flex; justify-content: space-between; font: 700 10.2pt "Atkinson Hyperlegible", sans-serif; color: var(--ink); }
+  .job .t span { font: 500 8.6pt "JetBrains Mono", monospace; color: var(--dim); }
+  .job em { display: block; color: var(--muted); margin: 1px 0 2px; }
+  ul { margin: 0; padding-left: 15px; }
+  li { margin: 1px 0; }
+  li::marker { color: var(--purple); }
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+  .skills b, .item b { display: block; color: var(--ink); font-size: 9.2pt; }
+  .skills span { color: var(--muted); }
+  .item { margin-bottom: 6px; break-inside: avoid; }
+  footer { margin-top: 12px; text-align: center; font: 400 8pt "JetBrains Mono", monospace; color: var(--dim); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="prompt">bendi@localhost:~$ whoami</div>
+    <h1>Sergio Bendaña</h1>
+    <div class="role" data-k="role"></div>
+  </div>
+  <div class="links">bendi.dev<br>linkedin.com/in/serbenda<br>github.com/serbenda</div>
+</header>
+<p class="summary" data-k="summary"></p>
+<div class="facts" id="facts"></div>
+<h2 data-k="h.exp"></h2>
+<div id="jobs"></div>
+<h2 data-k="h.skills"></h2>
+<div class="skills" id="skills"></div>
+<h2 data-k="h.edu"></h2>
+<div class="item"><b data-k="edu.t"></b><span data-k="edu.d"></span></div>
+<h2 data-k="h.proj"></h2>
+<div id="projects"></div>
+<footer data-k="footer"></footer>
+<script>
+const T = {
+  es: {
+    role: "Cloud Engineer",
+    summary: "Ingeniero de sistemas con más de 20 años en producción: de las guardias 24x7 sobre UNIX a definir la infraestructura como código en AWS, Azure, Google Cloud y nube privada. Hoy automatizo la adopción de la nube privada, trabajo en Google Cloud y, como SRE, integro las automatizaciones de los equipos de storage, red, virtualización, CaaS y sistemas en un entorno internacional. Máster en Blockchain, con el proyecto ganador de su edición.",
+    facts: ["20+ años en sistemas", "Granja de 12.000 servidores", "AWS · Azure · Google Cloud · nube privada", "🏆 Mejor proyecto, Máster en Blockchain"],
+    "h.exp": "EXPERIENCIA", "h.skills": "COMPETENCIAS", "h.edu": "FORMACIÓN", "h.proj": "PROYECTOS",
+    jobs: [
+      ["Cloud Engineer · Nube privada, Google Cloud y SRE", "2023–hoy", "Automatizo la adopción de la nube privada: convierto sus servicios y arquitecturas de referencia en automatizaciones listas para cada proyecto.", [
+        "Diseño y desarrollo las automatizaciones que aplican cada arquitectura de referencia a los proyectos que se despliegan en la nube privada.",
+        "Mejoro el framework de automatización y ayudo a que los proyectos migren a él más rápido.",
+        "Como SRE del área de nube privada, integro las automatizaciones de los equipos de storage, red, virtualización, CaaS y sistemas, en colaboración con equipos de varios países.",
+        "Además de la nube privada, trabajo en Google Cloud: opero la plataforma y participo en la arquitectura y el diseño de las soluciones.",
+        "Compruebo que los proyectos cumplen los estándares de referencia de la nube privada y reviso sus arquitecturas de referencia.",
+        "Stack: Terraform, Ansible, Python, Jenkins y GitOps, sobre VMware, OpenShift y Google Cloud."]],
+      ["Automation Engineer", "2019–2023", "Infraestructura como código para servidores Windows y Linux, en AWS, Azure, Google Cloud y nube privada.", [
+        "Diseñé y administré Terraform Enterprise, la plataforma con la que se aprovisiona la infraestructura.",
+        "Automaticé las imágenes base de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.",
+        "Operé la virtualización con VMware, VMware Cloud y nube privada, y llevé aplicaciones a contenedores con Docker.",
+        "Ayudé a los equipos de desarrollo a mejorar sus pipelines de CI/CD."]],
+      ["IT Expert · UNIX a gran escala", "2016–2019", "Administración senior de UNIX en producción en una granja de 12.000 servidores.", [
+        "Diseñé la planificación de capacidad con OpenTSDB y Grafana.",
+        "Diseñé la entrega continua sobre OpenStack con Rundeck y Ansible.",
+        "Migré servidores de VMware a OpenStack y desplegué cargas sobre IaaS.",
+        "Desarrollé un inventario dinámico con Ansible y CMDBuild.",
+        "Lideré técnicamente la unificación de varios equipos de entrega UNIX."]],
+      ["Big Data Engineer", "2015–2016", "Puse en marcha y aseguré plataformas Big Data en producción.", [
+        "Definí, instalé y administré entornos Cloudera y Hortonworks: Hadoop, Hive, Impala, Spark y HBase, entre otros.",
+        "Los protegí con Kerberos integrado con LDAP, Active Directory e IPA, en entornos con varios sistemas de autenticación.",
+        "Evalué nuevas soluciones y di soporte a los usuarios en producción."]],
+      ["Administrador y consultor senior de sistemas", "2009–2015", "UNIX y Linux en producción 24x7 para una docena de clientes.", [
+        "Solaris, Red Hat, SUSE, HP-UX y AIX en granjas de hasta 5.000 servidores.",
+        "Automaticé instalaciones, validaciones y actualizaciones con scripts, Ansible y BladeLogic.",
+        "Alta disponibilidad con Pacemaker, Corosync, HAProxy y Keepalived, además de almacenamiento, backup y servidores web y de aplicaciones.",
+        "Incidencias críticas, cambios y guardias, con análisis de rendimiento y propuestas de mejora."]],
+      ["Técnico y administrador de sistemas", "2005–2009", "Mis primeros años: del soporte a usuarios a administrar sistemas en producción.", [
+        "Administré HP-UX, Solaris, Tru64 y Red Hat, con almacenamiento EMC sobre fibra óptica.",
+        "Trabajé en proyectos de red de transmisión para mejorar la cobertura de un operador móvil.",
+        "Empecé dando soporte de hardware, software, usuarios y redes."]]],
+    skills: [["IaC y automatización", "Terraform, Terraform Enterprise, Ansible, Packer, Python, Bash, Jenkins, GitOps, CI/CD"],
+      ["Nube y virtualización", "AWS, Azure, Google Cloud, nube privada, OpenShift, OpenStack, VMware, Docker"],
+      ["Sistemas", "Red Hat, SUSE, Solaris, AIX, HP-UX, alta disponibilidad"],
+      ["Datos y observabilidad", "Cloudera, Hortonworks, Kerberos, LDAP/AD, OpenTSDB, Grafana"],
+      ["Blockchain", "Solidity, ERC-721, OpenZeppelin, IPFS, ethers.js"]],
+    "edu.t": "Máster en Blockchain · Universidad Europea",
+    "edu.d": "2022–2023 · Proyecto final FrameBlock, elegido mejor proyecto por el jurado.",
+    projects: [["FrameBlock 🏆", "Framework para conectar cualquier aplicación con cualquier blockchain. Caso de uso: colecciones NFT en Ethereum, BNB Chain y Polygon con IPFS y pago con tarjeta."],
+      ["Juegos en el navegador", "Seis juegos HTML/JS sin dependencias, publicados en bendi.dev con despliegue y métricas automatizados."]],
+    footer: "CV completo y actualizado en bendi.dev"
+  },
+  en: {
+    role: "Cloud Engineer",
+    summary: "Systems engineer with 20+ years in production: from 24x7 UNIX on-call to defining infrastructure as code on AWS, Azure, Google Cloud and private cloud. Today I automate private cloud adoption, work on Google Cloud and, as SRE, integrate the automation of the storage, network, virtualization, CaaS and systems teams in an international setting. Master's in Blockchain, with the winning project of its edition.",
+    facts: ["20+ years in systems", "12,000-server farm", "AWS · Azure · Google Cloud · private cloud", "🏆 Best project, Master's in Blockchain"],
+    "h.exp": "EXPERIENCE", "h.skills": "SKILLS", "h.edu": "EDUCATION", "h.proj": "PROJECTS",
+    jobs: [
+      ["Cloud Engineer · Private cloud, Google Cloud and SRE", "2023–now", "I automate the adoption of the private cloud, turning its reference services and architectures into automation ready for each project.", [
+        "I design and build the automation that applies each reference architecture to the projects running on the private cloud.",
+        "I improve the automation framework and help projects migrate to it faster.",
+        "As SRE for the private cloud area, I integrate the automation built by the storage, network, virtualization, CaaS and systems teams, working with teams in several countries.",
+        "Beyond the private cloud, I work on Google Cloud: I run the platform and take part in solution architecture and design.",
+        "I check that projects follow the private cloud reference standards and review its reference architectures.",
+        "Stack: Terraform, Ansible, Python, Jenkins and GitOps, on VMware, OpenShift and Google Cloud."]],
+      ["Automation Engineer", "2019–2023", "Infrastructure as code for Windows and Linux servers, on AWS, Azure, Google Cloud and private cloud.", [
+        "Designed and ran Terraform Enterprise, the platform that provisions the infrastructure.",
+        "Automated OS base images with Packer and repetitive work with Ansible, Python and Bash.",
+        "Operated VMware, VMware Cloud and private cloud virtualization, and moved apps into Docker containers.",
+        "Helped development teams improve their CI/CD pipelines."]],
+      ["IT Expert · UNIX at scale", "2016–2019", "Senior production UNIX administration on a 12,000-server farm.", [
+        "Designed capacity planning with OpenTSDB and Grafana.",
+        "Designed continuous delivery on OpenStack with Rundeck and Ansible.",
+        "Migrated servers from VMware to OpenStack and deployed workloads on IaaS.",
+        "Built a dynamic inventory with Ansible and CMDBuild.",
+        "Technical lead for merging several UNIX delivery teams."]],
+      ["Big Data Engineer", "2015–2016", "Set up and secured Big Data platforms in production.", [
+        "Defined, installed and ran Cloudera and Hortonworks platforms: Hadoop, Hive, Impala, Spark and HBase, among others.",
+        "Secured them with Kerberos integrated with LDAP, Active Directory and IPA, across several authentication systems.",
+        "Evaluated new solutions and supported users in production."]],
+      ["Senior systems administrator and consultant", "2009–2015", "24x7 production UNIX and Linux for a dozen clients.", [
+        "Solaris, Red Hat, SUSE, HP-UX and AIX on farms of up to 5,000 servers.",
+        "Automated installs, validation and updates with scripts, Ansible and BladeLogic.",
+        "High availability with Pacemaker, Corosync, HAProxy and Keepalived, plus storage, backup and web and application servers.",
+        "Critical incidents, changes and on-call, with performance analysis and improvement proposals."]],
+      ["Systems technician and administrator", "2005–2009", "The early years: from user support to running production systems.", [
+        "Ran HP-UX, Solaris, Tru64 and Red Hat, with EMC storage over fiber.",
+        "Worked on transmission network projects to improve a mobile operator's coverage.",
+        "Started out supporting hardware, software, users and networks."]]],
+    skills: [["IaC & automation", "Terraform, Terraform Enterprise, Ansible, Packer, Python, Bash, Jenkins, GitOps, CI/CD"],
+      ["Cloud & virtualization", "AWS, Azure, Google Cloud, private cloud, OpenShift, OpenStack, VMware, Docker"],
+      ["Systems", "Red Hat, SUSE, Solaris, AIX, HP-UX, high availability"],
+      ["Data & observability", "Cloudera, Hortonworks, Kerberos, LDAP/AD, OpenTSDB, Grafana"],
+      ["Blockchain", "Solidity, ERC-721, OpenZeppelin, IPFS, ethers.js"]],
+    "edu.t": "Master's in Blockchain · Universidad Europea",
+    "edu.d": "2022–2023 · Final project FrameBlock, chosen as best project by the jury.",
+    projects: [["FrameBlock 🏆", "A framework to plug any application into any blockchain. Use case: NFT collections on Ethereum, BNB Chain and Polygon with IPFS and card payments."],
+      ["Browser games", "Six dependency-free HTML/JS games, published on bendi.dev with automated deployment and metrics."]],
+    footer: "Full, up-to-date CV at bendi.dev"
+  }
+};
+const lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "es";
+const t = T[lang], esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+document.documentElement.lang = lang;
+document.querySelectorAll("[data-k]").forEach(e => e.textContent = t[e.dataset.k]);
+document.getElementById("facts").innerHTML = t.facts.map(f => `<div>${esc(f)}</div>`).join("");
+document.getElementById("jobs").innerHTML = t.jobs.map(([n, y, s, b]) =>
+  `<div class="job"><div class="t">${esc(n)}<span>${y}</span></div><em>${esc(s)}</em><ul>${b.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+document.getElementById("skills").innerHTML = t.skills.map(([h, s]) => `<div><b>${esc(h)}</b><span>${esc(s)}</span></div>`).join("");
+document.getElementById("projects").innerHTML = t.projects.map(([h, s]) => `<div class="item"><b>${esc(h)}</b>${esc(s)}</div>`).join("");
+</script>
+</body>
+</html>
