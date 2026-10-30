@@ -241,6 +241,68 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .arcade .c-pages { color: var(--a-green); }
 .arcade .c-plays { color: var(--a-pink); }
 
+/* =========================================================
+   Blockchain: FrameBlock showcase. Violet accent, blocks chained together
+   ========================================================= */
+.chain { position: relative; }
+.chain .eyebrow { font: 600 14px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--violet); letter-spacing: .08em; text-transform: uppercase; }
+.chain h2 { margin-top: 10px; font-size: clamp(40px, 7vw, 72px); }
+.award { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 8px 16px; border-radius: 999px;
+  background: linear-gradient(90deg, rgba(251, 191, 36, .16), rgba(167, 139, 250, .16)); border: 1px solid rgba(251, 191, 36, .45); color: #fde68a; font-weight: 700; font-size: 15px; text-decoration: none; }
+.award:hover { color: #fff; border-color: #fbbf24; }
+.chain .intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 32px; }
+.chain .intro p { color: var(--muted); }
+.chain .intro p + p { margin-top: 14px; }
+.chain .intro strong { color: var(--text); }
+.shots { display: grid; gap: 12px; }
+.shots figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.shots img { display: block; width: 100%; height: auto; aspect-ratio: 640 / 322; object-fit: cover; }
+.shots figcaption { font-size: 14px; color: var(--muted); padding: 8px 12px; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 40px; }
+.facts div { background: var(--panel); padding: 18px 20px; }
+.facts strong { display: block; font: 750 clamp(28px, 4vw, 40px)/1.1 "Bricolage Grotesque", sans-serif; color: var(--violet); }
+.facts span { color: var(--muted); font-size: 15px; }
+.chain h3.sub { margin-top: 56px; }
+.chain .sublead { color: var(--muted); max-width: 70ch; margin-top: 8px; }
+/* the five steps of the use case, drawn as linked blocks */
+.blocks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; counter-reset: blk; }
+.blocks li { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; counter-increment: blk; }
+.blocks li::before { content: "#0x0" counter(blk); display: block; font: 600 12px/1 "JetBrains Mono", monospace; color: var(--violet); margin-bottom: 10px; }
+.blocks li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -21px; width: 20px; height: 2px; background: repeating-linear-gradient(90deg, var(--violet) 0 6px, transparent 6px 9px); }
+.blocks li:last-child { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(167, 139, 250, .15); }
+.blocks b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 18px; line-height: 1.2; }
+.blocks span { display: block; color: var(--muted); font-size: 15px; margin-top: 6px; }
+.edge { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+.edge div { border-left: 3px solid var(--violet); padding: 4px 0 4px 16px; }
+.edge b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 19px; }
+.edge span { color: var(--muted); }
+.prize { margin-top: 56px; background: var(--panel); border: 1px solid rgba(251, 191, 36, .35); border-radius: 12px; padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
+.prize .cup { font-size: 44px; line-height: 1; }
+.prize p { color: var(--muted); margin-top: 8px; }
+.prize a { display: inline-block; margin-top: 10px; font-weight: 700; }
+.chain .chips { margin-top: 24px; }
+.chain .chips li { border-color: rgba(167, 139, 250, .4); }
+.fb-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.fb-links a { border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; color: var(--text); text-decoration: none; font-weight: 700; }
+.fb-links a:hover { border-color: var(--violet); }
+.fb-links a.main { background: var(--violet); border-color: var(--violet); color: var(--ink); }
+.fb-links a.main:hover { background: var(--text); border-color: var(--text); }
+.credit { color: var(--muted); font-size: 15px; margin-top: 16px; }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .blocks { grid-template-columns: repeat(3, 1fr); }
+  .blocks li:nth-child(3)::after { display: none; }
+}
+@media (max-width: 760px) {
+  .chain .intro { grid-template-columns: 1fr; gap: 28px; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .blocks { grid-template-columns: 1fr; gap: 16px; }
+  .blocks li:not(:last-child)::after { top: auto; bottom: -17px; right: auto; left: 28px; width: 2px; height: 16px;
+    background: repeating-linear-gradient(180deg, var(--violet) 0 5px, transparent 5px 8px); }
+  .edge { grid-template-columns: 1fr; }
+  .prize { grid-template-columns: 1fr; gap: 8px; }
+  .fb-links a { flex: 1 1 calc(50% - 12px); text-align: center; }
+}
+
 @media (max-width: 760px) {
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .exp { grid-template-columns: 1fr; gap: 32px; }
@@ -275,6 +337,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
   <header class="bar">
     <nav aria-label="Secciones">
       <a href="#sobre-mi" data-t="nav.about">Sobre mí</a>
+      <a href="#blockchain" data-t="nav.chain">Blockchain</a>
       <a class="arc" href="#arcade" data-t="nav.arcade">ARCADE</a>
       <a href="#visitas" data-t="nav.visits">Visitas</a>
     </nav>
@@ -323,6 +386,69 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
       </div>
       <h3 class="ctitle" data-t="career.title">Lo que he hecho</h3>
       <ol class="career" id="career"></ol>
+    </section>
+
+    <section id="blockchain" class="chain" aria-labelledby="fb-title">
+      <p class="eyebrow" data-t="bc.eyebrow">⛓ Blockchain · Proyecto final del máster</p>
+      <h2 id="fb-title">FrameBlock</h2>
+      <a class="award" href="https://www.linkedin.com/feed/update/urn:li:share:7033036387415113728/" data-t="bc.award">🏆 Mejor proyecto · Máster en Blockchain · Universidad Europea · 2023</a>
+
+      <div class="intro">
+        <div>
+          <p data-t="bc.p1">Blockchain sigue siendo difícil de usar y difícil de confiar para la mayoría de personas y empresas: hay que elegir una cadena, aprender sus herramientas, gestionar carteras y pagar en cripto.</p>
+          <p><strong data-t="bc.p2a">FrameBlock es un framework para conectar cualquier aplicación con cualquier blockchain</strong> <span data-t="bc.p2b">sea del proveedor o la tecnología que sea. Esconde esas decisiones detrás de una sola capa, de modo que la misma aplicación funciona en varias cadenas y el usuario no necesita saber cuál hay debajo.</span></p>
+          <p class="credit"><span data-t="bc.with">Hecho junto a</span> <a href="https://www.linkedin.com/in/roberto-gonz%C3%A1lez-rey-018335118/">Roberto González Rey</a>.</p>
+          <div class="fb-links">
+            <a class="main" href="https://github.com/serbenda/frameblock" data-t="bc.code">Ver el código</a>
+            <a href="https://github.com/serbenda/frameblock/blob/main/doc/FRAMEBLOCK.mp4" data-t="bc.video">▶ Vídeo demo</a>
+            <a href="https://github.com/serbenda/frameblock/blob/main/doc/frameblock_technical_v.2.0.pptx" data-t="bc.tech">Presentación técnica</a>
+            <a href="https://github.com/serbenda/frameblock/blob/main/doc/frameblock_bussiness_v.3.0.pptx" data-t="bc.biz">Presentación de negocio</a>
+          </div>
+        </div>
+        <div class="shots">
+          <figure><img src="img/frameblock/wallets.webp" alt="" width="640" height="322" loading="lazy"><figcaption data-t="bc.shot1">Conecta la cartera que ya tienes: MetaMask, Ledger, Trezor, WalletConnect…</figcaption></figure>
+          <figure><img src="img/frameblock/collection.webp" alt="" width="640" height="322" loading="lazy"><figcaption data-t="bc.shot2">Crea tu colección a partir de imágenes generadas por IA.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div><strong>14</strong><span data-t="bc.f1">semanas de máster</span></div>
+        <div><strong>5</strong><span data-t="bc.f2">proyectos finales</span></div>
+        <div><strong>3</strong><span data-t="bc.f3">blockchains desde una sola app</span></div>
+        <div><strong>#1</strong><span data-t="bc.f4">elegido por el jurado</span></div>
+      </div>
+
+      <h3 class="sub" data-t="bc.how">Cómo funciona: Simple AI Collection</h3>
+      <p class="sublead" data-t="bc.howlead">Para demostrarlo construimos una dApp real, de principio a fin. Cada paso es un bloque de la cadena:</p>
+      <ol class="blocks">
+        <li><b data-t="bc.s1">Conecta tu cartera</b><span data-t="bc.s1d">Con Web3 Onboard: MetaMask, Ledger, Trezor y muchas más.</span></li>
+        <li><b data-t="bc.s2">Busca imágenes con IA</b><span data-t="bc.s2d">Escribes unas palabras y la IA genera las imágenes.</span></li>
+        <li><b data-t="bc.s3">Guarda en IPFS</b><span data-t="bc.s3d">Las imágenes y sus metadatos, en almacenamiento descentralizado.</span></li>
+        <li><b data-t="bc.s4">Paga con tarjeta</b><span data-t="bc.s4d">El coste del despliegue con Stripe, sin necesidad de cripto.</span></li>
+        <li><b data-t="bc.s5">Acuña tu colección NFT</b><span data-t="bc.s5d">Un contrato ERC-721 en Ethereum, BNB Smart Chain o Polygon.</span></li>
+      </ol>
+
+      <h3 class="sub" data-t="bc.edge">Lo que lo hace distinto</h3>
+      <div class="edge">
+        <div><b data-t="bc.e1">Agnóstico del proveedor</b><span data-t="bc.e1d">Una sola integración, varias cadenas, y hueco para añadir más.</span></div>
+        <div><b data-t="bc.e2">Usable sin saber de cripto</b><span data-t="bc.e2d">Entras con la cartera que ya tienes o pagas con tarjeta.</span></div>
+        <div><b data-t="bc.e3">Confianza de serie</b><span data-t="bc.e3d">Piezas auditadas de OpenZeppelin, un registro on-chain de quién es dueño de qué y archivos en IPFS que nadie puede cambiar a escondidas.</span></div>
+        <div><b data-t="bc.e4">Un producto, no solo diapositivas</b><span data-t="bc.e4d">Un MVP que funciona, enseñado de principio a fin en la demo.</span></div>
+      </div>
+
+      <ul class="chips" aria-label="Stack">
+        <li>Solidity</li><li>ERC-721</li><li>OpenZeppelin</li><li>Ethereum</li><li>BNB Smart Chain</li><li>Polygon</li>
+        <li>IPFS</li><li>React</li><li>ethers.js</li><li>Web3 Onboard</li><li>MetaMask</li><li>Stripe</li>
+      </ul>
+
+      <div class="prize">
+        <div class="cup" aria-hidden="true">🏆</div>
+        <div>
+          <h3 data-t="bc.prize">El premio</h3>
+          <p data-t="bc.prized">Tras 14 intensas semanas, los alumnos del Máster en Blockchain de la Universidad Europea defendieron sus proyectos finales ante un jurado de expertos del sector. Después de una deliberación complicada por el nivel de todos los proyectos, FrameBlock fue elegido ganador.</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:share:7033036387415113728/" data-t="bc.prizel">Ver el anuncio en LinkedIn →</a>
+        </div>
+      </div>
     </section>
   </main>
 </div>
@@ -389,7 +515,8 @@ const T = {
   es: {
     "nav.about": "Sobre mí", "nav.arcade": "ARCADE", "nav.visits": "Visitas",
     "hero.pitch": "Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.",
-    "hero.play": "▶ JUGAR", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
+    "hero.play": "▶ JUGAR",
+    "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Proyecto final del máster", "bc.award": "🏆 Mejor proyecto · Máster en Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain sigue siendo difícil de usar y difícil de confiar para la mayoría de personas y empresas: hay que elegir una cadena, aprender sus herramientas, gestionar carteras y pagar en cripto.", "bc.p2a": "FrameBlock es un framework para conectar cualquier aplicación con cualquier blockchain,", "bc.p2b": "sea del proveedor o la tecnología que sea. Esconde esas decisiones detrás de una sola capa, de modo que la misma aplicación funciona en varias cadenas y el usuario no necesita saber cuál hay debajo.", "bc.with": "Hecho junto a", "bc.code": "Ver el código", "bc.video": "▶ Vídeo demo", "bc.tech": "Presentación técnica", "bc.biz": "Presentación de negocio", "bc.shot1": "Conecta la cartera que ya tienes: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Crea tu colección a partir de imágenes generadas por IA.", "bc.f1": "semanas de máster", "bc.f2": "proyectos finales", "bc.f3": "blockchains desde una sola app", "bc.f4": "elegido por el jurado", "bc.how": "Cómo funciona: Simple AI Collection", "bc.howlead": "Para demostrarlo construimos una dApp real, de principio a fin. Cada paso es un bloque de la cadena:", "bc.s1": "Conecta tu cartera", "bc.s1d": "Con Web3 Onboard: MetaMask, Ledger, Trezor y muchas más.", "bc.s2": "Busca imágenes con IA", "bc.s2d": "Escribes unas palabras y la IA genera las imágenes.", "bc.s3": "Guarda en IPFS", "bc.s3d": "Las imágenes y sus metadatos, en almacenamiento descentralizado.", "bc.s4": "Paga con tarjeta", "bc.s4d": "El coste del despliegue con Stripe, sin necesidad de cripto.", "bc.s5": "Acuña tu colección NFT", "bc.s5d": "Un contrato ERC-721 en Ethereum, BNB Smart Chain o Polygon.", "bc.edge": "Lo que lo hace distinto", "bc.e1": "Agnóstico del proveedor", "bc.e1d": "Una sola integración, varias cadenas, y hueco para añadir más.", "bc.e2": "Usable sin saber de cripto", "bc.e2d": "Entras con la cartera que ya tienes o pagas con tarjeta.", "bc.e3": "Confianza de serie", "bc.e3d": "Piezas auditadas de OpenZeppelin, un registro on-chain de quién es dueño de qué y archivos en IPFS que nadie puede cambiar a escondidas.", "bc.e4": "Un producto, no solo diapositivas", "bc.e4d": "Un MVP que funciona, enseñado de principio a fin en la demo.", "bc.prize": "El premio", "bc.prized": "Tras 14 intensas semanas, los alumnos del Máster en Blockchain de la Universidad Europea defendieron sus proyectos finales ante un jurado de expertos del sector. Después de una deliberación complicada por el nivel de todos los proyectos, FrameBlock fue elegido ganador.", "bc.prizel": "Ver el anuncio en LinkedIn →", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
     "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
     "about.title": "Sobre mí", "career.title": "Lo que he hecho", "exp.years": "años en sistemas y automatización",
@@ -421,7 +548,8 @@ const T = {
   en: {
     "nav.about": "About", "nav.arcade": "ARCADE", "nav.visits": "Visits",
     "hero.pitch": "I've been automating infrastructure for 20 years: I started running production UNIX and today I define it as code. At home I make 8-bit games with my daughters.",
-    "hero.play": "▶ PLAY", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
+    "hero.play": "▶ PLAY",
+    "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Master's final project", "bc.award": "🏆 Best project · Master's in Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain is still hard to use and hard to trust for most people and companies: you have to pick a chain, learn its tools, manage wallets and pay in crypto.", "bc.p2a": "FrameBlock is a framework to plug any application into any blockchain,", "bc.p2b": "whatever the vendor or technology. It hides those choices behind a single layer, so the same app works on several chains and users never need to know which one is underneath.", "bc.with": "Built together with", "bc.code": "See the code", "bc.video": "▶ Demo video", "bc.tech": "Technical deck", "bc.biz": "Business deck", "bc.shot1": "Connect the wallet you already have: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Build your collection from AI-generated images.", "bc.f1": "weeks of Master's", "bc.f2": "final projects", "bc.f3": "blockchains from a single app", "bc.f4": "picked by the jury", "bc.how": "How it works: Simple AI Collection", "bc.howlead": "To prove it we built a real dApp, end to end. Each step is a block in the chain:", "bc.s1": "Connect your wallet", "bc.s1d": "With Web3 Onboard: MetaMask, Ledger, Trezor and many more.", "bc.s2": "Search AI images", "bc.s2d": "Type a few words and the AI generates the images.", "bc.s3": "Store on IPFS", "bc.s3d": "Images and their metadata, on decentralised storage.", "bc.s4": "Pay by card", "bc.s4d": "The deployment fee through Stripe, no crypto needed.", "bc.s5": "Mint your NFT collection", "bc.s5d": "An ERC-721 contract on Ethereum, BNB Smart Chain or Polygon.", "bc.edge": "What makes it different", "bc.e1": "Vendor-agnostic", "bc.e1d": "One integration, several chains, and room to add more.", "bc.e2": "Usable without knowing crypto", "bc.e2d": "Sign in with the wallet you already have, or pay by card.", "bc.e3": "Trust built in", "bc.e3d": "Audited OpenZeppelin building blocks, an on-chain registry of who owns what, and files on IPFS that nobody can quietly change.", "bc.e4": "A product, not just slides", "bc.e4d": "A working MVP, shown end to end in the demo.", "bc.prize": "The award", "bc.prized": "After 14 intense weeks, the students of the Master's in Blockchain at Universidad Europea defended their final projects before a jury of industry experts. After a tough deliberation, given the level of every project, FrameBlock was picked as the winner.", "bc.prizel": "See the announcement on LinkedIn →", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
     "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
     "about.title": "About me", "career.title": "What I have done", "exp.years": "years in systems and automation",
@@ -605,7 +733,7 @@ function renderArcade() {
 }
 
 function renderTools() {
-  document.getElementById("tools").innerHTML = PROJ.tools.map(p =>
+  document.getElementById("tools").innerHTML = PROJ.tools.filter(p => !p.featured).map(p =>
     `<li><a href="https://github.com/serbenda/${esc(p.repo)}">${esc(p.title)}</a><span>${esc(p[lang])}</span></li>`).join("");
 }
 
