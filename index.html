@@ -130,7 +130,7 @@ select { background: var(--panel); color: var(--text); border: 1px solid var(--l
 .kpi strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 750; line-height: 1.1; }
 .kpi span { color: var(--muted); font-size: 15px; }
 .chart { margin-top: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; overflow-x: auto; }
-.chart svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.chart svg { display: block; width: 100%; height: auto; }
 .legend { display: flex; gap: 20px; font-size: 15px; color: var(--muted); margin-bottom: 12px; flex-wrap: wrap; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
@@ -146,7 +146,7 @@ tbody tr { cursor: pointer; }
 tbody tr:hover td { background: rgba(56, 189, 248, .06); }
 tbody tr.on td { background: rgba(167, 139, 250, .12); }
 .spark { vertical-align: middle; }
-.refs { list-style: none; padding: 0; margin: 0; font-size: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); column-gap: 32px; }
+.refs { list-style: none; padding: 0; margin: 0; font-size: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); column-gap: 32px; }
 .refs li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .refs .b { grid-column: 1 / -1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
 .refs .b i { display: block; height: 100%; background: var(--violet); }
@@ -204,7 +204,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
   background: var(--a-black); box-shadow: inset 0 0 0 4px var(--frame, var(--a-dk));
   clip-path: polygon(4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px), 0 4px, 4px 4px);
 }
-.carts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 24px; }
+.carts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 24px; margin-top: 24px; }
 .cart { display: flex; flex-direction: column; padding: 4px; }
 .cart:hover, .cart:focus-within { --frame: var(--a-yellow); }
 .cart .shot { aspect-ratio: 16 / 9; width: 100%; display: block; object-fit: cover; background: var(--a-bg); }
@@ -254,6 +254,19 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
   .a-title img { width: 96px; height: 96px; }
   .hs { padding: 14px; }
   .hs table { font-size: 9px; }
+  .hs td:nth-child(2) { white-space: normal; line-height: 1.6; }
+  .box { padding: 16px 12px; }
+  #dash table th:nth-child(3), #dash table td:nth-child(3),
+  #dash table th:nth-child(6), #dash table td:nth-child(6) { display: none; }
+  #dash table th, #dash table td { padding: 8px 6px; }
+  #dash table td:first-child { white-space: normal; }
+  .kpi { padding: 16px; }
+  .contact .ctas, .contact .cta { width: 100%; text-align: center; }
+}
+@media (max-width: 420px) {
+  .links { gap: 10px; }
+  .links a { padding: 8px 12px; }
+  #dash table th:nth-child(5), #dash table td:nth-child(5) { display: none; }
 }
 </style>
 </head>
@@ -299,7 +312,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
           <div class="me">
             <div><div class="years">20+</div><span data-t="exp.years">años en sistemas y automatización</span></div>
           </div>
-          <p data-t="exp.lead">Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain.</p>
+          <p data-t="exp.lead">Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain, donde mi proyecto final ganó el premio al mejor del máster.</p>
           <ul class="chips" aria-label="Stack">
             <li>Terraform</li><li>Terraform Enterprise</li><li>Ansible</li><li>Packer</li><li>Rundeck</li><li>Python</li><li>Bash</li>
             <li>AWS</li><li>Azure</li><li>VMware</li><li>OpenStack</li><li>Docker</li><li>Red Hat</li>
@@ -380,7 +393,7 @@ const T = {
     "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
     "about.title": "Sobre mí", "career.title": "Lo que he hecho", "exp.years": "años en sistemas y automatización",
-    "exp.lead": "Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain.",
+    "exp.lead": "Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain, donde mi proyecto final ganó el premio al mejor del máster.",
     "now": "hoy",
     "a.title": "ZONA ARCADE", "a.coin": "INSERTA MONEDA", "a.select": "SELECCIONA JUEGO", "a.hs": "TABLA DE RÉCORDS",
     "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
@@ -412,7 +425,7 @@ const T = {
     "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
     "about.title": "About me", "career.title": "What I have done", "exp.years": "years in systems and automation",
-    "exp.lead": "I started on 24x7 UNIX on-call, grew into running farms of thousands of servers, and today I make infrastructure build itself: as code, versioned and repeatable. Along the way I built Big Data platforms and earned a Master's in Blockchain.",
+    "exp.lead": "I started on 24x7 UNIX on-call, grew into running farms of thousands of servers, and today I make infrastructure build itself: as code, versioned and repeatable. Along the way I built Big Data platforms and earned a Master's in Blockchain, where my final project won best project of the course.",
     "now": "now",
     "a.title": "ARCADE ZONE", "a.coin": "INSERT COIN", "a.select": "SELECT GAME", "a.hs": "HIGH SCORES",
     "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
@@ -451,8 +464,10 @@ const WINS = [
     en: ["Secure Big Data", "Cloudera and Hortonworks platforms secured with Kerberos, LDAP and Active Directory."] },
   { es: ["Capacidad a la vista", "Planificación de capacidad con OpenTSDB y Grafana para anticiparse a los problemas."],
     en: ["Capacity in sight", "Capacity planning with OpenTSDB and Grafana to get ahead of problems."] },
-  { es: ["Máster en Blockchain", "Universidad Europea, 2023."],
-    en: ["Master's in Blockchain", "Universidad Europea, 2023."] }
+  { es: ["🏆 FrameBlock, mejor proyecto del máster", "Framework para usar cualquier blockchain sin lidiar con su complejidad. Elegido ganador entre los proyectos finales por un jurado de expertos del sector (2023)."],
+    en: ["🏆 FrameBlock, best project of the Master's", "A framework to use any blockchain without dealing with its complexity. Picked as the winner among the final projects by a jury of industry experts (2023)."] },
+  { es: ["Máster en Blockchain", "Universidad Europea, 2022–2023: smart contracts en Solidity, NFTs, IPFS y dApps multicadena."],
+    en: ["Master's in Blockchain", "Universidad Europea, 2022–2023: Solidity smart contracts, NFTs, IPFS and multichain dApps."] }
 ];
 const CAREER = [
   { from: 2019, to: 0,
@@ -599,16 +614,18 @@ function range(rs) {
   const span = days(60), first = span.findIndex(d => rs.some(r => (r.views || {})[d] || dailyHits(r)[d]));
   return first < 0 ? span.slice(-30) : span.slice(Math.min(first, span.length - 14));
 }
+/* chart drawn at the width it is shown, so labels stay readable on phones */
+function chartW() { const el = document.getElementById("dash"); return Math.round(Math.min(1000, Math.max(280, (el ? el.clientWidth : 1000) - 42))); }
 function chart(rs) {
   const ds = range(rs), hb = rs.map(dailyHits);
   const repo = ds.map(d => rs.reduce((a, r) => a + ((r.views || {})[d]?.[0] || 0), 0));
   const pages = ds.map(d => hb.reduce((a, h) => a + (h[d] || 0), 0));
-  const W = 1000, H = 260, L = 40, R = 10, Tp = 16, B = 28;
+  const W = chartW(), H = Math.round(Math.min(260, Math.max(170, W * 0.55))), L = 40, R = 10, Tp = 16, B = 28;
   const max = Math.max(4, ...repo, ...pages), step = (W - L - R) / Math.max(1, ds.length - 1);
   const x = i => L + i * step, y = v => Tp + (H - Tp - B) * (1 - v / max);
   const line = vs => vs.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const area = vs => `${line(vs)}L${x(vs.length - 1)},${y(0)}L${x(0)},${y(0)}Z`;
-  const lbl = [0, Math.floor(ds.length / 2), ds.length - 1];
+  const lbl = W < 480 ? [0, ds.length - 1] : [0, Math.floor(ds.length / 2), ds.length - 1];
   const fmtD = d => new Date(d + "T12:00:00").toLocaleDateString(loc(), { day: "numeric", month: "short" });
   return `
   <div class="chart">
@@ -626,7 +643,7 @@ function chart(rs) {
 }
 function hookChart(rs) {
   const svg = document.querySelector(".chart svg"); if (!svg) return;
-  const ds = range(rs), hb = rs.map(dailyHits), W = 1000, L = 40, R = 10, step = (W - L - R) / Math.max(1, ds.length - 1);
+  const ds = range(rs), hb = rs.map(dailyHits), W = svg.viewBox.baseVal.width, L = 40, R = 10, step = (W - L - R) / Math.max(1, ds.length - 1);
   const hx = svg.querySelector("#hx"), ht = svg.querySelector("#ht"), hz = svg.querySelector("#hz");
   hz.addEventListener("pointermove", e => {
     const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
@@ -712,6 +729,11 @@ document.getElementById("lang").addEventListener("click", () => {
   render();
 });
 document.getElementById("filter").addEventListener("change", e => { selected = e.target.value; renderDash(); });
+let resizeTimer, lastW = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (window.innerWidth === lastW) return;   // ignore mobile address-bar height changes
+  lastW = window.innerWidth; clearTimeout(resizeTimer); resizeTimer = setTimeout(renderDash, 150);
+});
 
 const getJSON = url => fetch(url, { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null);
 render();
