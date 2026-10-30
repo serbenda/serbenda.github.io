@@ -939,7 +939,7 @@ function renderArcade() {
 
 function renderTools() {
   document.getElementById("tools").innerHTML = PROJ.tools.filter(p => !p.featured).map(p =>
-    `<li><a href="https://github.com/serbenda/${esc(p.repo)}">${esc(p.title)}</a><span>${esc(p[lang])}</span></li>`).join("");
+    `<li><a href="${esc(p.url || `https://github.com/serbenda/${p.repo}`)}">${esc(p.title)}</a><span>${esc(p[lang])}</span></li>`).join("");
 }
 
 /* ---------- visits chart ---------- */
