@@ -241,6 +241,136 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .arcade .c-pages { color: var(--a-green); }
 .arcade .c-plays { color: var(--a-pink); }
 
+/* =========================================================
+   Blockchain zone: FrameBlock. Full-width, violet/teal night sky,
+   original isometric blocks chained together (no third-party logos)
+   ========================================================= */
+section.chain {
+  --c-violet: #a78bfa; --c-teal: #2dd4bf; --c-gold: #fbbf24; --c-deep: #0b0820;
+  position: relative; overflow: hidden; border-top: 0; padding: 96px 0 104px;
+  background:
+    radial-gradient(900px 500px at 85% 10%, rgba(124, 92, 224, .35), transparent 60%),
+    radial-gradient(700px 500px at 0% 90%, rgba(45, 212, 191, .16), transparent 60%),
+    linear-gradient(180deg, #0e1324 0%, var(--c-deep) 18%, var(--c-deep) 82%, #0e1324 100%);
+}
+/* faint hexagon lattice */
+section.chain::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 56 98'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0 32V66' fill='none' stroke='%23a78bfa' stroke-opacity='.10' stroke-width='1'/%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 20%, #000 80%, transparent);
+          mask-image: linear-gradient(180deg, transparent, #000 20%, #000 80%, transparent);
+}
+section.chain > .wrap { position: relative; }
+.chain .hero2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.chain .eyebrow { font: 600 14px/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--c-teal); letter-spacing: .12em; text-transform: uppercase; }
+.chain h2 { margin-top: 10px; font-size: clamp(48px, 8vw, 96px); letter-spacing: -0.02em;
+  background: linear-gradient(100deg, #fff 10%, #c4b5fd 45%, #5eead4 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.award { position: relative; display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 9px 18px; border-radius: 999px; overflow: hidden;
+  background: linear-gradient(90deg, rgba(251, 191, 36, .2), rgba(167, 139, 250, .18)); border: 1px solid rgba(251, 191, 36, .55);
+  color: #fde68a; font-weight: 700; font-size: 15px; text-decoration: none; box-shadow: 0 0 28px rgba(251, 191, 36, .18); }
+.award::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .35) 50%, transparent 70%); transform: translateX(-120%); animation: shine 4s ease-in-out 1s infinite; }
+@keyframes shine { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+.award:hover { color: #fff; border-color: var(--c-gold); }
+.chain .intro p { color: #b8b3d6; margin-top: 16px; max-width: 56ch; }
+.chain .intro strong { color: #fff; }
+.credit { color: #b8b3d6; font-size: 15px; }
+.credit a { color: #5eead4; }
+.fb-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.fb-links a { border: 1px solid rgba(167, 139, 250, .35); border-radius: 10px; padding: 11px 16px; color: #ede9fe; text-decoration: none; font-weight: 700; background: rgba(21, 16, 52, .6); backdrop-filter: blur(4px); }
+.fb-links a:hover { border-color: var(--c-teal); color: #fff; }
+.fb-links a.main { background: linear-gradient(90deg, #8b5cf6, #2dd4bf); border: 0; color: #0b0820; box-shadow: 0 8px 28px rgba(139, 92, 246, .35); }
+.fb-links a.main:hover { filter: brightness(1.1); }
+/* the artwork */
+.chain-art { width: 100%; height: auto; display: block; overflow: visible; }
+.chain-art .blk { animation: bob 4.8s ease-in-out infinite; transform-box: fill-box; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.chain-art .lk { stroke: #c4b5fd; stroke-width: 2; stroke-dasharray: 6 5; animation: flow 1.2s linear infinite; opacity: .8; }
+@keyframes flow { to { stroke-dashoffset: -22; } }
+.chain-art .ring { fill: none; stroke: #e9d5ff; stroke-width: 2.6; }
+.chain-art .pk { fill: #5eead4; filter: drop-shadow(0 0 6px #5eead4); }
+.chain-art .tw { animation: tw 4s ease-in-out infinite; }
+@keyframes tw { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+.chain-art .star { transform-box: fill-box; transform-origin: center; animation: spin 6s linear infinite; filter: drop-shadow(0 0 8px #fbbf24); }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* live-looking block ticker (decorative) */
+.ticker { margin-top: 48px; border-block: 1px solid rgba(167, 139, 250, .25); background: rgba(11, 8, 32, .6); overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ticker .run { display: flex; gap: 40px; width: max-content; padding: 12px 0; animation: run 40s linear infinite; font: 500 13px/1 "JetBrains Mono", monospace; color: #a5a1c9; white-space: nowrap; }
+.ticker b { color: #5eead4; font-weight: 600; }
+.ticker i { font-style: normal; color: #c4b5fd; }
+@keyframes run { to { transform: translateX(-50%); } }
+/* screenshots in glowing frames */
+.shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+.shots figure { margin: 0; border-radius: 14px; padding: 1px; background: linear-gradient(135deg, rgba(167, 139, 250, .8), rgba(45, 212, 191, .6)); box-shadow: 0 20px 50px rgba(76, 29, 149, .35); }
+.shots figure > div { border-radius: 13px; overflow: hidden; background: #120d2c; }
+.shots .bar3 { display: flex; gap: 6px; padding: 9px 12px; background: #1a1440; }
+.shots .bar3 i { width: 9px; height: 9px; border-radius: 50%; background: #3b3170; }
+.shots .bar3 i:first-child { background: #f472b6; } .shots .bar3 i:nth-child(2) { background: #fbbf24; } .shots .bar3 i:nth-child(3) { background: #2dd4bf; }
+.shots img { display: block; width: 100%; height: auto; aspect-ratio: 640 / 322; object-fit: cover; }
+.shots figcaption { font-size: 14px; color: #b8b3d6; padding: 10px 14px; background: #120d2c; border-radius: 0 0 13px 13px; margin-top: -1px; }
+.shots figure > div { border-radius: 13px 13px 0 0; }
+/* figures */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+.facts div { border-radius: 14px; padding: 20px; background: rgba(21, 16, 52, .7); border: 1px solid rgba(167, 139, 250, .25); }
+.facts strong { display: block; font: 800 clamp(34px, 5vw, 52px)/1 "Bricolage Grotesque", sans-serif;
+  background: linear-gradient(90deg, #c4b5fd, #5eead4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.facts div:last-child strong { background: linear-gradient(90deg, #fde68a, #fbbf24); -webkit-background-clip: text; background-clip: text; }
+.facts span { color: #b8b3d6; font-size: 15px; display: block; margin-top: 6px; }
+.chain h3.sub { margin-top: 64px; font-size: clamp(22px, 2.6vw, 28px); color: #fff; }
+.chain .sublead { color: #b8b3d6; max-width: 70ch; margin-top: 8px; }
+/* the five steps as blocks of a chain */
+.blocks { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; counter-reset: blk; }
+.blocks li { position: relative; border-radius: 12px; padding: 18px 16px 14px; counter-increment: blk;
+  background: linear-gradient(180deg, rgba(124, 92, 224, .22), rgba(21, 16, 52, .85)); border: 1px solid rgba(167, 139, 250, .35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08); transition: transform .2s, border-color .2s; }
+.blocks li:hover { transform: translateY(-4px); border-color: var(--c-teal); }
+.blocks li::before { content: "BLOCK #" counter(blk); display: block; font: 600 11px/1 "JetBrains Mono", monospace; color: #5eead4; letter-spacing: .08em; margin-bottom: 12px; }
+.blocks li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -23px; width: 22px; height: 10px; transform: translateY(-50%);
+  background: radial-gradient(ellipse 6px 4px at 6px 5px, transparent 60%, #c4b5fd 62%, #c4b5fd 85%, transparent 88%),
+              radial-gradient(ellipse 6px 4px at 16px 5px, transparent 60%, #c4b5fd 62%, #c4b5fd 85%, transparent 88%); }
+.blocks li:last-child { background: linear-gradient(180deg, rgba(251, 191, 36, .22), rgba(21, 16, 52, .85)); border-color: rgba(251, 191, 36, .6); box-shadow: 0 0 30px rgba(251, 191, 36, .15); }
+.blocks li:last-child::before { color: #fde68a; }
+.blocks .em { font-size: 26px; line-height: 1; display: block; margin-bottom: 10px; }
+.blocks b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 18px; line-height: 1.2; color: #fff; }
+.blocks span { display: block; color: #b8b3d6; font-size: 15px; margin-top: 6px; }
+.blocks small { display: block; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(167, 139, 250, .3); font: 11px/1.3 "JetBrains Mono", monospace; color: #7d77a8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.edge { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 28px; }
+.edge div { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: start; border-radius: 14px; padding: 18px; background: rgba(21, 16, 52, .55); border: 1px solid rgba(167, 139, 250, .2); }
+.edge .ic { grid-row: span 2; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; background: linear-gradient(135deg, rgba(139, 92, 246, .35), rgba(45, 212, 191, .3)); }
+.edge b { font-family: "Bricolage Grotesque", sans-serif; font-size: 19px; color: #fff; }
+.edge span { color: #b8b3d6; }
+.chain .chips { margin-top: 28px; }
+.chain .chips li { border-color: rgba(94, 234, 212, .35); color: #ccfbf1; background: rgba(45, 212, 191, .06); }
+.prize { margin-top: 56px; border-radius: 16px; padding: 1px; background: linear-gradient(120deg, #fbbf24, #a78bfa 60%, #2dd4bf); }
+.prize > div { border-radius: 15px; padding: 28px; background: radial-gradient(500px 200px at 0% 0%, rgba(251, 191, 36, .14), transparent 70%), #120d2c; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+.prize .cup { font-size: 64px; line-height: 1; filter: drop-shadow(0 0 18px rgba(251, 191, 36, .6)); }
+.prize h3 { color: #fde68a; font-size: 24px; }
+.prize p { color: #d6d2ee; margin-top: 8px; }
+.prize a { display: inline-block; margin-top: 12px; font-weight: 700; color: #5eead4; }
+@media (prefers-reduced-motion: reduce) {
+  .chain-art .blk, .chain-art .lk, .chain-art .tw, .chain-art .star, .ticker .run, .award::after { animation: none; }
+}
+@media (max-width: 1000px) and (min-width: 761px) {
+  .blocks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .blocks li:nth-child(3)::after { display: none; }
+}
+@media (max-width: 760px) {
+  section.chain { padding: 72px 0 80px; }
+  .chain .hero2 { grid-template-columns: 1fr; gap: 8px; }
+  .award { font-size: 13px; padding: 8px 14px; }
+  .chain .art-box { order: -1; max-width: 420px; margin: 0 auto -8px; width: 100%; }
+  .shots { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .blocks { grid-template-columns: 1fr; gap: 20px; }
+  .blocks li:not(:last-child)::after { top: auto; bottom: -21px; right: auto; left: 26px; width: 10px; height: 20px; transform: none;
+    background: radial-gradient(ellipse 4px 5px at 5px 5px, transparent 55%, #c4b5fd 58%, #c4b5fd 85%, transparent 88%),
+                radial-gradient(ellipse 4px 5px at 5px 15px, transparent 55%, #c4b5fd 58%, #c4b5fd 85%, transparent 88%); }
+  .edge { grid-template-columns: 1fr; }
+  .prize > div { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
+  .prize .cup { font-size: 48px; }
+  .fb-links a { flex: 1 1 calc(50% - 12px); text-align: center; }
+}
+
 @media (max-width: 760px) {
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .exp { grid-template-columns: 1fr; gap: 32px; }
@@ -275,6 +405,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
   <header class="bar">
     <nav aria-label="Secciones">
       <a href="#sobre-mi" data-t="nav.about">Sobre mí</a>
+      <a href="#blockchain" data-t="nav.chain">Blockchain</a>
       <a class="arc" href="#arcade" data-t="nav.arcade">ARCADE</a>
       <a href="#visitas" data-t="nav.visits">Visitas</a>
     </nav>
@@ -324,8 +455,94 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
       <h3 class="ctitle" data-t="career.title">Lo que he hecho</h3>
       <ol class="career" id="career"></ol>
     </section>
+
   </main>
 </div>
+
+<section class="chain" id="blockchain" aria-labelledby="fb-title">
+  <div class="wrap">
+    <div class="hero2">
+      <div class="intro">
+        <p class="eyebrow" data-t="bc.eyebrow">⛓ Blockchain · Proyecto final del máster</p>
+        <h2 id="fb-title">FrameBlock</h2>
+        <a class="award" href="https://www.linkedin.com/feed/update/urn:li:share:7033036387415113728/" data-t="bc.award">🏆 Mejor proyecto · Máster en Blockchain · Universidad Europea · 2023</a>
+        <p data-t="bc.p1">Blockchain sigue siendo difícil de usar y difícil de confiar para la mayoría de personas y empresas: hay que elegir una cadena, aprender sus herramientas, gestionar carteras y pagar en cripto.</p>
+        <p><strong data-t="bc.p2a">FrameBlock es un framework para conectar cualquier aplicación con cualquier blockchain,</strong> <span data-t="bc.p2b">sea del proveedor o la tecnología que sea.</span></p>
+        <p class="credit"><span data-t="bc.with">Hecho junto a</span> <a href="https://www.linkedin.com/in/roberto-gonz%C3%A1lez-rey-018335118/">Roberto González Rey</a>.</p>
+        <div class="fb-links">
+          <a class="main" href="https://github.com/serbenda/frameblock" data-t="bc.code">Ver el código</a>
+          <a href="https://github.com/serbenda/frameblock/blob/main/doc/FRAMEBLOCK.mp4" data-t="bc.video">▶ Vídeo demo</a>
+          <a href="https://github.com/serbenda/frameblock/blob/main/doc/frameblock_technical_v.2.0.pptx" data-t="bc.tech">Presentación técnica</a>
+          <a href="https://github.com/serbenda/frameblock/blob/main/doc/frameblock_bussiness_v.3.0.pptx" data-t="bc.biz">Presentación de negocio</a>
+        </div>
+      </div>
+      <div class="art-box">
+<svg class="chain-art" viewBox="0 0 560 440" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="ca-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#a78bfa" stop-opacity=".35"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ca-gold" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fbbf24" stop-opacity=".45"/><stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="270" cy="230" rx="260" ry="200" fill="url(#ca-glow)"/>
+  <ellipse cx="444" cy="138" rx="110" ry="90" fill="url(#ca-gold)"/>
+  <g class="net" stroke="#a78bfa" stroke-opacity=".16" stroke-width="1"><line x1="345" y1="91" x2="442" y2="49"/><line x1="345" y1="91" x2="260" y2="60"/><line x1="345" y1="91" x2="448" y2="44"/><line x1="345" y1="91" x2="420" y2="39"/><line x1="345" y1="91" x2="240" y2="37"/><line x1="345" y1="91" x2="443" y2="87"/><line x1="418" y1="347" x2="329" y2="300"/><line x1="418" y1="347" x2="451" y2="411"/><line x1="63" y1="51" x2="140" y2="128"/><line x1="110" y1="201" x2="73" y2="273"/><line x1="110" y1="201" x2="102" y2="236"/><line x1="110" y1="201" x2="140" y2="128"/><line x1="110" y1="201" x2="77" y2="309"/><line x1="110" y1="201" x2="150" y2="162"/><line x1="110" y1="201" x2="134" y2="306"/><line x1="110" y1="201" x2="206" y2="204"/><line x1="110" y1="201" x2="113" y2="294"/><line x1="110" y1="201" x2="78" y2="302"/><line x1="73" y1="273" x2="102" y2="236"/><line x1="73" y1="273" x2="77" y2="309"/><line x1="73" y1="273" x2="134" y2="306"/><line x1="73" y1="273" x2="113" y2="294"/><line x1="73" y1="273" x2="78" y2="302"/><line x1="73" y1="273" x2="75" y2="330"/><line x1="233" y1="33" x2="260" y2="60"/><line x1="233" y1="33" x2="240" y2="37"/><line x1="233" y1="33" x2="199" y2="66"/><line x1="102" y1="236" x2="140" y2="128"/><line x1="102" y1="236" x2="77" y2="309"/><line x1="102" y1="236" x2="150" y2="162"/><line x1="102" y1="236" x2="134" y2="306"/><line x1="102" y1="236" x2="206" y2="204"/><line x1="102" y1="236" x2="113" y2="294"/><line x1="102" y1="236" x2="78" y2="302"/><line x1="102" y1="236" x2="75" y2="330"/><line x1="442" y1="49" x2="448" y2="44"/><line x1="442" y1="49" x2="420" y2="39"/><line x1="442" y1="49" x2="443" y2="87"/><line x1="260" y1="60" x2="240" y2="37"/><line x1="260" y1="60" x2="199" y2="66"/><line x1="448" y1="44" x2="420" y2="39"/><line x1="448" y1="44" x2="443" y2="87"/><line x1="140" y1="128" x2="150" y2="162"/><line x1="140" y1="128" x2="199" y2="66"/><line x1="140" y1="128" x2="206" y2="204"/><line x1="77" y1="309" x2="134" y2="306"/><line x1="77" y1="309" x2="113" y2="294"/><line x1="77" y1="309" x2="78" y2="302"/><line x1="77" y1="309" x2="75" y2="330"/><line x1="420" y1="39" x2="443" y2="87"/><line x1="240" y1="37" x2="199" y2="66"/><line x1="150" y1="162" x2="199" y2="66"/><line x1="150" y1="162" x2="206" y2="204"/><line x1="134" y1="306" x2="113" y2="294"/><line x1="134" y1="306" x2="78" y2="302"/><line x1="134" y1="306" x2="75" y2="330"/><line x1="134" y1="306" x2="224" y2="268"/><line x1="329" y1="300" x2="224" y2="268"/><line x1="329" y1="300" x2="335" y2="252"/><line x1="206" y1="204" x2="224" y2="268"/><line x1="113" y1="294" x2="78" y2="302"/><line x1="113" y1="294" x2="75" y2="330"/><line x1="113" y1="294" x2="224" y2="268"/><line x1="78" y1="302" x2="75" y2="330"/><line x1="224" y1="268" x2="335" y2="252"/></g>
+  <g fill="#c4b5fd"><circle class="tw" style="animation-delay:2.34s" cx="345" cy="91" r="2"/><circle class="tw" style="animation-delay:1.45s" cx="418" cy="347" r="1.6"/><circle class="tw" style="animation-delay:3.18s" cx="63" cy="51" r="2.6"/><circle class="tw" style="animation-delay:3.12s" cx="110" cy="201" r="1.6"/><circle class="tw" style="animation-delay:2.30s" cx="73" cy="273" r="2.6"/><circle class="tw" style="animation-delay:1.98s" cx="233" cy="33" r="2"/><circle class="tw" style="animation-delay:2.92s" cx="102" cy="236" r="2"/><circle class="tw" style="animation-delay:2.44s" cx="442" cy="49" r="1.6"/><circle class="tw" style="animation-delay:0.47s" cx="260" cy="60" r="2"/><circle class="tw" style="animation-delay:0.66s" cx="448" cy="44" r="2"/><circle class="tw" style="animation-delay:0.61s" cx="140" cy="128" r="2"/><circle class="tw" style="animation-delay:1.69s" cx="77" cy="309" r="2.6"/><circle class="tw" style="animation-delay:0.31s" cx="420" cy="39" r="2.6"/><circle class="tw" style="animation-delay:2.29s" cx="240" cy="37" r="2"/><circle class="tw" style="animation-delay:1.36s" cx="150" cy="162" r="2"/><circle class="tw" style="animation-delay:2.38s" cx="443" cy="87" r="2.6"/><circle class="tw" style="animation-delay:3.19s" cx="134" cy="306" r="1.6"/><circle class="tw" style="animation-delay:3.36s" cx="329" cy="300" r="2"/><circle class="tw" style="animation-delay:1.90s" cx="199" cy="66" r="2.6"/><circle class="tw" style="animation-delay:0.26s" cx="206" cy="204" r="2.6"/><circle class="tw" style="animation-delay:2.81s" cx="113" cy="294" r="2.6"/><circle class="tw" style="animation-delay:2.31s" cx="78" cy="302" r="2.6"/><circle class="tw" style="animation-delay:3.29s" cx="75" cy="330" r="2"/><circle class="tw" style="animation-delay:2.87s" cx="224" cy="268" r="2.6"/><circle class="tw" style="animation-delay:1.39s" cx="451" cy="411" r="2"/><circle class="tw" style="animation-delay:1.42s" cx="335" cy="252" r="2.6"/></g>
+  <g><line x1="136" y1="340" x2="172" y2="276" class="lk"/><ellipse cx="145.0" cy="313.0" rx="9" ry="5" transform="rotate(-29 145.0 313.0)" class="ring"/><ellipse cx="163.0" cy="303.0" rx="9" ry="5" transform="rotate(-29 163.0 303.0)" class="ring"/><line x1="252" y1="276" x2="288" y2="212" class="lk"/><ellipse cx="261.0" cy="249.0" rx="9" ry="5" transform="rotate(-29 261.0 249.0)" class="ring"/><ellipse cx="279.0" cy="239.0" rx="9" ry="5" transform="rotate(-29 279.0 239.0)" class="ring"/><line x1="368" y1="212" x2="404" y2="148" class="lk"/><ellipse cx="377.0" cy="185.0" rx="9" ry="5" transform="rotate(-29 377.0 185.0)" class="ring"/><ellipse cx="395.0" cy="175.0" rx="9" ry="5" transform="rotate(-29 395.0 175.0)" class="ring"/></g>
+  <g class="blk" style="animation-delay:0.00s"><polygon points="38,300 96,329 96,387 38,358" fill="#7c5ce0"/><polygon points="96,329 154,300 154,358 96,387" fill="#5236b0"/><polygon points="96,271 154,300 96,329 38,300" fill="#c4b5fd"/><g stroke="#f5f3ff" stroke-width="2.4" stroke-linecap="round" opacity=".55"><line x1="66" y1="298" x2="90" y2="286"/><line x1="76" y1="303" x2="100" y2="291"/><line x1="86" y1="308" x2="110" y2="296"/><line x1="96" y1="313" x2="120" y2="301"/></g><text x="126.16" y="359.16" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#f5f3ff" opacity=".85" transform="skewY(-26.6)" transform-origin="126.16 359.16" text-anchor="middle">#01</text><polyline points="38,300 96,271 154,300" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><line x1="96" y1="329" x2="96" y2="387" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/></g><g class="blk" style="animation-delay:0.35s"><polygon points="154,236 212,265 212,323 154,294" fill="#2bb39a"/><polygon points="212,265 270,236 270,294 212,323" fill="#16806d"/><polygon points="212,207 270,236 212,265 154,236" fill="#99f6e4"/><g stroke="#f0fdfa" stroke-width="2.4" stroke-linecap="round" opacity=".55"><line x1="182" y1="234" x2="206" y2="222"/><line x1="192" y1="239" x2="216" y2="227"/><line x1="202" y1="244" x2="226" y2="232"/><line x1="212" y1="249" x2="236" y2="237"/></g><text x="242.16" y="295.16" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#f0fdfa" opacity=".85" transform="skewY(-26.6)" transform-origin="242.16 295.16" text-anchor="middle">#02</text><polyline points="154,236 212,207 270,236" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><line x1="212" y1="265" x2="212" y2="323" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/></g><g class="blk" style="animation-delay:0.70s"><polygon points="270,172 328,201 328,259 270,230" fill="#7c5ce0"/><polygon points="328,201 386,172 386,230 328,259" fill="#5236b0"/><polygon points="328,143 386,172 328,201 270,172" fill="#c4b5fd"/><g stroke="#f5f3ff" stroke-width="2.4" stroke-linecap="round" opacity=".55"><line x1="298" y1="170" x2="322" y2="158"/><line x1="308" y1="175" x2="332" y2="163"/><line x1="318" y1="180" x2="342" y2="168"/><line x1="328" y1="185" x2="352" y2="173"/></g><text x="358.16" y="231.16" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#f5f3ff" opacity=".85" transform="skewY(-26.6)" transform-origin="358.16 231.16" text-anchor="middle">#03</text><polyline points="270,172 328,143 386,172" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><line x1="328" y1="201" x2="328" y2="259" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/></g><g class="blk" style="animation-delay:1.05s"><polygon points="386,108 444,137 444,195 386,166" fill="#e0a514"/><polygon points="444,137 502,108 502,166 444,195" fill="#a8740a"/><polygon points="444,79 502,108 444,137 386,108" fill="#fde68a"/><g stroke="#fffbeb" stroke-width="2.4" stroke-linecap="round" opacity=".55"><line x1="414" y1="106" x2="438" y2="94"/><line x1="424" y1="111" x2="448" y2="99"/><line x1="434" y1="116" x2="458" y2="104"/><line x1="444" y1="121" x2="468" y2="109"/></g><text x="474.16" y="167.16" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#fffbeb" opacity=".85" transform="skewY(-26.6)" transform-origin="474.16 167.16" text-anchor="middle">#04</text><polyline points="386,108 444,79 502,108" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/><line x1="444" y1="137" x2="444" y2="195" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/></g>
+  <circle r="4.5" class="pk"><animateMotion dur="1.4s" begin="0.0s;pk0.end+4.2s" id="pk0" path="M136,340 L172,276" fill="freeze"/><animate attributeName="opacity" values="0;1;1;0" dur="1.4s" begin="0.0s;pk0.end+4.2s"/></circle><circle r="4.5" class="pk"><animateMotion dur="1.4s" begin="1.4s;pk1.end+4.2s" id="pk1" path="M252,276 L288,212" fill="freeze"/><animate attributeName="opacity" values="0;1;1;0" dur="1.4s" begin="1.4s;pk1.end+4.2s"/></circle><circle r="4.5" class="pk"><animateMotion dur="1.4s" begin="2.8s;pk2.end+4.2s" id="pk2" path="M368,212 L404,148" fill="freeze"/><animate attributeName="opacity" values="0;1;1;0" dur="1.4s" begin="2.8s;pk2.end+4.2s"/></circle>
+  <g class="star"><polygon points="444,32 448.2,41.5 458,41.5 450,48 453,58 444,52 435,58 438,48 430,41.5 439.8,41.5" fill="#fde68a"/></g>
+</svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true"><div class="run" id="ticker"></div></div>
+
+  <div class="wrap">
+    <div class="shots">
+      <figure><div><div class="bar3"><i></i><i></i><i></i></div><img src="img/frameblock/wallets.webp" alt="" width="640" height="322" loading="lazy"></div><figcaption data-t="bc.shot1">Conecta la cartera que ya tienes: MetaMask, Ledger, Trezor, WalletConnect…</figcaption></figure>
+      <figure><div><div class="bar3"><i></i><i></i><i></i></div><img src="img/frameblock/collection.webp" alt="" width="640" height="322" loading="lazy"></div><figcaption data-t="bc.shot2">Crea tu colección a partir de imágenes generadas por IA.</figcaption></figure>
+    </div>
+
+    <div class="facts">
+      <div><strong>14</strong><span data-t="bc.f1">semanas de máster</span></div>
+      <div><strong>5</strong><span data-t="bc.f2">proyectos finales</span></div>
+      <div><strong>3</strong><span data-t="bc.f3">blockchains desde una sola app</span></div>
+      <div><strong>#1</strong><span data-t="bc.f4">elegido por el jurado</span></div>
+    </div>
+
+    <h3 class="sub" data-t="bc.how">Cómo funciona: Simple AI Collection</h3>
+    <p class="sublead" data-t="bc.howlead">Para demostrarlo construimos una dApp real, de principio a fin. Cada paso es un bloque de la cadena:</p>
+    <ol class="blocks" id="blocks">
+      <li><span class="em" aria-hidden="true">👛</span><b data-t="bc.s1">Conecta tu cartera</b><span data-t="bc.s1d">Con Web3 Onboard: MetaMask, Ledger, Trezor y muchas más.</span><small></small></li>
+      <li><span class="em" aria-hidden="true">🎨</span><b data-t="bc.s2">Busca imágenes con IA</b><span data-t="bc.s2d">Escribes unas palabras y la IA genera las imágenes.</span><small></small></li>
+      <li><span class="em" aria-hidden="true">📦</span><b data-t="bc.s3">Guarda en IPFS</b><span data-t="bc.s3d">Las imágenes y sus metadatos, en almacenamiento descentralizado.</span><small></small></li>
+      <li><span class="em" aria-hidden="true">💳</span><b data-t="bc.s4">Paga con tarjeta</b><span data-t="bc.s4d">El coste del despliegue con Stripe, sin necesidad de cripto.</span><small></small></li>
+      <li><span class="em" aria-hidden="true">💎</span><b data-t="bc.s5">Acuña tu colección NFT</b><span data-t="bc.s5d">Un contrato ERC-721 en Ethereum, BNB Smart Chain o Polygon.</span><small></small></li>
+    </ol>
+
+    <h3 class="sub" data-t="bc.edge">Lo que lo hace distinto</h3>
+    <div class="edge">
+      <div><span class="ic" aria-hidden="true">🧩</span><b data-t="bc.e1">Agnóstico del proveedor</b><span data-t="bc.e1d">Una sola integración, varias cadenas, y hueco para añadir más.</span></div>
+      <div><span class="ic" aria-hidden="true">🙋</span><b data-t="bc.e2">Usable sin saber de cripto</b><span data-t="bc.e2d">Entras con la cartera que ya tienes o pagas con tarjeta.</span></div>
+      <div><span class="ic" aria-hidden="true">🔐</span><b data-t="bc.e3">Confianza de serie</b><span data-t="bc.e3d">Piezas auditadas de OpenZeppelin, un registro on-chain de quién es dueño de qué y archivos en IPFS que nadie puede cambiar a escondidas.</span></div>
+      <div><span class="ic" aria-hidden="true">🚀</span><b data-t="bc.e4">Un producto, no solo diapositivas</b><span data-t="bc.e4d">Un MVP que funciona, enseñado de principio a fin en la demo.</span></div>
+    </div>
+
+    <ul class="chips" aria-label="Stack">
+      <li>Solidity</li><li>ERC-721</li><li>OpenZeppelin</li><li>Ethereum</li><li>BNB Smart Chain</li><li>Polygon</li>
+      <li>IPFS</li><li>React</li><li>ethers.js</li><li>Web3 Onboard</li><li>MetaMask</li><li>Stripe</li>
+    </ul>
+
+    <div class="prize"><div>
+      <div class="cup" aria-hidden="true">🏆</div>
+      <div>
+        <h3 data-t="bc.prize">El premio</h3>
+        <p data-t="bc.prized">Tras 14 intensas semanas, los alumnos del Máster en Blockchain de la Universidad Europea defendieron sus proyectos finales ante un jurado de expertos del sector. Después de una deliberación complicada por el nivel de todos los proyectos, FrameBlock fue elegido ganador.</p>
+        <a href="https://www.linkedin.com/feed/update/urn:li:share:7033036387415113728/" data-t="bc.prizel">Ver el anuncio en LinkedIn →</a>
+      </div>
+    </div></div>
+  </div>
+</section>
 
 <section class="arcade" id="arcade" aria-labelledby="arcade-title">
   <div class="wrap">
@@ -389,7 +606,8 @@ const T = {
   es: {
     "nav.about": "Sobre mí", "nav.arcade": "ARCADE", "nav.visits": "Visitas",
     "hero.pitch": "Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.",
-    "hero.play": "▶ JUGAR", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
+    "hero.play": "▶ JUGAR",
+    "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Proyecto final del máster", "bc.award": "🏆 Mejor proyecto · Máster en Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain sigue siendo difícil de usar y difícil de confiar para la mayoría de personas y empresas: hay que elegir una cadena, aprender sus herramientas, gestionar carteras y pagar en cripto.", "bc.p2a": "FrameBlock es un framework para conectar cualquier aplicación con cualquier blockchain,", "bc.p2b": "sea del proveedor o la tecnología que sea. Esconde esas decisiones detrás de una sola capa: la misma aplicación funciona en varias cadenas y el usuario no necesita saber cuál hay debajo.", "bc.with": "Hecho junto a", "bc.code": "Ver el código", "bc.video": "▶ Vídeo demo", "bc.tech": "Presentación técnica", "bc.biz": "Presentación de negocio", "bc.shot1": "Conecta la cartera que ya tienes: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Crea tu colección a partir de imágenes generadas por IA.", "bc.f1": "semanas de máster", "bc.f2": "proyectos finales", "bc.f3": "blockchains desde una sola app", "bc.f4": "elegido por el jurado", "bc.how": "Cómo funciona: Simple AI Collection", "bc.howlead": "Para demostrarlo construimos una dApp real, de principio a fin. Cada paso es un bloque de la cadena:", "bc.s1": "Conecta tu cartera", "bc.s1d": "Con Web3 Onboard: MetaMask, Ledger, Trezor y muchas más.", "bc.s2": "Busca imágenes con IA", "bc.s2d": "Escribes unas palabras y la IA genera las imágenes.", "bc.s3": "Guarda en IPFS", "bc.s3d": "Las imágenes y sus metadatos, en almacenamiento descentralizado.", "bc.s4": "Paga con tarjeta", "bc.s4d": "El coste del despliegue con Stripe, sin necesidad de cripto.", "bc.s5": "Acuña tu colección NFT", "bc.s5d": "Un contrato ERC-721 en Ethereum, BNB Smart Chain o Polygon.", "bc.edge": "Lo que lo hace distinto", "bc.e1": "Agnóstico del proveedor", "bc.e1d": "Una sola integración, varias cadenas, y hueco para añadir más.", "bc.e2": "Usable sin saber de cripto", "bc.e2d": "Entras con la cartera que ya tienes o pagas con tarjeta.", "bc.e3": "Confianza de serie", "bc.e3d": "Piezas auditadas de OpenZeppelin, un registro on-chain de quién es dueño de qué y archivos en IPFS que nadie puede cambiar a escondidas.", "bc.e4": "Un producto, no solo diapositivas", "bc.e4d": "Un MVP que funciona, enseñado de principio a fin en la demo.", "bc.prize": "El premio", "bc.prized": "Tras 14 intensas semanas, los alumnos del Máster en Blockchain de la Universidad Europea defendieron sus proyectos finales ante un jurado de expertos del sector. Después de una deliberación complicada por el nivel de todos los proyectos, FrameBlock fue elegido ganador.", "bc.prizel": "Ver el anuncio en LinkedIn →", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
     "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
     "about.title": "Sobre mí", "career.title": "Lo que he hecho", "exp.years": "años en sistemas y automatización",
@@ -421,7 +639,8 @@ const T = {
   en: {
     "nav.about": "About", "nav.arcade": "ARCADE", "nav.visits": "Visits",
     "hero.pitch": "I've been automating infrastructure for 20 years: I started running production UNIX and today I define it as code. At home I make 8-bit games with my daughters.",
-    "hero.play": "▶ PLAY", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
+    "hero.play": "▶ PLAY",
+    "nav.chain": "Blockchain", "bc.eyebrow": "⛓ Blockchain · Master's final project", "bc.award": "🏆 Best project · Master's in Blockchain · Universidad Europea · 2023", "bc.p1": "Blockchain is still hard to use and hard to trust for most people and companies: you have to pick a chain, learn its tools, manage wallets and pay in crypto.", "bc.p2a": "FrameBlock is a framework to plug any application into any blockchain,", "bc.p2b": "whatever the vendor or technology. It hides those choices behind a single layer, so the same app works on several chains and users never need to know which one is underneath.", "bc.with": "Built together with", "bc.code": "See the code", "bc.video": "▶ Demo video", "bc.tech": "Technical deck", "bc.biz": "Business deck", "bc.shot1": "Connect the wallet you already have: MetaMask, Ledger, Trezor, WalletConnect…", "bc.shot2": "Build your collection from AI-generated images.", "bc.f1": "weeks of Master's", "bc.f2": "final projects", "bc.f3": "blockchains from a single app", "bc.f4": "picked by the jury", "bc.how": "How it works: Simple AI Collection", "bc.howlead": "To prove it we built a real dApp, end to end. Each step is a block in the chain:", "bc.s1": "Connect your wallet", "bc.s1d": "With Web3 Onboard: MetaMask, Ledger, Trezor and many more.", "bc.s2": "Search AI images", "bc.s2d": "Type a few words and the AI generates the images.", "bc.s3": "Store on IPFS", "bc.s3d": "Images and their metadata, on decentralised storage.", "bc.s4": "Pay by card", "bc.s4d": "The deployment fee through Stripe, no crypto needed.", "bc.s5": "Mint your NFT collection", "bc.s5d": "An ERC-721 contract on Ethereum, BNB Smart Chain or Polygon.", "bc.edge": "What makes it different", "bc.e1": "Vendor-agnostic", "bc.e1d": "One integration, several chains, and room to add more.", "bc.e2": "Usable without knowing crypto", "bc.e2d": "Sign in with the wallet you already have, or pay by card.", "bc.e3": "Trust built in", "bc.e3d": "Audited OpenZeppelin building blocks, an on-chain registry of who owns what, and files on IPFS that nobody can quietly change.", "bc.e4": "A product, not just slides", "bc.e4d": "A working MVP, shown end to end in the demo.", "bc.prize": "The award", "bc.prized": "After 14 intense weeks, the students of the Master's in Blockchain at Universidad Europea defended their final projects before a jury of industry experts. After a tough deliberation, given the level of every project, FrameBlock was picked as the winner.", "bc.prizel": "See the announcement on LinkedIn →", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
     "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
     "about.title": "About me", "career.title": "What I have done", "exp.years": "years in systems and automation",
@@ -605,7 +824,7 @@ function renderArcade() {
 }
 
 function renderTools() {
-  document.getElementById("tools").innerHTML = PROJ.tools.map(p =>
+  document.getElementById("tools").innerHTML = PROJ.tools.filter(p => !p.featured).map(p =>
     `<li><a href="https://github.com/serbenda/${esc(p.repo)}">${esc(p.title)}</a><span>${esc(p[lang])}</span></li>`).join("");
 }
 
@@ -714,12 +933,27 @@ function renderFilter() {
   f.value = selected;
 }
 
+/* ---------- blockchain zone: decorative ticker and block hashes ---------- */
+function hex(seed, n) { let h = seed >>> 0, s = ""; for (let i = 0; i < n; i++) { h = Math.imul(h ^ (h >>> 15), 2246822507) + i; s += ((h >>> 8) & 15).toString(16); } return s; }
+function renderChain() {
+  const day = Math.floor(Date.now() / 864e5), base = 19000000 + (day - 19000) * 7200;
+  const items = Array.from({ length: 12 }, (_, i) => {
+    const n = base + i * 1, h = hex(n, 64);
+    return `<span><i>#${n.toLocaleString(loc())}</i> · <b>0x${h.slice(0, 6)}…${h.slice(-4)}</b> · ${(n % 180) + 20} tx</span>`;
+  }).join("");
+  const run = document.getElementById("ticker"); if (run) run.innerHTML = items + items;
+  document.querySelectorAll("#blocks small").forEach((s, i) => {
+    const prev = i ? "0x" + hex(day * 7 + i - 1, 64).slice(0, 8) : "0x00000000";
+    s.textContent = `prev ${prev} · hash 0x${hex(day * 7 + i, 64).slice(0, 8)}`;
+  });
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach(n => { n.textContent = t(n.dataset.t); });
   document.querySelectorAll("[data-t-aria]").forEach(n => n.setAttribute("aria-label", t(n.dataset.tAria)));
   document.getElementById("lang").textContent = lang === "es" ? "EN" : "ES";
-  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderDash();
+  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderDash(); renderChain();
   document.getElementById("updated").textContent = DATA.updated
     ? `${t("updated")} ${new Date(DATA.updated).toLocaleString(loc(), { dateStyle: "medium", timeStyle: "short" })}` : "";
 }
