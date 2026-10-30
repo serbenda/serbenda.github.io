@@ -158,6 +158,11 @@ tbody tr.on td { background: rgba(167, 139, 250, .12); }
 .contact { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
 .contact .cta { background: var(--repo); color: var(--ink); text-decoration: none; font-weight: 700; border-radius: 8px; padding: 12px 20px; }
 .contact .cta:hover { background: var(--text); color: var(--ink); }
+.contact .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.contact .cta.sp { background: transparent; color: #ea4aaa; border: 1px solid #ea4aaa; }
+.contact .cta.sp:hover { background: #ea4aaa; color: #fff; }
+.links a.sp { border-color: #ea4aaa; color: #ea4aaa; }
+.links a.sp:hover { background: #ea4aaa; color: #fff; }
 footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
 
 /* =========================================================
@@ -273,6 +278,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
         <a href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/">LinkedIn</a>
         <a href="https://github.com/serbenda">GitHub</a>
         <a href="https://x.com/serbenda">X</a>
+        <a class="sp" href="https://github.com/sponsors/serbenda" data-t="hero.sp">❤ Patrocinar</a>
         <a class="play" href="#arcade" data-t="hero.play">▶ JUGAR</a>
       </div>
 
@@ -355,7 +361,10 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
           <h2 data-t="c.title">¿Hablamos?</h2>
           <p class="lead" data-t="c.lead">De automatización, infraestructura, cacharros o juegos hechos en casa.</p>
         </div>
-        <a class="cta" href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/" data-t="c.cta">Escríbeme en LinkedIn</a>
+        <div class="ctas">
+          <a class="cta" href="https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/" data-t="c.cta">Escríbeme en LinkedIn</a>
+          <a class="cta sp" href="https://github.com/sponsors/serbenda" data-t="c.sp">❤ Apoya los juegos</a>
+        </div>
       </div>
     </section>
   </main>
@@ -368,7 +377,7 @@ const T = {
   es: {
     "nav.about": "Sobre mí", "nav.arcade": "ARCADE", "nav.visits": "Visitas",
     "hero.pitch": "Automatizo infraestructura desde hace 20 años: empecé administrando UNIX en producción y hoy la defino como código. En casa hago juegos de 8 bits con mis hijas.",
-    "hero.play": "▶ JUGAR", "hero.pipe": "De 2005 a hoy",
+    "hero.play": "▶ JUGAR", "hero.sp": "❤ Patrocinar", "c.sp": "❤ Apoya los juegos", "hero.pipe": "De 2005 a hoy",
     "st.1": "Soporte de hardware, software y redes", "st.2": "UNIX en producción 24x7", "st.3": "UNIX a gran escala y OpenStack",
     "st.4": "Hoy", "st.4d": "Infraestructura como código",
     "about.title": "Sobre mí", "career.title": "Lo que he hecho", "exp.years": "años en sistemas y automatización",
@@ -400,7 +409,7 @@ const T = {
   en: {
     "nav.about": "About", "nav.arcade": "ARCADE", "nav.visits": "Visits",
     "hero.pitch": "I've been automating infrastructure for 20 years: I started running production UNIX and today I define it as code. At home I make 8-bit games with my daughters.",
-    "hero.play": "▶ PLAY", "hero.pipe": "From 2005 to today",
+    "hero.play": "▶ PLAY", "hero.sp": "❤ Sponsor", "c.sp": "❤ Support the games", "hero.pipe": "From 2005 to today",
     "st.1": "Hardware, software and network support", "st.2": "24x7 production UNIX", "st.3": "UNIX at scale and OpenStack",
     "st.4": "Today", "st.4d": "Infrastructure as code",
     "about.title": "About me", "career.title": "What I have done", "exp.years": "years in systems and automation",
