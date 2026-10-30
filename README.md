@@ -65,7 +65,7 @@ flowchart LR
 
     subgraph PAGES["🌐 GitHub Pages"]
         RAIZ["bendi.dev"]
-        SUB["bendi.dev/&lt;juego&gt;"]
+        SUB["bendi.dev/nombre-del-juego"]
     end
 
     GC[("📊 GoatCounter<br/>visitas sin cookies")]
@@ -151,11 +151,11 @@ gitGraph
     commit id: "nuevo juego"
     commit id: "textos"
     checkout main
-    merge development id: "PR → bendi.dev"
+    merge development id: "PR 1 a main"
     checkout development
     commit id: "ajuste visitas"
     checkout main
-    merge development id: "PR → bendi.dev "
+    merge development id: "PR 2 a main"
 ```
 
 El ciclo de un cambio:
