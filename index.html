@@ -522,7 +522,7 @@ section.chain > .wrap { position: relative; }
           </div>
           <p data-t="exp.lead">Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain, donde mi proyecto final ganó el premio al mejor del máster.</p>
           <ul class="chips" aria-label="Stack">
-            <li>Terraform</li><li>Terraform Enterprise</li><li>Ansible</li><li>Packer</li><li>Rundeck</li><li>Python</li><li>Bash</li>
+            <li>Terraform</li><li>Terraform Enterprise</li><li>Ansible</li><li>Packer</li><li>Rundeck</li><li>Python</li><li>Bash</li><li>Jenkins</li><li>GitOps</li><li>OpenShift</li>
             <li>AWS</li><li>Azure</li><li>VMware</li><li>OpenStack</li><li>Docker</li><li>Red Hat</li>
             <li>Solaris</li><li>AIX</li><li>Cloudera</li><li>Kerberos</li><li>Grafana</li><li>Solidity</li>
           </ul>
@@ -780,17 +780,30 @@ const WINS = [
     en: ["Master's in Blockchain", "Universidad Europea, 2022–2023: Solidity smart contracts, NFTs, IPFS and multichain dApps."] }
 ];
 const CAREER = [
-  { from: 2019, to: 0,
+  { from: 2023, to: 0,
+    es: ["Cloud Engineer · IaC y SRE de nube privada", "Automatizo la adopción de la nube privada: los servicios y las arquitecturas de referencia, convertidos en infraestructura como código.", [
+      "Diseño y desarrollo las automatizaciones que llevan cada arquitectura de referencia a la realidad de cada proyecto en nube privada.",
+      "Evoluciono el framework de IaC y acelero la migración de los proyectos a él.",
+      "Como SRE del área de nube privada, integro las automatizaciones de los equipos de storage, red, virtualización, CaaS y sistemas, trabajando con equipos de varios países.",
+      "Velo por el cumplimiento de los estándares de referencia de nube privada y reviso sus arquitecturas de referencia.",
+      "Terraform, Ansible, Python, Jenkins y GitOps sobre VMware y OpenShift."]],
+    en: ["Cloud Engineer · Private cloud IaC and SRE", "I automate private cloud adoption: reference services and architectures turned into infrastructure as code.", [
+      "I design and build the automation that turns each reference architecture into reality for every project on private cloud.",
+      "I evolve the IaC framework and speed up the migration of projects onto it.",
+      "As SRE for the private cloud area, I integrate the automation of the storage, network, virtualisation, CaaS and systems teams, working with teams in several countries.",
+      "I make sure private cloud reference standards are met and review its reference architectures.",
+      "Terraform, Ansible, Python, Jenkins and GitOps on VMware and OpenShift."]] },
+  { from: 2019, to: 2023,
     es: ["Automation Engineer", "Infraestructura como código para servidores Windows y Linux, en AWS, Azure y nube privada.", [
-      "Diseño y administro Terraform Enterprise, la plataforma con la que se aprovisiona la infraestructura.",
-      "Automatizo las imágenes base de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.",
-      "Opero la virtualización con VMware, VMware Cloud y nube privada, y llevo aplicaciones a contenedores con Docker.",
-      "Ayudo a los equipos de desarrollo a mejorar sus pipelines de CI/CD."]],
+      "Diseñé y administré Terraform Enterprise, la plataforma con la que se aprovisiona la infraestructura.",
+      "Automaticé las imágenes base de sistema operativo con Packer y el trabajo repetitivo con Ansible, Python y Bash.",
+      "Operé la virtualización con VMware, VMware Cloud y nube privada, y llevé aplicaciones a contenedores con Docker.",
+      "Ayudé a los equipos de desarrollo a mejorar sus pipelines de CI/CD."]],
     en: ["Automation Engineer", "Infrastructure as code for Windows and Linux servers, on AWS, Azure and private cloud.", [
-      "I design and run Terraform Enterprise, the platform that provisions the infrastructure.",
-      "I automate OS base images with Packer and repetitive work with Ansible, Python and Bash.",
-      "I operate VMware, VMware Cloud and private cloud virtualisation, and move apps into Docker containers.",
-      "I help development teams improve their CI/CD pipelines."]] },
+      "Designed and ran Terraform Enterprise, the platform that provisions the infrastructure.",
+      "Automated OS base images with Packer and repetitive work with Ansible, Python and Bash.",
+      "Operated VMware, VMware Cloud and private cloud virtualisation, and moved apps into Docker containers.",
+      "Helped development teams improve their CI/CD pipelines."]] },
   { from: 2016, to: 2019,
     es: ["IT Expert · UNIX a gran escala", "Administración senior de UNIX en producción en una granja de 12.000 servidores.", [
       "Diseñé la planificación de capacidad con OpenTSDB y Grafana.",
@@ -1083,8 +1096,8 @@ Automation Platform Engineer. 20+ years in systems: from 24x7 UNIX on-call
 to defining infrastructure as code on AWS, Azure and private cloud.
 Master's in Blockchain (award-winning project 🏆) and 8-bit games with my daughters.`),
   skills: () => (innerWidth < 640 ? s => s.replace(/<\/span>\s+/g, "</span>\n  ") : s => s)(
-`<span class="c3">IaC & automation</span>  Terraform · Terraform Enterprise · Ansible · Packer · Python · Bash
-<span class="c3">${L("Nube", "Cloud")}</span>             AWS · Azure · ${L("nube privada", "private cloud")} · OpenStack · VMware
+`<span class="c3">IaC & automation</span>  Terraform · Terraform Enterprise · Ansible · Packer · Python · Bash · Jenkins · GitOps
+<span class="c3">${L("Nube", "Cloud")}</span>             AWS · Azure · ${L("nube privada", "private cloud")} · OpenShift · OpenStack · VMware
 <span class="c3">${L("Sistemas", "Systems")}</span>          Red Hat · Solaris · AIX · HP-UX · Docker
 <span class="c3">Data & ${L("observ.", "observ.")}</span>   Cloudera · Hortonworks · Kerberos · OpenTSDB · Grafana
 <span class="c3">Web3</span>              Solidity · ERC-721 · OpenZeppelin · IPFS · ethers.js
