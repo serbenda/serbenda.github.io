@@ -31,7 +31,7 @@
 - [Running it locally](#-running-it-locally)
 - [Common tasks](#-common-tasks)
 - [Privacy](#-privacy)
-- [Fonts and licences](#-fonts-and-licences)
+- [Fonts and licenses](#-fonts-and-licenses)
 
 ---
 
@@ -126,7 +126,7 @@ serbenda.github.io/
 ├── img/
 │   ├── bendi.svg     ← pixel-art avatar
 │   └── games/        ← a screenshot of each game (.webp)
-├── fonts/            ← self-hosted fonts (no Google Fonts) and their licences
+├── fonts/            ← self-hosted fonts (no Google Fonts) and their licenses
 ├── og.html           ← template for og.png (1200×630), the image shown when the site is shared
 ├── og.png            ← social media preview image
 └── header.html       ← template for the profile README banner (1280×320)
@@ -220,7 +220,7 @@ Open `og.html` (1200×630) or `header.html` (1280×320) locally, take a screensh
 
 ---
 
-## 🔤 Fonts and licences
+## 🔤 Fonts and licenses
 
 The fonts in `fonts/` are licensed under the **SIL Open Font License**; each one ships with its `OFL-*.txt` file:
 
