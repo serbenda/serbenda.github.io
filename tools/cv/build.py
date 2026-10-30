@@ -5,7 +5,7 @@ Usage (from the repository root):
     pip install playwright && python -m playwright install chromium   # first time only
     python3 tools/cv/build.py
 
-Edit the text in tools/cv/cv-data.js; the layout lives in tools/cv/cv.html.
+Edit the text and layout in cv/cv.html (Spanish and English in the same file).
 Writes cv/Sergio-Bendana-CV-es.pdf and cv/Sergio-Bendana-CV-en.pdf.
 """
 import asyncio
@@ -38,7 +38,7 @@ async def main():
         browser = await pw.chromium.launch()
         page = await browser.new_page()
         for lang in ('es', 'en'):
-            await page.goto(f'http://127.0.0.1:{PORT}/tools/cv/cv.html?lang={lang}')
+            await page.goto(f'http://127.0.0.1:{PORT}/cv/cv.html?lang={lang}')
             await page.evaluate('document.fonts.ready')
             out = ROOT / 'cv' / f'Sergio-Bendana-CV-{lang}.pdf'
             await page.pdf(path=str(out), format='A4', prefer_css_page_size=True, print_background=True)

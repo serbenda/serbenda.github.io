@@ -1,6 +1,6 @@
 /* TEAM */
   Who: Sergio Bendaña (Bendi)
-  Role: Automation Platform Engineer
+  Role: Cloud Engineer
   Site: https://bendi.dev
   LinkedIn: https://www.linkedin.com/in/serbenda/
   GitHub: https://github.com/serbenda

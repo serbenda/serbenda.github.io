@@ -127,8 +127,8 @@ serbenda.github.io/
 │   ├── bendi.svg     ← pixel-art avatar
 │   └── games/        ← a screenshot of each game (.webp)
 ├── fonts/            ← self-hosted fonts (no Google Fonts) and their licenses
-├── cv/               ← the CV as PDF, in Spanish and English (generated, don't edit by hand)
-├── tools/cv/         ← CV source: cv-data.js (text), cv.html (layout), build.py (prints both PDFs)
+├── cv/               ← the CV: cv.html (source, both languages) and the PDFs generated from it
+├── tools/cv/build.py ← prints cv/cv.html to both PDFs
 ├── og.html           ← template for og.png (1200×630), the image shown when the site is shared
 ├── og.png            ← social media preview image
 └── header.html       ← template for the profile README banner (1280×320)
@@ -208,7 +208,7 @@ Find its `data-t` key in `index.html` and change the translation in both diction
 <details>
 <summary><b>Update the CV</b></summary>
 
-1. Edit the text in [`tools/cv/cv-data.js`](tools/cv/cv-data.js) (Spanish and English). Keep the latest role in sync with `CAREER` in `index.html`.
+1. Edit [`cv/cv.html`](cv/cv.html) (Spanish and English are in the same file). Keep the latest role in sync with `CAREER` in `index.html`.
 2. Run `python3 tools/cv/build.py` (needs `pip install playwright` and `python -m playwright install chromium` the first time).
 3. It rewrites `cv/Sergio-Bendana-CV-es.pdf` and `cv/Sergio-Bendana-CV-en.pdf`. Check them and commit.
 
