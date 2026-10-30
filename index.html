@@ -78,6 +78,7 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 @media (prefers-reduced-motion: reduce) { .hero h1 .cur { animation: none; } }
 .hero .who { font-size: clamp(20px, 2.4vw, 26px); margin-top: 8px; }
 .hero .cbr { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin-top: 10px; font: 600 clamp(15px, 1.7vw, 18px)/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+.arcade .dedic { text-align: center; margin: 28px auto 0; max-width: 60ch; font: 400 22px/1.4 "VT323", monospace; color: #ffec27; }
 .hero .cbr b { color: var(--plays); font-weight: 700; }
 .hero .cbr .btn { width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fda4cf, #db2777); box-shadow: 0 2px 0 #9d174d; flex: none; }
 .hero .pitch { color: var(--muted); max-width: 54ch; margin-top: 20px; font-size: 19px; }
@@ -655,6 +656,7 @@ section.chain > .wrap { position: relative; }
     <div class="carts" id="games"></div>
     <h3 class="a-sub" data-t="a.hs">TABLA DE RÉCORDS</h3>
     <div class="pxbox hs"><table id="hs"></table></div>
+    <p class="dedic" data-t="a.dedic">🕹️ Estos juegos tienen dos testers oficiales, y son las mejores jugadoras que conozco. Todo esto es para vosotras. 💛</p>
   </div>
 </section>
 
@@ -709,7 +711,7 @@ const T = {
     "exp.lead": "Empecé con guardias 24x7 sobre UNIX, crecí administrando granjas de miles de servidores y hoy me dedico a que la infraestructura se cree sola: como código, versionada y repetible. Por el camino monté plataformas Big Data y me saqué un máster en Blockchain, donde mi proyecto final ganó el premio al mejor del máster.",
     "now": "hoy",
     "a.title": "ZONA ARCADE", "a.coin": "INSERTA MONEDA", "a.select": "SELECCIONA JUEGO", "a.hs": "TABLA DE RÉCORDS",
-    "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
+    "a.dedic": "🕹️ Estos juegos tienen dos testers oficiales, y son las mejores jugadoras que conozco. Todo esto es para vosotras. 💛", "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
     "play": "JUGAR", "code": "CÓDIGO", "soon": "PRÓXIMAMENTE",
     "views": "vistas", "visits": "visitas", "plays": "partidas",
     "hs.rank": "POS", "hs.name": "JUEGO", "hs.score": "PUNTOS", "hs.empty": "SIN RÉCORDS TODAVÍA",
@@ -744,7 +746,7 @@ const T = {
     "exp.lead": "I started on 24x7 UNIX on-call, grew into running farms of thousands of servers, and today I make infrastructure build itself: defined as code, versioned and repeatable. Along the way I built Big Data platforms and earned a Master's in Blockchain, where my final project was chosen as the best of the year.",
     "now": "now",
     "a.title": "ARCADE ZONE", "a.coin": "INSERT COIN", "a.select": "SELECT GAME", "a.hs": "HIGH SCORES",
-    "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
+    "a.dedic": "🕹️ These games have two official testers, and they're the best players I know. All of this is for you. 💛", "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
     "play": "PLAY", "code": "CODE", "soon": "COMING SOON",
     "views": "views", "visits": "visits", "plays": "played",
     "hs.rank": "RANK", "hs.name": "GAME", "hs.score": "SCORE", "hs.empty": "NO HIGH SCORES YET",
@@ -1136,7 +1138,7 @@ Use case: NFT collections (ERC-721) of AI images on IPFS, on Ethereum, BNB Chain
 GitHub    <a href="https://github.com/serbenda">github.com/serbenda</a>
 Sponsor   <a href="https://github.com/sponsors/serbenda">github.com/sponsors/serbenda</a> ❤`,
   ls: () => `<span class="c2">about.txt</span>  <span class="c2">how-i-work.md</span>  <span class="c2">frameblock.md</span>  <span class="ok">cv.pdf</span>  <span class="c3">games/</span>`,
-  cat: a => ({ "about.txt": TRUN.whoami, "how-i-work.md": TRUN.how, "frameblock.md": TRUN.frameblock, "cv.pdf": () => L("Es binario 😅 mejor: ", "It's binary 😅 try: ") + `<span class="c2">cv</span>` }[a] || (() => `cat: ${esc(a || "")}: ${L("no existe. Prueba", "no such file. Try")} <span class="c2">ls</span>`))(),
+  cat: a => ({ "para-mis-peques.txt": () => PEQUES, "love.txt": () => PEQUES, "about.txt": TRUN.whoami, "how-i-work.md": TRUN.how, "frameblock.md": TRUN.frameblock, "cv.pdf": () => L("Es binario 😅 mejor: ", "It's binary 😅 try: ") + `<span class="c2">cv</span>` }[a] || (() => `cat: ${esc(a || "")}: ${L("no existe. Prueba", "no such file. Try")} <span class="c2">ls</span>`))(),
   lang: a => { const to = a === "en" || a === "es" ? a : (lang === "es" ? "en" : "es"); if (to !== lang) { lang = to; try { localStorage.setItem("lang", lang); } catch (e) {} render(); } return to === "es" ? "Idioma: español" : "Language: English"; },
   clear: () => { document.getElementById("tout").innerHTML = ""; return null; },
   coffee: () => L("☕ ¿Me invitas a un café? ", "☕ Buy me a coffee? ") + `<a href="https://github.com/sponsors/serbenda">github.com/sponsors/serbenda</a> ❤`,
@@ -1164,6 +1166,11 @@ Sponsor   <a href="https://github.com/sponsors/serbenda">github.com/sponsors/ser
 <span class="c3">  ▀▀▀▀▀▀▀  </span>  Uptime: ${new Date().getFullYear() - 2005}y · Awards: 🏆 FrameBlock
              Hobbies: ${L("juegos de 8 bits, homelab", "8-bit games, homelab")}`,
 };
+const PEQUES = `<span class="hl">Todo lo que hay en esta web lo hice yo,
+pero lo mejor que he hecho sois vosotras.</span>
+Gracias por probar cada juego, por encontrar los bugs
+y por pedirme siempre «una partida más». 💛
+<span class="ok">— Papá</span>`;
 function trun(raw) {
   const line = raw.trim(); if (!line) return;
   TERM.hist.push(line); TERM.at = TERM.hist.length;
