@@ -2,7 +2,7 @@
   Who: Sergio Bendaña (Bendi)
   Role: Automation Platform Engineer
   Site: https://bendi.dev
-  LinkedIn: https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/
+  LinkedIn: https://www.linkedin.com/in/serbenda/
   GitHub: https://github.com/serbenda
   From: Madrid, Spain
 
