@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bendi · Sergio Bendaña</title>
-<meta name="description" content="20 años automatizando infraestructura, juegos de 8 bits hechos en casa y las visitas de cada proyecto.">
+<meta name="description" content="20 años automatizando infraestructura, Máster en Blockchain con el proyecto ganador (FrameBlock) y juegos de 8 bits hechos en casa.">
 <link rel="icon" href="img/bendi.svg" type="image/svg+xml">
 <link rel="canonical" href="https://bendi.dev/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bendi">
 <meta property="og:title" content="Bendi · Sergio Bendaña">
-<meta property="og:description" content="20 años automatizando infraestructura, juegos de 8 bits hechos en casa y las visitas de cada proyecto.">
+<meta property="og:description" content="20 años automatizando infraestructura, Máster en Blockchain con el proyecto ganador (FrameBlock) y juegos de 8 bits hechos en casa.">
 <meta property="og:url" content="https://bendi.dev/">
 <meta property="og:image" content="https://bendi.dev/og.png">
 <meta property="og:image:width" content="1200">
@@ -20,6 +20,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@serbenda">
 <meta name="theme-color" content="#0e1324">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Sergio Bendaña", "alternateName": "Bendi", "url": "https://bendi.dev/", "image": "https://bendi.dev/og.png", "jobTitle": "Automation Platform Engineer", "sameAs": ["https://www.linkedin.com/in/sergio-santiago-benda%C3%B1a-quesada/", "https://github.com/serbenda"], "knowsAbout": ["Infrastructure as Code", "Terraform", "Ansible", "Packer", "AWS", "Azure", "OpenStack", "UNIX", "Blockchain", "Solidity", "IPFS"], "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universidad Europea"}, "award": "FrameBlock: best project, Master's in Blockchain, Universidad Europea (2023)"}</script>
+<link rel="preload" href="fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Atkinson-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* =========================================================
@@ -50,6 +53,7 @@ h3 { font-size: 21px; font-weight: 700; }
 p { margin: 0; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gut); }
 section { padding: 72px 0; border-top: 1px solid var(--line); }
+
 .lead { color: var(--muted); max-width: 62ch; margin-top: 12px; }
 
 /* top bar */
@@ -57,7 +61,7 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 .bar nav { display: flex; gap: 20px; flex-wrap: wrap; }
 .bar nav a { color: var(--muted); text-decoration: none; }
 .bar nav a:hover { color: var(--text); }
-.bar nav a.arc { font: 9px/1 "Press Start 2P", monospace; color: #ffec27; align-self: center; }
+.bar nav a.arc { font: 9px/1 "Press Start 2P", monospace; color: #ffec27; align-self: center; padding: 8px 0; }
 .lang { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 14px; cursor: pointer; }
 
 /* hero */
@@ -188,7 +192,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .arcade a:hover { color: var(--a-yellow); }
 .arcade :focus-visible { outline: 4px solid var(--a-yellow); outline-offset: 2px; border-radius: 0; }
 .a-hud { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; padding: 36px 0 8px; font: 11px/1.7 "Press Start 2P", monospace; }
-.a-hud .l { color: var(--a-red); display: block; }
+.a-hud .l { color: #ff6680; display: block; }
 .a-hud .c { text-align: center; }
 .a-hud .r { text-align: right; }
 .a-title { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; padding: 40px 0 24px; }
@@ -753,7 +757,7 @@ const nf = n => new Intl.NumberFormat(loc()).format(n);
 const pad = (n, w = 6) => String(Math.min(n, 10 ** w - 1)).padStart(w, "0");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-let DATA = { repos: {} }, PROJ = { games: [], tools: [] }, selected = "";
+let DATA = { repos: {} }, PROJ = { games: [], tools: [] }, selected = "", dashSeen = false;
 /* Games hang from the same host the visitor used: bendi.dev or serbenda.github.io both work */
 const GAMES_BASE = /(^|\.)bendi\.dev$|^serbenda\.github\.io$/.test(location.hostname) ? "" : "https://serbenda.github.io";
 const SHOW_FROM = 10;   // game cartridges hide counts below this; the tables show everything
@@ -953,7 +957,8 @@ function render() {
   document.querySelectorAll("[data-t]").forEach(n => { n.textContent = t(n.dataset.t); });
   document.querySelectorAll("[data-t-aria]").forEach(n => n.setAttribute("aria-label", t(n.dataset.tAria)));
   document.getElementById("lang").textContent = lang === "es" ? "EN" : "ES";
-  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderDash(); renderChain();
+  renderAbout(); renderArcade(); renderTools(); renderFilter(); renderChain();
+  if (dashSeen) renderDash();
   document.getElementById("updated").textContent = DATA.updated
     ? `${t("updated")} ${new Date(DATA.updated).toLocaleString(loc(), { dateStyle: "medium", timeStyle: "short" })}` : "";
 }
@@ -966,11 +971,15 @@ document.getElementById("filter").addEventListener("change", e => { selected = e
 let resizeTimer, lastW = window.innerWidth;
 window.addEventListener("resize", () => {
   if (window.innerWidth === lastW) return;   // ignore mobile address-bar height changes
-  lastW = window.innerWidth; clearTimeout(resizeTimer); resizeTimer = setTimeout(renderDash, 150);
+  lastW = window.innerWidth; clearTimeout(resizeTimer); if (dashSeen) resizeTimer = setTimeout(renderDash, 150);
 });
 
 const getJSON = url => fetch(url, { cache: "no-store" }).then(r => r.ok ? r.json() : null).catch(() => null);
 render();
+const dashIO = "IntersectionObserver" in window ? new IntersectionObserver(es => {
+  if (es.some(e => e.isIntersecting)) { dashSeen = true; dashIO.disconnect(); renderDash(); }
+}, { rootMargin: "600px 0px" }) : null;
+if (dashIO) dashIO.observe(document.getElementById("visitas")); else { dashSeen = true; renderDash(); }
 /* Visits are collected every morning by the workflow in github.com/serbenda/serbenda */
 const TRAFFIC_URL = "https://raw.githubusercontent.com/serbenda/serbenda/main/data/traffic.json";
 Promise.all([getJSON(TRAFFIC_URL).then(d => d || getJSON("data/traffic.json")), getJSON("data/projects.json")]).then(([d, p]) => {
