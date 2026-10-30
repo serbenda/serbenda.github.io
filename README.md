@@ -4,225 +4,225 @@
 
 # bendi.dev
 
-**Mi web personal: quién soy, la zona arcade con mis juegos y las visitas de cada proyecto.**
+**My personal website: who I am, the arcade zone with my games and the visits to each project.**
 
-[![Web](https://img.shields.io/badge/bendi.dev-1d2b53?style=for-the-badge&logo=githubpages&logoColor=ffec27)](https://bendi.dev/)
+[![Website](https://img.shields.io/badge/bendi.dev-1d2b53?style=for-the-badge&logo=githubpages&logoColor=ffec27)](https://bendi.dev/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-main-29adff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/serbenda/serbenda.github.io/deployments)
-[![Sin cookies](https://img.shields.io/badge/Sin_cookies-00e436?style=for-the-badge)](#-privacidad)
+[![No cookies](https://img.shields.io/badge/No_cookies-00e436?style=for-the-badge)](#-privacy)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/serbenda)
 
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Sin dependencias](https://img.shields.io/badge/dependencias-0-ff77a8?style=flat-square)
-![Sin build](https://img.shields.io/badge/build-ninguno-7e2553?style=flat-square)
+![No dependencies](https://img.shields.io/badge/dependencies-0-ff77a8?style=flat-square)
+![No build](https://img.shields.io/badge/build-none-7e2553?style=flat-square)
 
 </div>
 
 ---
 
-## 📑 Índice
+## 📑 Contents
 
-- [Qué es este repo](#-qué-es-este-repo)
-- [Cómo funciona](#-cómo-funciona)
-- [Qué tiene la web](#-qué-tiene-la-web)
-- [Estructura del repo](#-estructura-del-repo)
-- [Ramas y flujo de trabajo](#-ramas-y-flujo-de-trabajo)
-- [Probarla en local](#-probarla-en-local)
-- [Tareas habituales](#-tareas-habituales)
-- [Privacidad](#-privacidad)
-- [Fuentes y licencias](#-fuentes-y-licencias)
+- [What this repo is](#-what-this-repo-is)
+- [How it works](#-how-it-works)
+- [What's on the website](#-whats-on-the-website)
+- [Repo structure](#-repo-structure)
+- [Branches and workflow](#-branches-and-workflow)
+- [Running it locally](#-running-it-locally)
+- [Common tasks](#-common-tasks)
+- [Privacy](#-privacy)
+- [Fonts and licences](#-fonts-and-licences)
 
 ---
 
-## 🧭 Qué es este repo
+## 🧭 What this repo is
 
-GitHub trata de forma especial un repo que se llama `<usuario>.github.io`: lo publica como **la web principal del usuario** con GitHub Pages. Con el archivo [`CNAME`](CNAME) esa web sale en mi dominio, **[bendi.dev](https://bendi.dev)**.
+GitHub treats a repo named `<user>.github.io` in a special way: it publishes it with GitHub Pages as **the user's main website**. The [`CNAME`](CNAME) file serves that site on my own domain, **[bendi.dev](https://bendi.dev)**.
 
-No hay que confundirlo con el repo de mi perfil:
+Not to be confused with my profile repo:
 
-| | **serbenda.github.io** (este repo) | **[serbenda/serbenda](https://github.com/serbenda/serbenda)** |
+| | **serbenda.github.io** (this repo) | **[serbenda/serbenda](https://github.com/serbenda/serbenda)** |
 |---|---|---|
-| Qué es | Mi web pública | El README de mi perfil de GitHub |
-| Dónde se ve | [bendi.dev](https://bendi.dev) | [github.com/serbenda](https://github.com/serbenda) |
-| Formato | HTML + CSS + JS | Markdown |
-| Quién lo ve | Cualquiera, sin entrar en GitHub | Quien visita mi perfil |
-| Automatización | Ninguna: es estático | Una GitHub Action diaria que recoge las visitas |
+| What it is | My public website | The README of my GitHub profile |
+| Where you see it | [bendi.dev](https://bendi.dev) | [github.com/serbenda](https://github.com/serbenda) |
+| Format | HTML + CSS + JS | Markdown |
+| Who sees it | Anyone, no GitHub needed | People visiting my profile |
+| Automation | None: it's static | A daily GitHub Action that collects the visits |
 
-Además, este dominio es la **raíz de todos mis juegos**. Cada juego vive en su propio repo con su propio GitHub Pages, y GitHub lo cuelga automáticamente de aquí: el repo `chapas` sale en `bendi.dev/chapas`, `school-rush` en `bendi.dev/school-rush`, etc.
+This domain is also **the root of all my games**. Each game lives in its own repo with its own GitHub Pages site, and GitHub hangs it from here automatically: the `chapas` repo is served at `bendi.dev/chapas`, `school-rush` at `bendi.dev/school-rush`, and so on.
 
 ---
 
-## ⚙️ Cómo funciona
+## 🔧 How it works
 
 ```mermaid
 flowchart LR
-    subgraph REPOS["📦 Repos en GitHub"]
+    subgraph REPOS["📦 Repos on GitHub"]
         WEB["serbenda.github.io<br/><i>index.html · data/ · img/</i>"]
-        PERFIL["serbenda/serbenda<br/><i>README del perfil + Action</i>"]
-        JUEGOS["Repos de juegos<br/><i>chapas, school-rush,<br/>hemiciclo-fighters…</i>"]
+        PROFILE["serbenda/serbenda<br/><i>profile README + Action</i>"]
+        GAMES["Game repos<br/><i>chapas, school-rush,<br/>hemiciclo-fighters…</i>"]
     end
 
     subgraph PAGES["🌐 GitHub Pages"]
-        RAIZ["bendi.dev"]
-        SUB["bendi.dev/nombre-del-juego"]
+        ROOT["bendi.dev"]
+        SUB["bendi.dev/game-name"]
     end
 
-    GC[("📊 GoatCounter<br/>visitas sin cookies")]
-    API[("🐙 API de GitHub<br/>visitas a los repos")]
-    TRAFFIC["data/traffic.json<br/><i>en serbenda/serbenda</i>"]
+    GC[("📊 GoatCounter<br/>cookie-free visits")]
+    API[("🐙 GitHub API<br/>repo views")]
+    TRAFFIC["data/traffic.json<br/><i>in serbenda/serbenda</i>"]
 
-    WEB -- "push a main" --> RAIZ
-    JUEGOS -- "push a main" --> SUB
-    RAIZ -. "cuenta visita" .-> GC
-    SUB -. "cuenta visita y partidas" .-> GC
-    PERFIL -- "Action diaria 05:17 UTC" --> TRAFFIC
-    GC --> PERFIL
-    API --> PERFIL
-    TRAFFIC -- "fetch al cargar" --> RAIZ
+    WEB -- "push to main" --> ROOT
+    GAMES -- "push to main" --> SUB
+    ROOT -. "counts visit" .-> GC
+    SUB -. "counts visits and matches" .-> GC
+    PROFILE -- "daily Action 05:17 UTC" --> TRAFFIC
+    GC --> PROFILE
+    API --> PROFILE
+    TRAFFIC -- "fetched on load" --> ROOT
 
     classDef repo fill:#1d2b53,stroke:#29adff,color:#fff1e8
     classDef page fill:#00e436,stroke:#008751,color:#000
     classDef data fill:#ffec27,stroke:#ab5236,color:#000
-    class WEB,PERFIL,JUEGOS repo
-    class RAIZ,SUB page
+    class WEB,PROFILE,GAMES repo
+    class ROOT,SUB page
     class GC,API,TRAFFIC data
 ```
 
-En palabras:
+In words:
 
-1. **Publicación.** Cada vez que algo entra en la rama `main`, GitHub Pages publica la web en `bendi.dev`. No hay compilación ni build: lo que hay en el repo es lo que se sirve (el archivo [`.nojekyll`](.nojekyll) evita que GitHub lo procese con Jekyll).
-2. **Juegos.** Cada juego se publica desde su propio repo y aparece solo en `bendi.dev/<nombre-del-repo>`. Lo que la web cuenta de cada uno (título, texto, etiquetas y captura) está en [`data/projects.json`](data/projects.json).
-3. **Visitas.** La web y los juegos cargan el script de **GoatCounter**, que cuenta visitas sin cookies. Los juegos además mandan un evento `partida/<repo>` al empezar una partida.
-4. **Recogida diaria.** Cada mañana, a las 05:17 UTC, la GitHub Action de [serbenda/serbenda](https://github.com/serbenda/serbenda) junta las visitas de GoatCounter y las de la API de GitHub en `data/traffic.json`. GitHub solo guarda 14 días de visitas a los repos, así que ese archivo es el que conserva el histórico.
-5. **Lectura.** Al abrir la web, el JavaScript descarga ese `traffic.json` directamente del repo del perfil y pinta la sección de visitas. Si falla, usa la copia local de `data/traffic.json` si existe.
+1. **Publishing.** Whenever something lands on `main`, GitHub Pages publishes the site at `bendi.dev`. There is no build step: what's in the repo is what gets served (the [`.nojekyll`](.nojekyll) file stops GitHub from running it through Jekyll).
+2. **Games.** Each game is published from its own repo and shows up at `bendi.dev/<repo-name>` on its own. What the website says about each one (title, blurb, tags and screenshot) lives in [`data/projects.json`](data/projects.json).
+3. **Visits.** The website and the games load the **GoatCounter** script, which counts visits without cookies. Games also send a `partida/<repo>` event when a match starts.
+4. **Daily collection.** Every morning at 05:17 UTC, the GitHub Action in [serbenda/serbenda](https://github.com/serbenda/serbenda) merges the GoatCounter visits and the GitHub API views into `data/traffic.json`. GitHub only keeps 14 days of repo views, so that file is what keeps the history.
+5. **Reading.** When the page loads, the JavaScript fetches that `traffic.json` straight from the profile repo and draws the visits section. If that fails, it falls back to a local `data/traffic.json` if there is one.
 
 ---
 
-## 🕹️ Qué tiene la web
+## 🎮 What's on the website
 
-| Sección | Ancla | Qué muestra |
+| Section | Anchor | What it shows |
 |---|---|---|
-| Cabecera | — | Prompt de terminal, nombre, enlaces a LinkedIn, GitHub, Sponsor y el botón **▶ JUGAR** |
-| Sobre mí | [`#sobre-mi`](https://bendi.dev/#sobre-mi) | Trayectoria por puestos, de 2005 a hoy, y el stack |
-| Zona arcade | [`#arcade`](https://bendi.dev/#arcade) | Los juegos en estilo 8 bits, con captura, etiquetas y botón para jugar |
-| Otros proyectos | [`#otros`](https://bendi.dev/#otros) | Herramientas y proyectos que no son juegos |
-| Visitas | [`#visitas`](https://bendi.dev/#visitas) | Visitas y partidas por proyecto y por día |
-| ¿Hablamos? | [`#contacto`](https://bendi.dev/#contacto) | Contacto por LinkedIn y apoyo en GitHub Sponsors |
+| Header | — | Terminal prompt, name, links to LinkedIn, GitHub, Sponsor and the **▶ PLAY** button |
+| About me | [`#sobre-mi`](https://bendi.dev/#sobre-mi) | Career by role, from 2005 to today, and the tech stack |
+| Arcade zone | [`#arcade`](https://bendi.dev/#arcade) | The games in 8-bit style, with screenshot, tags and a play button |
+| Other projects | [`#otros`](https://bendi.dev/#otros) | Tools and projects that aren't games |
+| Visits | [`#visitas`](https://bendi.dev/#visitas) | Visits and matches per project and per day |
+| Let's talk | [`#contacto`](https://bendi.dev/#contacto) | Contact via LinkedIn and support on GitHub Sponsors |
 
-La web es **bilingüe** (español e inglés) con el botón de idioma de la cabecera. Los textos traducibles llevan el atributo `data-t="clave"` y sus traducciones están en un diccionario dentro del propio `index.html`.
+The website is **bilingual** (Spanish and English), switched with the language button in the header. Translatable text carries a `data-t="key"` attribute, and the translations live in a dictionary inside `index.html` itself.
 
 ---
 
-## 🗂️ Estructura del repo
+## 📁 Repo structure
 
 ```text
 serbenda.github.io/
-├── index.html        ← la web entera: HTML, estilos y JavaScript en un solo archivo
-├── CNAME             ← dominio propio: bendi.dev
-├── .nojekyll         ← GitHub Pages sirve los archivos tal cual, sin Jekyll
+├── index.html        ← the whole website: HTML, styles and JavaScript in a single file
+├── CNAME             ← custom domain: bendi.dev
+├── .nojekyll         ← GitHub Pages serves files as they are, without Jekyll
 ├── data/
-│   └── projects.json ← qué juegos y proyectos salen en la web, en qué orden y con qué textos
+│   └── projects.json ← which games and projects appear on the site, in what order and with what text
 ├── img/
-│   ├── bendi.svg     ← avatar pixel art
-│   └── games/        ← capturas de cada juego (.webp)
-├── fonts/            ← fuentes autoalojadas (sin Google Fonts) y sus licencias
-├── og.html           ← plantilla de og.png (1200×630), la imagen al compartir la web
-├── og.png            ← imagen para redes sociales
-└── header.html       ← plantilla del banner (1280×320) del README del perfil
+│   ├── bendi.svg     ← pixel-art avatar
+│   └── games/        ← a screenshot of each game (.webp)
+├── fonts/            ← self-hosted fonts (no Google Fonts) and their licences
+├── og.html           ← template for og.png (1200×630), the image shown when the site is shared
+├── og.png            ← social media preview image
+└── header.html       ← template for the profile README banner (1280×320)
 ```
 
 ---
 
-## 🌿 Ramas y flujo de trabajo
+## 🌿 Branches and workflow
 
-El repo tiene dos ramas, las dos protegidas:
+The repo has two branches, both protected:
 
-| Rama | Para qué | Protección |
+| Branch | Purpose | Protection |
 |---|---|---|
-| **`main`** | Producción. Lo que hay aquí es lo que se ve en bendi.dev | Solo se cambia mediante **pull request** desde `development`. Nadie puede hacer push directo (ni siquiera el administrador), forzar el historial ni borrarla |
-| **`development`** | Trabajo diario. Aquí se prueban los cambios | Se puede hacer push normal, pero no se puede forzar el historial ni borrar |
+| **`main`** | Production. What's here is what you see on bendi.dev | Only changes through a **pull request** from `development`. Nobody can push directly (not even the admin), rewrite history or delete it |
+| **`development`** | Day-to-day work. Changes are tested here | Normal pushes allowed, but no force pushes and no deletion |
 
 ```mermaid
 gitGraph
-    commit id: "web publicada"
+    commit id: "site live"
     branch development
     checkout development
-    commit id: "nuevo juego"
-    commit id: "textos"
+    commit id: "new game"
+    commit id: "copy edits"
     checkout main
-    merge development id: "PR 1 a main"
+    merge development id: "PR 1 to main"
     checkout development
-    commit id: "ajuste visitas"
+    commit id: "visits tweak"
     checkout main
-    merge development id: "PR 2 a main"
+    merge development id: "PR 2 to main"
 ```
 
-El ciclo de un cambio:
+The life of a change:
 
 ```bash
 git checkout development
 git pull
-# … cambios …
-git commit -am "Describe el cambio"
+# … make changes …
+git commit -am "Describe the change"
 git push
-# En GitHub: Pull request de development → main, revisar y hacer merge.
-# GitHub Pages publica bendi.dev en un par de minutos.
+# On GitHub: open a pull request from development → main, review and merge.
+# GitHub Pages publishes bendi.dev within a couple of minutes.
 ```
 
 ---
 
-## 💻 Probarla en local
+## 💻 Running it locally
 
-No hace falta instalar nada. Desde la carpeta del repo:
+Nothing to install. From the repo folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-y abre <http://localhost:8000>. Hace falta servirla así (y no abrir el archivo con doble clic) porque la web carga `data/projects.json` con `fetch`, y los navegadores no lo permiten desde `file://`.
+and open <http://localhost:8000>. It has to be served like this (rather than opening the file with a double click) because the page loads `data/projects.json` with `fetch`, which browsers don't allow from `file://`.
 
 ---
 
-## 🛠️ Tareas habituales
+## 🧰 Common tasks
 
 <details>
-<summary><b>Añadir un juego nuevo a la web</b></summary>
+<summary><b>Add a new game to the website</b></summary>
 
-1. Publica el juego con GitHub Pages en su propio repo. Aparecerá solo en `bendi.dev/<repo>`.
-2. Guarda una captura en `img/games/<repo>.webp`.
-3. Añade una entrada en [`data/projects.json`](data/projects.json) con `repo`, `title`, `img`, `tags` y los textos en `es` y `en`. El orden del archivo es el orden en la web.
-4. Al día siguiente, la Action del perfil también lo añade a la tabla de juegos del README de GitHub.
+1. Publish the game with GitHub Pages in its own repo. It will show up at `bendi.dev/<repo>` on its own.
+2. Save a screenshot as `img/games/<repo>.webp`.
+3. Add an entry to [`data/projects.json`](data/projects.json) with `repo`, `title`, `img`, `tags` and the `es` and `en` blurbs. The order in the file is the order on the site.
+4. The next day, the profile Action also adds it to the games table in the GitHub profile README.
 
 </details>
 
 <details>
-<summary><b>Cambiar un texto</b></summary>
+<summary><b>Change a piece of text</b></summary>
 
-Busca su clave `data-t` en `index.html` y cambia la traducción en los dos diccionarios (español e inglés) del `<script>` de `index.html`.
+Find its `data-t` key in `index.html` and change the translation in both dictionaries (Spanish and English) in the `<script>` of `index.html`.
 
 </details>
 
 <details>
-<summary><b>Regenerar la imagen para compartir o el banner del perfil</b></summary>
+<summary><b>Regenerate the share image or the profile banner</b></summary>
 
-Abre `og.html` (1200×630) o `header.html` (1280×320) en local, haz una captura a ese tamaño exacto y guárdala como `og.png` en este repo o como `assets/header.png` en el repo del perfil.
+Open `og.html` (1200×630) or `header.html` (1280×320) locally, take a screenshot at exactly that size and save it as `og.png` in this repo or as `assets/header.png` in the profile repo.
 
 </details>
 
 ---
 
-## 🔒 Privacidad
+## 🔒 Privacy
 
-- **Sin cookies** y sin rastreadores publicitarios.
-- Las visitas se cuentan con **[GoatCounter](https://www.goatcounter.com/)**, que no guarda datos personales ni usa cookies.
-- Las fuentes están **autoalojadas** en `fonts/`, así que la web no llama a Google Fonts.
+- **No cookies** and no advertising trackers.
+- Visits are counted with **[GoatCounter](https://www.goatcounter.com/)**, which stores no personal data and uses no cookies.
+- Fonts are **self-hosted** in `fonts/`, so the site never calls Google Fonts.
 
 ---
 
-## 🔤 Fuentes y licencias
+## 🔤 Fonts and licences
 
-Las fuentes de `fonts/` tienen licencia **SIL Open Font License**; cada una incluye su archivo `OFL-*.txt`:
+The fonts in `fonts/` are licensed under the **SIL Open Font License**; each one ships with its `OFL-*.txt` file:
 
 Press Start 2P · VT323 · JetBrains Mono · IBM Plex Sans · Atkinson Hyperlegible · Bricolage Grotesque
 
@@ -230,6 +230,6 @@ Press Start 2P · VT323 · JetBrains Mono · IBM Plex Sans · Atkinson Hyperlegi
 
 <div align="center">
 
-<sub>Hecho a mano por <a href="https://bendi.dev">Bendi</a> · Si te gustan los juegos, puedes apoyarlos en <a href="https://github.com/sponsors/serbenda">GitHub Sponsors</a> ❤</sub>
+<sub>Handmade by <a href="https://bendi.dev">Bendi</a> · If you enjoy the games, you can support them on <a href="https://github.com/sponsors/serbenda">GitHub Sponsors</a> ❤</sub>
 
 </div>
