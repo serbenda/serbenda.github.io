@@ -244,3 +244,11 @@ Press Start 2P · VT323 · JetBrains Mono · IBM Plex Sans · Atkinson Hyperlegi
 <sub>Handmade by <a href="https://bendi.dev">Bendi</a> · If you enjoy the games, you can support them on <a href="https://github.com/sponsors/serbenda">GitHub Sponsors</a> ❤</sub>
 
 </div>
+
+## Probar el panel de visitas con datos de ejemplo
+
+```bash
+node tools/simular-visitas.mjs --en-vivo
+```
+
+Genera 60 días de visitas y partidas inventadas en `data/traffic.demo.json` (no se sube: está en `.gitignore`), arranca la web en tu ordenador y, con `--en-vivo`, sigue sumando visitas y partidas cada 3 segundos. Ábrela en <http://localhost:8080/?demo#visitas>: sale una banda amarilla avisando de que son datos de ejemplo. No se envía nada a GoatCounter ni a GitHub, y en bendi.dev el modo `?demo` no hace nada. Opciones: `--dias 120`, `--semilla 3`, `--puerto 9000`, `--sin-servidor`.
