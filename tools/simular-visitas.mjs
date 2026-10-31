@@ -95,6 +95,27 @@ for (const repo of repos) {
   });
   datos.repos[repo] = e;
 }
+// Lo que da la API de GoatCounter con la clave opcional: móvil u ordenador, países y procedencia
+const PAISES = ['Spain', 'Mexico', 'Argentina', 'United States', 'Colombia', 'Germany', 'France', 'United Kingdom', 'Chile', 'Portugal'];
+const WEBS = ['linkedin.com', 'Google', 'github.com', 'bendi.dev', 't.co', 'DuckDuckGo', '(unknown)'];
+const gc = (n, movil) => ({
+  devices: { phone: Math.round(n * movil), computer: Math.round(n * (1 - movil)) },
+  referrers: WEBS.slice(0, 5).map((name, i) => ({ name, count: Math.max(1, Math.round(n * 0.35 / (i + 1.4))) })),
+});
+for (const repo of repos) {
+  const e = datos.repos[repo];
+  if (!e.pages) continue;
+  const ultimos30 = (e.pages_hits[dias.at(-1)] ?? 0) - (e.pages_hits[dias.at(-31)] ?? 0);
+  e.gc = gc(ultimos30, juegos.includes(repo) ? 0.55 + azar() * 0.25 : 0.35 + azar() * 0.2);
+}
+const ultimos30 = Object.values(datos.repos).reduce((s, e) => s + (e.gc ? e.gc.devices.phone + e.gc.devices.computer : 0), 0);
+datos.gc = {
+  days: 30, start: dias.at(-31) ?? dias[0], end: dias.at(-1),
+  ...gc(ultimos30, 0.5),
+  devices: Object.values(datos.repos).reduce((t, e) => (e.gc ? { phone: t.phone + e.gc.devices.phone, computer: t.computer + e.gc.devices.computer } : t), { phone: 0, computer: 0 }),
+  countries: PAISES.map((name, i) => ({ name, count: Math.max(1, Math.round(ultimos30 * (i ? 0.25 : 0.6) / (i || 1) ** 1.2)) })),
+};
+
 const recalcularTotal = () => {
   let total = 0;
   dias.forEach((dia, i) => {

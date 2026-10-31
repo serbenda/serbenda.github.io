@@ -134,10 +134,21 @@ section { padding: 72px 0; border-top: 1px solid var(--line); }
 /* visits dashboard */
 .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
 select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font: inherit; font-size: 16px; }
-.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 32px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 32px; }
 .kpi { background: var(--panel); padding: 20px; }
 .kpi strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 750; line-height: 1.1; }
 .kpi span { color: var(--muted); font-size: 15px; }
+.kpi em { display: block; font-style: normal; font-size: 13px; color: var(--text); margin-top: 4px; }
+.c-web { color: var(--violet); }
+.gcbox h3 small { font: 400 14px "Atkinson Hyperlegible", sans-serif; color: var(--muted); margin-left: 8px; }
+.devs { margin: 8px 0 20px; }
+.devbar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--line); }
+.devbar .ph { background: var(--plays); } .devbar .pc { background: var(--repo); }
+.devs p { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 10px; color: var(--muted); font-size: 15px; }
+.devs b { color: var(--text); }
+.gcgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 8px 32px; }
+.gcgrid h4 { font: 700 15px "Atkinson Hyperlegible", sans-serif; color: var(--muted); margin: 0 0 4px; }
+.refs.one { grid-template-columns: 1fr; }
 .chart { margin-top: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; overflow-x: auto; }
 .chart svg { display: block; width: 100%; height: auto; }
 .legend { display: flex; gap: 20px; font-size: 15px; color: var(--muted); margin-bottom: 12px; flex-wrap: wrap; }
@@ -443,16 +454,17 @@ section.chain > .wrap { position: relative; }
   .hs td:nth-child(2) { white-space: normal; line-height: 1.6; }
   .box { padding: 16px 12px; }
   #dash table th:nth-child(3), #dash table td:nth-child(3),
-  #dash table th:nth-child(6), #dash table td:nth-child(6) { display: none; }
+  #dash table th:nth-child(7), #dash table td:nth-child(7) { display: none; }
   #dash table th, #dash table td { padding: 8px 6px; }
   #dash table td:first-child { white-space: normal; }
   .kpi { padding: 16px; }
+  .kpis .kpi:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .contact .ctas, .contact .cta { width: 100%; text-align: center; }
 }
 @media (max-width: 420px) {
   .links { gap: 10px; }
   .links a { padding: 8px 12px; }
-  #dash table th:nth-child(5), #dash table td:nth-child(5) { display: none; }
+  #dash table th:nth-child(2), #dash table td:nth-child(2) { display: none; }
 }
 </style>
 </head>
@@ -672,7 +684,7 @@ section.chain > .wrap { position: relative; }
       <div class="head">
         <div>
           <h2 data-t="dash.title">Visitas</h2>
-          <p class="lead" data-t="dash.lead">Quién pasa por cada repositorio en GitHub y cuántos juegan en GitHub Pages. Se actualiza solo cada mañana.</p>
+          <p class="lead" data-t="dash.lead">Quién pasa por el código en GitHub, quién visita bendi.dev, bolsillo y hucha, y cuántos se ponen a jugar. Se actualiza solo cada mañana.</p>
         </div>
         <label><span data-t="dash.filter" style="display:block;color:var(--muted);font-size:14px;margin-bottom:4px">Proyecto</span><select id="filter"></select></label>
       </div>
@@ -718,12 +730,14 @@ const T = {
     "hs.rank": "POS", "hs.name": "JUEGO", "hs.score": "PUNTOS", "hs.empty": "SIN RÉCORDS TODAVÍA",
     "tools.title": "Otros proyectos",
     "dash.title": "Visitas", "dash.filter": "Proyecto", "all": "Todos los proyectos",
-    "dash.lead": "Quién pasa por cada repositorio en GitHub y cuántos juegan en GitHub Pages. Se actualiza solo cada mañana.",
+    "dash.lead": "Quién pasa por el código en GitHub, quién visita bendi.dev, bolsillo y hucha, y cuántos se ponen a jugar. Se actualiza solo cada mañana.",
     "k.repo": "vistas en GitHub", "k.pages": "visitas a los juegos", "k.plays": "partidas jugadas", "k.clones": "clonados",
-    "l.repo": "Vistas en GitHub por día", "l.pages": "Visitas a los juegos por día",
+    "l.repo": "Vistas en GitHub por día", "l.pages": "Visitas por día", "l.plays": "Partidas por día",
+    "k.webs": "visitas a las webs", "k.rate": "de las visitas juegan", "k.week": "visitas esta semana", "k.vsweek": "frente a la anterior", "k.new": "primera semana",
+    "t.rate": "% juegan", "g.title": "Quién visita", "g.last": "últimos", "g.days": "días", "g.phone": "Móvil", "g.computer": "Ordenador", "g.refs": "De dónde llegan a la web", "g.countries": "Países",
     "t.title": "Por proyecto", "t.name": "Proyecto", "t.14": "Vistas 14 días", "t.total": "Vistas totales", "t.pages": "Visitas", "t.plays": "Partidas", "t.trend": "Últimos 30 días",
     "t.site": "Esta web (bendi.dev)", "t.profile": "Perfil de GitHub",
-    "r.title": "De dónde llegan", "r.none": "Todavía no hay referencias.",
+    "r.title": "De dónde llegan al código en GitHub", "r.none": "Todavía no hay referencias.",
     "note": "GitHub solo guarda 14 días de tráfico, así que el histórico empieza el día que se activó la recogida y crece a partir de ahí. Las visitas y partidas de los juegos las cuenta GoatCounter, sin cookies.",
     "since": "desde",
     "empty.t": "Aún no hay datos de visitas", "empty.p": "La recogida diaria todavía no se ha ejecutado. Para ponerla en marcha:",
@@ -753,12 +767,14 @@ const T = {
     "hs.rank": "RANK", "hs.name": "GAME", "hs.score": "SCORE", "hs.empty": "NO HIGH SCORES YET",
     "tools.title": "Other projects",
     "dash.title": "Visits", "dash.filter": "Project", "all": "All projects",
-    "dash.lead": "Who stops by each repository on GitHub and how many play on GitHub Pages. Updated every morning.",
+    "dash.lead": "Who looks at the code on GitHub, who visits bendi.dev, bolsillo and hucha, and how many start playing. Updated every morning.",
     "k.repo": "views on GitHub", "k.pages": "game visits", "k.plays": "games played", "k.clones": "clones",
-    "l.repo": "GitHub views per day", "l.pages": "Game visits per day",
+    "l.repo": "GitHub views per day", "l.pages": "Visits per day", "l.plays": "Plays per day",
+    "k.webs": "site visits", "k.rate": "of visitors play", "k.week": "visits this week", "k.vsweek": "vs last week", "k.new": "first week",
+    "t.rate": "% play", "g.title": "Who visits", "g.last": "last", "g.days": "days", "g.phone": "Phone", "g.computer": "Computer", "g.refs": "Where site visitors come from", "g.countries": "Countries",
     "t.title": "By project", "t.name": "Project", "t.14": "Views, 14 days", "t.total": "Total views", "t.pages": "Visits", "t.plays": "Played", "t.trend": "Last 30 days",
     "t.site": "This site (bendi.dev)", "t.profile": "GitHub profile",
-    "r.title": "Where they come from", "r.none": "No referrers yet.",
+    "r.title": "Where GitHub visitors come from", "r.none": "No referrers yet.",
     "note": "GitHub only keeps 14 days of traffic, so the history starts the day collection was switched on and grows from there. Game visits and plays are counted by GoatCounter, without cookies.",
     "since": "since",
     "empty.t": "No visit data yet", "empty.p": "The daily collection hasn't run yet. To start it:",
@@ -881,10 +897,23 @@ const sumClones = r => Object.values(r.clones || {}).reduce((a, v) => a + v[0], 
 const lastOf = o => { const k = Object.keys(o || {}).sort(); return k.length ? o[k[k.length - 1]] : 0; };
 const lastHits = r => lastOf(r.pages_hits);
 const lastPlays = r => lastOf(r.plays);
-function dailyHits(r) {   // Pages counters are cumulative snapshots
-  const k = Object.keys(r.pages_hits || {}).sort(), out = {};
-  for (let i = 1; i < k.length; i++) out[k[i]] = Math.max(0, r.pages_hits[k[i]] - r.pages_hits[k[i - 1]]);
+/* GoatCounter totals are cumulative snapshots: each day is the difference with the day before.
+   The first snapshot has no day before, so it has no daily value (not zero). */
+function dailyOf(o) {
+  const k = Object.keys(o || {}).sort(), out = {};
+  for (let i = 1; i < k.length; i++) out[k[i]] = Math.max(0, o[k[i]] - o[k[i - 1]]);
   return out;
+}
+const dailyHits = r => dailyOf(r.pages_hits);
+const dailyPlays = r => dailyOf(r.plays);
+const isGame = name => PROJ.games.some(g => g.repo === name);
+const pct = n => new Intl.NumberFormat(loc(), { style: "percent", maximumFractionDigits: 0 }).format(n);
+/* visits in the last 7 days and in the 7 before, from the daily differences */
+function weekly(rs) {
+  const d14 = days(14), hb = rs.map(dailyHits);
+  const sum = ds => hb.reduce((a, h) => a + ds.reduce((b, d) => b + (h[d] || 0), 0), 0);
+  const known = d => hb.some(h => d in h);
+  return { now: sum(d14.slice(7)), before: sum(d14.slice(0, 7)), full: d14.slice(0, 7).every(known) };
 }
 const repos = () => Object.entries(DATA.repos || {}).map(([name, r]) => ({ name, ...r }));
 const scope = () => selected ? repos().filter(r => r.name === selected) : repos();
@@ -952,23 +981,32 @@ function range(rs) {
 function chartW() { const el = document.getElementById("dash"); return Math.round(Math.min(1000, Math.max(280, (el ? el.clientWidth : 1000) - 42))); }
 function chart(rs) {
   const ds = range(rs), hb = rs.map(dailyHits);
+  const pb = rs.map(dailyPlays), hasPlays = pb.some(p => Object.values(p).some(v => v));
   const repo = ds.map(d => rs.reduce((a, r) => a + ((r.views || {})[d]?.[0] || 0), 0));
-  const pages = ds.map(d => hb.reduce((a, h) => a + (h[d] || 0), 0));
+  const pages = ds.map(d => hb.some(h => d in h) ? hb.reduce((a, h) => a + (h[d] || 0), 0) : null);
+  const plays = ds.map(d => pb.some(p => d in p) ? pb.reduce((a, p) => a + (p[d] || 0), 0) : null);
   const W = chartW(), H = Math.round(Math.min(260, Math.max(170, W * 0.55))), L = 40, R = 10, Tp = 16, B = 28;
-  const max = Math.max(4, ...repo, ...pages), step = (W - L - R) / Math.max(1, ds.length - 1);
+  const max = Math.max(4, ...repo, ...pages.filter(v => v != null)), step = (W - L - R) / Math.max(1, ds.length - 1);
   const x = i => L + i * step, y = v => Tp + (H - Tp - B) * (1 - v / max);
-  const line = vs => vs.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
-  const area = vs => `${line(vs)}L${x(vs.length - 1)},${y(0)}L${x(0)},${y(0)}Z`;
+  /* lines skip days without a value instead of dropping to zero */
+  const line = vs => vs.map((v, i) => v == null ? "" : `${i && vs[i - 1] != null ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const area = vs => {
+    const f = vs.findIndex(v => v != null); if (f < 0) return "";
+    let l = vs.length - 1; while (vs[l] == null) l--;
+    const pts = vs.map((v, i) => [i, v]).slice(f, l + 1).map(([i, v]) => `${x(i).toFixed(1)},${y(v ?? 0).toFixed(1)}`);
+    return `M${pts.join("L")}L${x(l)},${y(0)}L${x(f)},${y(0)}Z`;
+  };
   const lbl = W < 480 ? [0, ds.length - 1] : [0, Math.floor(ds.length / 2), ds.length - 1];
   const fmtD = d => new Date(d + "T12:00:00").toLocaleDateString(loc(), { day: "numeric", month: "short" });
   return `
   <div class="chart">
-    <div class="legend"><span><i class="dot" style="background:var(--repo)"></i>${t("l.repo")}</span><span><i class="dot" style="background:var(--pages)"></i>${t("l.pages")}</span></div>
+    <div class="legend"><span><i class="dot" style="background:var(--repo)"></i>${t("l.repo")}</span><span><i class="dot" style="background:var(--pages)"></i>${t("l.pages")}</span>${hasPlays ? `<span><i class="dot" style="background:var(--plays)"></i>${t("l.plays")}</span>` : ""}</div>
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t("l.repo")}, ${t("l.pages")}">
       ${[0, Math.round(max / 2), max].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="#242c48"/><text class="axis" x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${nf(v)}</text>`).join("")}
       ${lbl.map(i => `<text class="axis" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === ds.length - 1 ? "end" : "middle"}">${fmtD(ds[i])}</text>`).join("")}
       <path d="${area(pages)}" fill="#36d399" fill-opacity=".12"/><path d="${line(pages)}" fill="none" stroke="#36d399" stroke-width="2.5" stroke-linejoin="round"/>
       <path d="${area(repo)}" fill="#38bdf8" fill-opacity=".12"/><path d="${line(repo)}" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round"/>
+      ${hasPlays ? `<path d="${line(plays)}" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-linejoin="round"/>` : ""}
       <line id="hx" y1="${Tp}" y2="${H - B}" stroke="#93a0b8" stroke-dasharray="3 3" visibility="hidden"/>
       <text id="ht" class="tip" y="${Tp + 2}" visibility="hidden"></text>
       <rect id="hz" x="${L}" y="0" width="${W - L - R}" height="${H}" fill="transparent"/>
@@ -984,17 +1022,19 @@ function hookChart(rs) {
     const lx = p.matrixTransform(svg.getScreenCTM().inverse()).x;
     const i = Math.max(0, Math.min(ds.length - 1, Math.round((lx - L) / step))), d = ds[i], xv = L + i * step;
     const rv = rs.reduce((a, r) => a + ((r.views || {})[d]?.[0] || 0), 0), pv = hb.reduce((a, h) => a + (h[d] || 0), 0);
+    const yv = rs.map(dailyPlays).reduce((a, h) => a + (h[d] || 0), 0);
     hx.setAttribute("x1", xv); hx.setAttribute("x2", xv); hx.setAttribute("visibility", "visible");
-    ht.textContent = `${new Date(d + "T12:00:00").toLocaleDateString(loc(), { day: "numeric", month: "short" })} · GitHub ${nf(rv)} · Pages ${nf(pv)}`;
+    ht.textContent = `${new Date(d + "T12:00:00").toLocaleDateString(loc(), { day: "numeric", month: "short" })} · GitHub ${nf(rv)} · ${t("visits")} ${nf(pv)}${yv ? ` · ${t("plays")} ${nf(yv)}` : ""}`;
     const right = xv > W * 0.6;
     ht.setAttribute("x", right ? xv - 8 : xv + 8); ht.setAttribute("text-anchor", right ? "end" : "start"); ht.setAttribute("visibility", "visible");
   });
   hz.addEventListener("pointerleave", () => { hx.setAttribute("visibility", "hidden"); ht.setAttribute("visibility", "hidden"); });
 }
 function spark(r) {
-  const vs = days(30).map(d => (r.views || {})[d]?.[0] || 0), max = Math.max(1, ...vs);
+  const hits = dailyHits(r), web = r.pages && Object.values(hits).some(v => v);
+  const vs = days(30).map(d => web ? hits[d] || 0 : (r.views || {})[d]?.[0] || 0), max = Math.max(1, ...vs);
   const pts = vs.map((v, i) => `${(i * 100 / 29).toFixed(1)},${(22 - 20 * v / max).toFixed(1)}`).join(" ");
-  return `<svg class="spark" width="72" height="22" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="#38bdf8" stroke-width="1.5"/></svg>`;
+  return `<svg class="spark" width="72" height="22" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${web ? "#36d399" : "#38bdf8"}" stroke-width="1.5"/></svg>`;
 }
 
 /* ---------- visits dashboard ---------- */
@@ -1010,32 +1050,57 @@ function renderDash() {
   const rows = [...all].sort((a, b) => (sumViews(b) + lastHits(b)) - (sumViews(a) + lastHits(a)));
   const refs = {};
   rs.forEach(r => (r.referrers || []).forEach(x => { refs[x.referrer] = (refs[x.referrer] || 0) + x.count; }));
-  const refList = Object.entries(refs).sort((a, b) => b[1] - a[1]).slice(0, 8), refMax = refList[0]?.[1] || 1;
-  const kpi = (cls, n, label) => `<div class="kpi"><strong class="${cls}">${nf(n)}</strong><span>${label}</span></div>`;
+  const refList = Object.entries(refs).sort((a, b) => b[1] - a[1]).slice(0, 8);
+  const bars = (list, cls = "") => { const m = list[0]?.[1] || 1;
+    return `<ul class="refs ${cls}">${list.map(([k, v]) => `<li><span>${esc(k)}</span><span>${nf(v)}</span><span class="b"><i style="width:${(100 * v / m).toFixed(0)}%"></i></span></li>`).join("")}</ul>`; };
+  const kpi = (cls, n, label, sub = "") => `<div class="kpi"><strong class="${cls}">${n}</strong><span>${label}</span>${sub ? `<em>${sub}</em>` : ""}</div>`;
+  /* split visits: games vs the rest of the sites (bendi.dev, bolsillo, hucha) */
+  const games = rs.filter(r => isGame(r.name)), webs = rs.filter(r => !isGame(r.name) && r.pages);
+  const gVisits = games.reduce((a, r) => a + lastHits(r), 0), wVisits = webs.reduce((a, r) => a + lastHits(r), 0);
+  const plays = rs.reduce((a, r) => a + lastPlays(r), 0);
+  const wk = weekly(rs), growth = wk.full && wk.before ? wk.now / wk.before - 1 : null;
+  const growthTxt = growth == null ? t("k.new") : `${growth >= 0 ? "▲" : "▼"} ${pct(Math.abs(growth))} ${t("k.vsweek")}`;
+  /* GoatCounter details (only with the optional API key): the selected project, or the whole site */
+  const gc = selected ? (DATA.repos[selected] || {}).gc : DATA.gc;
+  const dev = gc && gc.devices, devTotal = dev ? (dev.phone || 0) + (dev.computer || 0) : 0;
+  const gcRefs = (gc && gc.referrers || []).map(x => [x.name, x.count]);
+  const countries = (!selected && DATA.gc && DATA.gc.countries || []).map(x => [x.name, x.count]);
   el.innerHTML = demoBanner + `
     <div class="kpis">
-      ${kpi("c-repo", rs.reduce((a, r) => a + sumViews(r), 0), t("k.repo"))}
-      ${kpi("c-pages", rs.reduce((a, r) => a + lastHits(r), 0), t("k.pages"))}
-      ${kpi("c-plays", rs.reduce((a, r) => a + lastPlays(r), 0), t("k.plays"))}
-      ${kpi("", rs.reduce((a, r) => a + sumClones(r), 0), t("k.clones"))}
+      ${kpi("c-repo", nf(rs.reduce((a, r) => a + sumViews(r), 0)), t("k.repo"))}
+      ${games.length ? kpi("c-pages", nf(gVisits), t("k.pages")) : ""}
+      ${webs.length ? kpi("c-web", nf(wVisits), t("k.webs")) : ""}
+      ${games.length ? kpi("c-plays", nf(plays), t("k.plays"), gVisits && plays ? `${pct(plays / gVisits)} ${t("k.rate")}` : "") : ""}
+      ${games.length || webs.length ? kpi("", nf(wk.now), t("k.week"), growthTxt) : ""}
     </div>
     ${chart(rs)}
     <div class="box">
       <h3>${t("t.title")}</h3>
       <table>
-        <thead><tr><th>${t("t.name")}</th><th>${t("t.14")}</th><th>${t("t.total")}</th><th>${t("t.pages")}</th><th>${t("t.plays")}</th><th>${t("t.trend")}</th></tr></thead>
+        <thead><tr><th>${t("t.name")}</th><th>${t("t.14")}</th><th>${t("t.total")}</th><th>${t("t.pages")}</th><th>${t("t.plays")}</th><th>${t("t.rate")}</th><th>${t("t.trend")}</th></tr></thead>
         <tbody>${rows.map(r => `
           <tr data-name="${esc(r.name)}" class="${r.name === selected ? "on" : ""}" tabindex="0">
             <td>${esc(titleOf(r.name))}</td><td>${nf(sumViews(r, from14))}</td><td>${nf(sumViews(r))}</td>
-            <td>${r.pages ? nf(lastHits(r)) : "–"}</td><td>${lastPlays(r) ? nf(lastPlays(r)) : "–"}</td><td>${spark(r)}</td>
+            <td>${r.pages && lastHits(r) ? nf(lastHits(r)) : "–"}</td><td>${lastPlays(r) ? nf(lastPlays(r)) : "–"}</td>
+            <td>${lastPlays(r) && lastHits(r) ? pct(lastPlays(r) / lastHits(r)) : "–"}</td><td>${spark(r)}</td>
           </tr>`).join("")}</tbody>
       </table>
     </div>
+    ${devTotal || gcRefs.length || countries.length ? `<div class="box gcbox">
+      <h3>${t("g.title")} <small>${t("g.last")} ${gc.days || DATA.gc?.days || 30} ${t("g.days")}</small></h3>
+      ${devTotal ? `<div class="devs"><div class="devbar" role="img" aria-label="${t("g.phone")} ${pct(dev.phone / devTotal)}, ${t("g.computer")} ${pct(dev.computer / devTotal)}">
+          <i class="ph" style="width:${(100 * dev.phone / devTotal).toFixed(1)}%"></i><i class="pc" style="width:${(100 * dev.computer / devTotal).toFixed(1)}%"></i></div>
+        <p><span><i class="dot" style="background:var(--plays)"></i>📱 ${t("g.phone")} <b>${pct(dev.phone / devTotal)}</b></span><span><i class="dot" style="background:var(--repo)"></i>💻 ${t("g.computer")} <b>${pct(dev.computer / devTotal)}</b></span></p></div>` : ""}
+      <div class="gcgrid">
+        ${gcRefs.length ? `<div><h4>${t("g.refs")}</h4>${bars(gcRefs.slice(0, 8), "one")}</div>` : ""}
+        ${countries.length ? `<div><h4>${t("g.countries")}</h4>${bars(countries.slice(0, 8), "one")}</div>` : ""}
+      </div>
+    </div>` : ""}
     <div class="box">
       <h3>${t("r.title")}</h3>
-      ${refList.length ? `<ul class="refs">${refList.map(([k, v]) => `<li><span>${esc(k)}</span><span>${nf(v)}</span><span class="b"><i style="width:${(100 * v / refMax).toFixed(0)}%"></i></span></li>`).join("")}</ul>` : `<p class="lead">${t("r.none")}</p>`}
+      ${refList.length ? bars(refList) : `<p class="lead">${t("r.none")}</p>`}
     </div>
-    <p class="note">${t("note")}${first ? ` (${t("since")} ${first})` : ""}</p>`;
+    <p class="note">${t("note")}${first ? ` (${t("since")} ${new Date(first + "T12:00:00").toLocaleDateString(loc(), { day: "numeric", month: "long", year: "numeric" })})` : ""}</p>`;
   hookChart(rs);
   el.querySelectorAll("tbody tr").forEach(tr => {
     const pick = () => { selected = selected === tr.dataset.name ? "" : tr.dataset.name; document.getElementById("filter").value = selected; renderDash(); };
