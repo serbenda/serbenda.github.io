@@ -246,6 +246,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--m
 .c-repo { color: var(--repo); }
 .c-pages { color: var(--pages); }
 .c-plays { color: var(--plays); }
+.demo-banner { margin: 0 0 16px; padding: 10px 14px; border-radius: 10px; background: #fbbf24; color: #1f1300; font: 700 14px/1.4 "JetBrains Mono", ui-monospace, monospace; }
 .arcade .c-repo { color: var(--a-blue); }
 .arcade .c-pages { color: var(--a-green); }
 .arcade .c-plays { color: var(--a-pink); }
@@ -713,7 +714,7 @@ const T = {
     "a.title": "ZONA ARCADE", "a.coin": "INSERTA MONEDA", "a.select": "SELECCIONA JUEGO", "a.hs": "TABLA DE RÉCORDS",
     "a.dedic": "🕹️ Estos juegos tienen dos testers oficiales, y son las mejores jugadoras que conozco. Todo esto es para vosotras. 💛", "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
     "play": "JUGAR", "code": "CÓDIGO", "soon": "PRÓXIMAMENTE",
-    "views": "vistas", "visits": "visitas", "plays": "partidas",
+    "views": "vistas", "visits": "visitas", "plays": "partidas", "demo": "DATOS DE EJEMPLO, generados en tu ordenador con tools/simular-visitas.mjs. No son visitas reales.",
     "hs.rank": "POS", "hs.name": "JUEGO", "hs.score": "PUNTOS", "hs.empty": "SIN RÉCORDS TODAVÍA",
     "tools.title": "Otros proyectos",
     "dash.title": "Visitas", "dash.filter": "Proyecto", "all": "Todos los proyectos",
@@ -748,7 +749,7 @@ const T = {
     "a.title": "ARCADE ZONE", "a.coin": "INSERT COIN", "a.select": "SELECT GAME", "a.hs": "HIGH SCORES",
     "a.dedic": "🕹️ These games have two official testers, and they're the best players I know. All of this is for you. 💛", "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
     "play": "PLAY", "code": "CODE", "soon": "COMING SOON",
-    "views": "views", "visits": "visits", "plays": "played",
+    "views": "views", "visits": "visits", "plays": "played", "demo": "SAMPLE DATA, generated on your computer by tools/simular-visitas.mjs. These are not real visits.",
     "hs.rank": "RANK", "hs.name": "GAME", "hs.score": "SCORE", "hs.empty": "NO HIGH SCORES YET",
     "tools.title": "Other projects",
     "dash.title": "Visits", "dash.filter": "Project", "all": "All projects",
@@ -1004,13 +1005,14 @@ function renderDash() {
     el.innerHTML = `<div class="empty"><h3>${t("empty.t")}</h3><p class="lead">${t("empty.p")}</p><ol><li>${t("empty.1")}</li><li>${t("empty.2")}</li><li>${t("empty.3")}</li></ol></div>`;
     return;
   }
+  const demoBanner = DEMO ? `<p class="demo-banner">🧪 ${t("demo")}</p>` : "";
   const rs = scope(), from14 = days(14)[0], first = all.flatMap(r => Object.keys(r.views || {})).sort()[0];
   const rows = [...all].sort((a, b) => (sumViews(b) + lastHits(b)) - (sumViews(a) + lastHits(a)));
   const refs = {};
   rs.forEach(r => (r.referrers || []).forEach(x => { refs[x.referrer] = (refs[x.referrer] || 0) + x.count; }));
   const refList = Object.entries(refs).sort((a, b) => b[1] - a[1]).slice(0, 8), refMax = refList[0]?.[1] || 1;
   const kpi = (cls, n, label) => `<div class="kpi"><strong class="${cls}">${nf(n)}</strong><span>${label}</span></div>`;
-  el.innerHTML = `
+  el.innerHTML = demoBanner + `
     <div class="kpis">
       ${kpi("c-repo", rs.reduce((a, r) => a + sumViews(r), 0), t("k.repo"))}
       ${kpi("c-pages", rs.reduce((a, r) => a + lastHits(r), 0), t("k.pages"))}
@@ -1243,10 +1245,19 @@ const dashIO = "IntersectionObserver" in window ? new IntersectionObserver(es =>
 if (dashIO) dashIO.observe(document.getElementById("visitas")); else { dashSeen = true; renderDash(); }
 /* Visits are collected every morning by the workflow in github.com/serbenda/serbenda */
 const TRAFFIC_URL = "https://raw.githubusercontent.com/serbenda/serbenda/main/data/traffic.json";
-Promise.all([getJSON(TRAFFIC_URL).then(d => d || getJSON("data/traffic.json")), getJSON("data/projects.json")]).then(([d, p]) => {
+/* Demo: only on your own computer (localhost) with ?demo, data made by tools/simular-visitas.mjs */
+const DEMO = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) && new URLSearchParams(location.search).has("demo");
+const loadTraffic = () => DEMO ? getJSON("data/traffic.demo.json") : getJSON(TRAFFIC_URL).then(d => d || getJSON("data/traffic.json"));
+Promise.all([loadTraffic(), getJSON("data/projects.json")]).then(([d, p]) => {
   if (d) DATA = { repos: {}, ...d };
   if (p) PROJ = { games: [], tools: [], ...p };
   render();
+  if (DEMO) setInterval(() => loadTraffic().then(d => {
+    if (!d) return;
+    DATA = { repos: {}, ...d };
+    renderArcade();
+    if (dashSeen) renderDash();
+  }), 3000);
 });
 </script>
 <!-- Visits to this page, counted by GoatCounter without cookies -->
