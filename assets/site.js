@@ -31,7 +31,7 @@ const T = {
     "k.repo": "vistas en GitHub", "k.pages": "visitas a los juegos", "k.plays": "partidas jugadas", "k.clones": "clonados",
     "l.repo": "Vistas en GitHub por día", "l.pages": "Visitas por día", "l.plays": "Partidas por día",
     "k.webs": "visitas a las webs", "k.rate": "de las visitas juegan", "k.week": "visitas esta semana", "k.vsweek": "frente a la anterior", "k.new": "primera semana",
-    "t.rate": "% juegan", "g.title": "Quién visita", "g.last": "últimos", "g.days": "días", "g.phone": "Móvil", "g.computer": "Ordenador", "g.refs": "De dónde llegan a la web", "g.countries": "Países",
+    "t.rate": "% juegan", "g.title": "Quién visita", "g.last": "últimos", "g.days": "días", "g.phone": "Móvil", "g.computer": "Ordenador", "g.refs": "De dónde llegan a la web", "g.direct": "Directas (sin origen)", "g.countries": "Países",
     "t.title": "Por proyecto", "t.name": "Proyecto", "t.14": "Vistas 14 días", "t.total": "Vistas totales", "t.pages": "Visitas", "t.plays": "Partidas", "t.trend": "Últimos 30 días",
     "t.site": "Esta web (bendi.dev)", "t.profile": "Perfil de GitHub",
     "r.title": "De dónde llegan al código en GitHub", "r.none": "Todavía no hay referencias.",
@@ -71,7 +71,7 @@ const T = {
     "k.repo": "views on GitHub", "k.pages": "game visits", "k.plays": "games played", "k.clones": "clones",
     "l.repo": "GitHub views per day", "l.pages": "Visits per day", "l.plays": "Plays per day",
     "k.webs": "site visits", "k.rate": "of visitors play", "k.week": "visits this week", "k.vsweek": "vs last week", "k.new": "first week",
-    "t.rate": "% play", "g.title": "Who visits", "g.last": "last", "g.days": "days", "g.phone": "Phone", "g.computer": "Computer", "g.refs": "Where site visitors come from", "g.countries": "Countries",
+    "t.rate": "% play", "g.title": "Who visits", "g.last": "last", "g.days": "days", "g.phone": "Phone", "g.computer": "Computer", "g.refs": "Where site visitors come from", "g.direct": "Direct (no referrer)", "g.countries": "Countries",
     "t.title": "By project", "t.name": "Project", "t.14": "Views, 14 days", "t.total": "Total views", "t.pages": "Visits", "t.plays": "Played", "t.trend": "Last 30 days",
     "t.site": "This site (bendi.dev)", "t.profile": "GitHub profile",
     "r.title": "Where GitHub visitors come from", "r.none": "No referrers yet.",
@@ -362,6 +362,20 @@ function spark(r) {
 }
 
 /* ---------- visits dashboard ---------- */
+/* Where visitors come from, as people would say it: no referrer is a direct visit, the LinkedIn
+   app, site and short links are one LinkedIn, and moving between my own pages is not an origin */
+const REF_GROUPS = [[/(^|\.)linkedin\.com|^com\.linkedin\.|^lnkd\.in/, "LinkedIn"], [/(^|\.)google\.|^com\.google\./i, "Google"],
+  [/(^|\.)github\.com/, "GitHub"], [/^t\.co$|(^|\.)(twitter|x)\.com/, "X / Twitter"], [/whatsapp/i, "WhatsApp"], [/duckduckgo/i, "DuckDuckGo"], [/bing\.com/i, "Bing"]];
+function siteRefs(list) {
+  const out = {};
+  (list || []).forEach(({ name, count }) => {
+    const host = String(name || "").replace(/^https?:\/\//, "").split("/")[0];
+    if (/(^|\.)bendi\.dev$|^serbenda\.github\.io$/.test(host)) return;
+    const label = !name || name === "(unknown)" ? t("g.direct") : (REF_GROUPS.find(([re]) => re.test(host)) || [, host])[1];
+    out[label] = (out[label] || 0) + count;
+  });
+  return Object.entries(out).sort((a, b) => b[1] - a[1]);
+}
 function renderDash() {
   const el = document.getElementById("dash"); if (!el) return;
   const all = repos();
@@ -388,7 +402,7 @@ function renderDash() {
   /* GoatCounter details (only with the optional API key): the selected project, or the whole site */
   const gc = selected ? (DATA.repos[selected] || {}).gc : DATA.gc;
   const dev = gc && gc.devices, devTotal = dev ? (dev.phone || 0) + (dev.computer || 0) : 0;
-  const gcRefs = (gc && gc.referrers || []).map(x => [x.name, x.count]);
+  const gcRefs = siteRefs(gc && gc.referrers);
   const countries = (!selected && DATA.gc && DATA.gc.countries || []).map(x => [x.name, x.count]);
   el.innerHTML = demoBanner + `
     <div class="kpis">
