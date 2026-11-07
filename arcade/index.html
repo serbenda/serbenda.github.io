@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zona arcade · Bendi</title>
+<meta name="description" content="Juegos de 8 bits hechos en casa: se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.">
+<link rel="icon" href="/img/bendi.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bendi.dev/arcade/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bendi">
+<meta property="og:title" content="Zona arcade · Bendi">
+<meta property="og:description" content="Juegos de 8 bits hechos en casa: se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.">
+<meta property="og:url" content="https://bendi.dev/arcade/">
+<meta property="og:image" content="https://bendi.dev/og.png?v=5">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sergio Bendaña, Cloud Engineer">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@serbenda">
+<meta name="theme-color" content="#0e1324">
+<link rel="preload" href="/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Atkinson-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="/" aria-label="bendi.dev">bendi<span>_</span></a>
+    <nav aria-label="Secciones">
+      <a href="/" data-t="nav.home">Inicio</a>
+      <a href="/trabajo/" data-t="nav.work">Trabajo</a>
+      <a href="/proyectos/" data-t="nav.projects">Proyectos</a>
+      <a class="arc" href="/arcade/" data-t="nav.arcade">ARCADE</a>
+      <a href="/visitas/" data-t="nav.visits">Visitas</a>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Change language">EN</button>
+  </header>
+</div>
+<section class="arcade" id="arcade" aria-labelledby="arcade-title">
+  <div class="wrap">
+    <div class="a-hud" aria-hidden="true">
+      <div><span class="l">1UP</span>BENDI</div>
+      <div class="c"><span class="l">HI-SCORE</span><span id="hiscore">000000</span></div>
+      <div class="r"><span class="l">CREDIT</span>99</div>
+    </div>
+    <div class="a-title">
+      <img src="/img/bendi.svg" alt="" width="144" height="144">
+      <div>
+        <h1 id="arcade-title" data-t="a.title">ZONA ARCADE</h1>
+        <p data-t="a.lead">Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.</p>
+        <span class="coin"><span data-t="a.coin">INSERTA MONEDA</span></span>
+      </div>
+    </div>
+    <h3 class="a-sub" data-t="a.select">SELECCIONA JUEGO</h3>
+    <div class="carts" id="games"></div>
+    <h3 class="a-sub" data-t="a.hs">TABLA DE RÉCORDS</h3>
+    <div class="pxbox hs"><table id="hs"></table></div>
+    <p class="dedic" data-t="a.dedic">🕹️ Estos juegos tienen dos testers oficiales, y son las mejores jugadoras que conozco. Todo esto es para vosotras. 💛</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer><span data-t="foot">Página estática en GitHub Pages, sin cookies. Las visitas las recoge cada mañana una GitHub Action de mi perfil.</span> <span id="updated"></span></footer>
+</div>
+
+<script src="/assets/site.js"></script>
+<script data-goatcounter="https://serbenda.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -58,7 +58,7 @@ This domain is also **the root of all my games**. Each game lives in its own rep
 ```mermaid
 flowchart LR
     subgraph REPOS["📦 Repos on GitHub"]
-        WEB["serbenda.github.io<br/><i>index.html · data/ · img/</i>"]
+        WEB["serbenda.github.io<br/><i>pages · assets/ · data/ · img/</i>"]
         PROFILE["serbenda/serbenda<br/><i>profile README + Action</i>"]
         GAMES["Game repos<br/><i>chapas, school-rush,<br/>hemiciclo-fighters…</i>"]
     end
@@ -101,16 +101,17 @@ In words:
 
 ## 🎮 What's on the website
 
-| Section | Anchor | What it shows |
+| Page | Address | What it shows |
 |---|---|---|
-| Header | — | Terminal prompt, name, links to LinkedIn, GitHub, Sponsor and the **▶ PLAY** button |
-| About me | [`#sobre-mi`](https://bendi.dev/#sobre-mi) | Career by role, from 2005 to today, and the tech stack |
-| Arcade zone | [`#arcade`](https://bendi.dev/#arcade) | The games in 8-bit style, with screenshot, tags and a play button |
-| Other projects | [`#otros`](https://bendi.dev/#otros) | Tools and projects that aren't games |
-| Visits | [`#visitas`](https://bendi.dev/#visitas) | Visits and matches per project and per day |
-| Let's talk | [`#contacto`](https://bendi.dev/#contacto) | Contact via LinkedIn and support on GitHub Sponsors |
+| Home | [`/`](https://bendi.dev/) | Name, role, links to LinkedIn, GitHub and the CV, key numbers, the terminal, the latest apps and games, and contact |
+| Work | [`/trabajo/`](https://bendi.dev/trabajo/) | Career by role from 2005 to today, the tech stack, how I work and FrameBlock (blockchain) |
+| Projects | [`/proyectos/`](https://bendi.dev/proyectos/) | Apps and sites as cards, plus a list of other projects |
+| Arcade | [`/arcade/`](https://bendi.dev/arcade/) | The games in 8-bit style, with screenshot, tags and a play button |
+| Visits | [`/visitas/`](https://bendi.dev/visitas/) | Visits and plays per project and per day |
 
-The website is **bilingual** (Spanish and English), switched with the language button in the header. Translatable text carries a `data-t="key"` attribute, and the translations live in a dictionary inside `index.html` itself.
+Old links to sections of the former single page (`bendi.dev/#arcade`, `#visitas`, `#sobre-mi`…) still work: they open the new page.
+
+The website is **bilingual** (Spanish and English), switched with the language button in the header. Translatable text carries a `data-t="key"` attribute, and the translations live in a dictionary at the top of `assets/site.js`.
 
 ---
 
@@ -118,7 +119,11 @@ The website is **bilingual** (Spanish and English), switched with the language b
 
 ```text
 serbenda.github.io/
-├── index.html        ← the whole website: HTML, styles and JavaScript in a single file
+├── index.html        ← home page
+├── trabajo/ proyectos/ arcade/ visitas/  ← one index.html per page
+├── assets/
+│   ├── site.css      ← styles shared by every page
+│   └── site.js       ← translations, data loading and everything each page draws
 ├── CNAME             ← custom domain: bendi.dev
 ├── .nojekyll         ← GitHub Pages serves files as they are, without Jekyll
 ├── data/
@@ -201,14 +206,14 @@ and open <http://localhost:8000>. It has to be served like this (rather than ope
 <details>
 <summary><b>Change a piece of text</b></summary>
 
-Find its `data-t` key in `index.html` and change the translation in both dictionaries (Spanish and English) in the `<script>` of `index.html`.
+Find its `data-t` key in the page and change the translation in both dictionaries (Spanish and English) at the top of `assets/site.js`.
 
 </details>
 
 <details>
 <summary><b>Update the CV</b></summary>
 
-1. Edit [`cv/cv.html`](cv/cv.html) (Spanish and English are in the same file). Keep the latest role in sync with `CAREER` in `index.html`.
+1. Edit [`cv/cv.html`](cv/cv.html) (Spanish and English are in the same file). Keep the latest role in sync with `CAREER` in `assets/site.js`.
 2. Run `python3 tools/cv/build.py` (needs `pip install playwright` and `python -m playwright install chromium` the first time).
 3. It rewrites `cv/Sergio-Bendana-CV-es.pdf` and `cv/Sergio-Bendana-CV-en.pdf`. Check them and commit.
 
@@ -251,4 +256,4 @@ Press Start 2P · VT323 · JetBrains Mono · IBM Plex Sans · Atkinson Hyperlegi
 node tools/simular-visitas.mjs --en-vivo
 ```
 
-Genera 60 días de visitas y partidas inventadas en `data/traffic.demo.json` (no se sube: está en `.gitignore`), arranca la web en tu ordenador y, con `--en-vivo`, sigue sumando visitas y partidas cada 3 segundos. Ábrela en <http://localhost:8080/?demo#visitas>: sale una banda amarilla avisando de que son datos de ejemplo. No se envía nada a GoatCounter ni a GitHub, y en bendi.dev el modo `?demo` no hace nada. Opciones: `--dias 120`, `--semilla 3`, `--puerto 9000`, `--sin-servidor`.
+Genera 60 días de visitas y partidas inventadas en `data/traffic.demo.json` (no se sube: está en `.gitignore`), arranca la web en tu ordenador y, con `--en-vivo`, sigue sumando visitas y partidas cada 3 segundos. Ábrela en <http://localhost:8080/visitas/?demo>: sale una banda amarilla avisando de que son datos de ejemplo. No se envía nada a GoatCounter ni a GitHub, y en bendi.dev el modo `?demo` no hace nada. Opciones: `--dias 120`, `--semilla 3`, `--puerto 9000`, `--sin-servidor`.

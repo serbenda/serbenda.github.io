@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apps y webs · Bendi</title>
+<meta name="description" content="Apps gratis con datos públicos: la luz y la gasolina, el gasto público, ayudas, autobuses de Madrid, el estado de servicios y más. Sin registro ni cookies.">
+<link rel="icon" href="/img/bendi.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bendi.dev/proyectos/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bendi">
+<meta property="og:title" content="Apps y webs · Bendi">
+<meta property="og:description" content="Apps gratis con datos públicos: la luz y la gasolina, el gasto público, ayudas, autobuses de Madrid, el estado de servicios y más. Sin registro ni cookies.">
+<meta property="og:url" content="https://bendi.dev/proyectos/">
+<meta property="og:image" content="https://bendi.dev/og.png?v=5">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sergio Bendaña, Cloud Engineer">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@serbenda">
+<meta name="theme-color" content="#0e1324">
+<link rel="preload" href="/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Atkinson-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="/" aria-label="bendi.dev">bendi<span>_</span></a>
+    <nav aria-label="Secciones">
+      <a href="/" data-t="nav.home">Inicio</a>
+      <a href="/trabajo/" data-t="nav.work">Trabajo</a>
+      <a href="/proyectos/" data-t="nav.projects">Proyectos</a>
+      <a class="arc" href="/arcade/" data-t="nav.arcade">ARCADE</a>
+      <a href="/visitas/" data-t="nav.visits">Visitas</a>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Change language">EN</button>
+  </header>
+  <main>
+    <section id="otros" style="border-top:0">
+      <h1 data-t="tools.title">Apps y webs</h1>
+      <p class="lead" data-t="tools.lead">Herramientas para el día a día, hechas con datos públicos: sin registro, sin cookies y gratis.</p>
+      <div class="apps" id="apps"></div>
+      <h3 class="tools-more" data-t="tools.more">Y además</h3>
+      <ul class="tools" id="tools"></ul>
+    </section>
+
+    <section id="contacto">
+      <div class="contact">
+        <div>
+          <h2 data-t="c.title">¿Hablamos?</h2>
+          <p class="lead" data-t="c.lead">De automatización, infraestructura, cacharros o juegos hechos en casa.</p>
+        </div>
+        <div class="ctas">
+          <a class="cta" href="https://www.linkedin.com/in/serbenda/" data-t="c.cta">Escríbeme en LinkedIn</a>
+          <a class="cta" id="cvlink2" href="/cv/Sergio-Bendana-CV-es.pdf" data-t="c.cv">⬇ Descargar CV</a>
+          <a class="cta sp" href="https://github.com/sponsors/serbenda" data-t="c.sp">❤ Apoya los juegos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="wrap">
+  <footer><span data-t="foot">Página estática en GitHub Pages, sin cookies. Las visitas las recoge cada mañana una GitHub Action de mi perfil.</span> <span id="updated"></span></footer>
+</div>
+
+<script src="/assets/site.js"></script>
+<script data-goatcounter="https://serbenda.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

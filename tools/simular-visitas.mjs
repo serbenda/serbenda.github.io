@@ -164,7 +164,7 @@ if (!SIN_SERVIDOR) {
       res.writeHead(200, { 'Content-Type': TIPOS[extname(fichero)] ?? 'application/octet-stream', 'Cache-Control': 'no-store' }).end(cuerpo);
     } catch { res.writeHead(404).end('No encontrado'); }
   }).listen(PUERTO, '127.0.0.1', () => {
-    console.log(`\n  Abre http://localhost:${PUERTO}/?demo#visitas\n`);
+    console.log(`\n  Abre http://localhost:${PUERTO}/visitas/?demo\n`);
     console.log(EN_VIVO ? '  Simulando visitas y partidas cada 3 segundos. Ctrl+C para parar.' : '  Ctrl+C para parar. Con --en-vivo, las visitas siguen llegando solas.');
   });
 }
