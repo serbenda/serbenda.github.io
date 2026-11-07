@@ -75,7 +75,7 @@ flowchart LR
     WEB -- "push to main" --> ROOT
     GAMES -- "push to main" --> SUB
     ROOT -. "counts visit" .-> GC
-    SUB -. "counts visits and matches" .-> GC
+    SUB -. "counts visits and plays" .-> GC
     PROFILE -- "daily Action 05:17 UTC" --> TRAFFIC
     GC --> PROFILE
     API --> PROFILE
@@ -93,8 +93,8 @@ In words:
 
 1. **Publishing.** Whenever something lands on `main`, GitHub Pages publishes the site at `bendi.dev`. There is no build step: what's in the repo is what gets served (the [`.nojekyll`](.nojekyll) file stops GitHub from running it through Jekyll).
 2. **Games.** Each game is published from its own repo and shows up at `bendi.dev/<repo-name>` on its own. What the website says about each one (title, blurb, tags and screenshot) lives in [`data/projects.json`](data/projects.json).
-3. **Visits.** The website and the games load the **GoatCounter** script, which counts visits without cookies. Games also send a `partida/<repo>` event when a match starts.
-4. **Daily collection.** Every morning at 05:17 UTC, the GitHub Action in [serbenda/serbenda](https://github.com/serbenda/serbenda) merges the GoatCounter visits and the GitHub API views into `data/traffic.json`. GitHub only keeps 14 days of repo views, so that file is what keeps the history.
+3. **Visits.** The website and the games load the **GoatCounter** script, which counts visits without cookies. Games also send a `partida/<repo>` event each time a game starts.
+4. **Daily collection.** Every morning at 05:17 UTC, the GitHub Action in [serbenda/serbenda](https://github.com/serbenda/serbenda) writes `data/traffic.json`. From GoatCounter it gets every path's visitors per day and gives each path to its project (`/<repo>/…` is that repo, everything else is bendi.dev), so the history is rebuilt exactly on every run and the site total is the sum of the projects. From the GitHub API it adds the repo views: GitHub only keeps 14 days of them, so that file is what keeps their history.
 5. **Reading.** When the page loads, the JavaScript fetches that `traffic.json` straight from the profile repo and draws the visits section. If that fails, it falls back to a local `data/traffic.json` if there is one.
 
 ---
@@ -119,25 +119,35 @@ The website is **bilingual** (Spanish and English), switched with the language b
 
 ```text
 serbenda.github.io/
-├── index.html        ← home page
-├── trabajo/ proyectos/ arcade/ visitas/  ← one index.html per page
+├── index.html            ← home page
+├── trabajo/index.html    ← work: career, how I work, FrameBlock
+├── proyectos/index.html  ← apps and sites
+├── arcade/index.html     ← the games
+├── visitas/index.html    ← visits dashboard
+├── 404.html              ← "page not found", served by GitHub Pages for any missing address
 ├── assets/
-│   ├── site.css      ← styles shared by every page
-│   └── site.js       ← translations, data loading and everything each page draws
-├── CNAME             ← custom domain: bendi.dev
-├── .nojekyll         ← GitHub Pages serves files as they are, without Jekyll
+│   ├── site.css          ← styles shared by every page
+│   └── site.js           ← translations, data loading and everything each page draws
 ├── data/
-│   └── projects.json ← which games and projects appear on the site, in what order and with what text
+│   └── projects.json     ← which games and apps appear, in what order and with what text
 ├── img/
-│   ├── bendi.svg     ← pixel-art avatar
-│   └── games/        ← a screenshot of each game (.webp)
-├── fonts/            ← self-hosted fonts (no Google Fonts) and their licenses
-├── cv/               ← the CV: cv.html (source, both languages) and the PDFs generated from it
-├── tools/cv/build.py ← prints cv/cv.html to both PDFs
-├── og.html           ← template for og.png (1200×630), the image shown when the site is shared
-├── og.png            ← social media preview image
-└── header.html       ← template for the profile README banner (1280×320)
+│   ├── bendi.svg         ← pixel-art avatar
+│   ├── games/            ← a screenshot of each game (640×360 .webp)
+│   └── apps/             ← a screenshot of each app (640×360 .webp)
+├── fonts/                ← self-hosted fonts (no Google Fonts) and their licenses
+├── cv/                   ← the CV: cv.html (source, both languages) and the PDFs made from it
+├── tools/
+│   ├── check_site.py     ← checks links, shared header and footer, translations and projects.json
+│   ├── simulate-visits.mjs ← sample visits to try the dashboard locally
+│   └── cv/build.py       ← prints cv/cv.html to both PDFs
+├── .github/workflows/check.yml ← runs the checks on every pull request
+├── og.html / og.png      ← template and image shown when the site is shared (1200×630)
+├── header.html           ← template for the profile README banner (1280×320)
+├── CNAME                 ← custom domain: bendi.dev
+└── .nojekyll             ← GitHub Pages serves files as they are, without Jekyll
 ```
+
+Every page is plain HTML with the same header and footer copied in, so there is no build step: what is in the repo is what GitHub Pages serves. `tools/check_site.py` makes sure the copies stay identical.
 
 ---
 
@@ -187,7 +197,21 @@ Nothing to install. From the repo folder:
 python3 -m http.server 8000
 ```
 
-and open <http://localhost:8000>. It has to be served like this (rather than opening the file with a double click) because the page loads `data/projects.json` with `fetch`, which browsers don't allow from `file://`.
+and open <http://localhost:8000>. It has to be served like this (rather than opening the file with a double click) because the pages load `data/projects.json` with `fetch`, which browsers don't allow from `file://`, and because links start at the site root (`/assets/site.css`).
+
+**Try the visits dashboard with sample data:**
+
+```bash
+node tools/simulate-visits.mjs --live
+```
+
+It writes 60 days of made-up visits and plays to `data/traffic.demo.json` (ignored by git), serves the site and, with `--live`, keeps adding visits and plays every 3 seconds. Open <http://localhost:8080/visitas/?demo>: a yellow banner says it is sample data. Nothing is sent to GoatCounter or GitHub, and `?demo` does nothing on bendi.dev. Options: `--days 120`, `--seed 3`, `--port 9000`, `--no-server`.
+
+**Check the site before opening a pull request** (the same check runs on GitHub on every PR):
+
+```bash
+python3 tools/check_site.py
+```
 
 ---
 
@@ -197,9 +221,20 @@ and open <http://localhost:8000>. It has to be served like this (rather than ope
 <summary><b>Add a new game to the website</b></summary>
 
 1. Publish the game with GitHub Pages in its own repo. It will show up at `bendi.dev/<repo>` on its own.
-2. Save a screenshot as `img/games/<repo>.webp`.
+2. Save a 640×360 screenshot as `img/games/<repo>.webp`.
 3. Add an entry to [`data/projects.json`](data/projects.json) with `repo`, `title`, `img`, `tags` and the `es` and `en` blurbs. The order in the file is the order on the site.
 4. The next day, the profile Action also adds it to the games table in the GitHub profile README.
+5. If the game isn't published yet, add `"web": false` so it shows without a play button.
+
+</details>
+
+<details>
+<summary><b>Add a new app or site</b></summary>
+
+1. Publish it with GitHub Pages, at `bendi.dev/<repo>` or on its own subdomain (`<repo>.bendi.dev`).
+2. Add the GoatCounter script. On a subdomain, prefix its paths with `/<repo>` (`window.goatcounter = { path: p => "/<repo>" + p }`) so its visits don't mix with bendi.dev's.
+3. Save a 640×360 screenshot as `img/apps/<repo>.webp`.
+4. Add an entry to `tools` in [`data/projects.json`](data/projects.json) with `repo`, `title`, `url`, `img`, `tags`, `tags_en` and the `es` and `en` blurbs. The first three apps also appear on the home page.
 
 </details>
 
@@ -249,11 +284,3 @@ Press Start 2P · VT323 · JetBrains Mono · IBM Plex Sans · Atkinson Hyperlegi
 <sub>Handmade by <a href="https://bendi.dev">Bendi</a> · If you enjoy the games, you can support them on <a href="https://github.com/sponsors/serbenda">GitHub Sponsors</a> ❤</sub>
 
 </div>
-
-## Probar el panel de visitas con datos de ejemplo
-
-```bash
-node tools/simular-visitas.mjs --en-vivo
-```
-
-Genera 60 días de visitas y partidas inventadas en `data/traffic.demo.json` (no se sube: está en `.gitignore`), arranca la web en tu ordenador y, con `--en-vivo`, sigue sumando visitas y partidas cada 3 segundos. Ábrela en <http://localhost:8080/visitas/?demo>: sale una banda amarilla avisando de que son datos de ejemplo. No se envía nada a GoatCounter ni a GitHub, y en bendi.dev el modo `?demo` no hace nada. Opciones: `--dias 120`, `--semilla 3`, `--puerto 9000`, `--sin-servidor`.
