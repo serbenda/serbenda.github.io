@@ -1,6 +1,23 @@
 {
- "_comment": "Lo que muestra la web de cada proyecto. El orden es el de la web. Los repos que no estén aquí no salen en la web (sí en la tabla de récords).",
+ "_comment": "Lo que muestra la web de cada proyecto. El orden es el de la web. Juegos en 'games' (zona arcade); apps y webs en 'tools': las que tienen 'img' salen como tarjetas, las demás en la lista de debajo. Las imágenes son de 640x360. Los repos que no estén aquí no salen en la web (sí en la tabla de récords).",
  "games": [
+  {
+   "repo": "alvaros",
+   "title": "Álvaro's Gastrobar",
+   "img": "img/games/alvaros.webp",
+   "tags": [
+    "Minijuegos",
+    "Para todos",
+    "Pixel art"
+   ],
+   "es": "Una semana tras la barra de Álvaro's Gastrobar: minijuegos con Blanca y todo el equipo, y los chinos contra Blanca. Para pequeños, mayores y para picarse con los amigos.",
+   "en": "A week behind the bar at Álvaro's Gastrobar: mini-games with Blanca and the whole team, and the coin game against Blanca. For kids, grandparents and friendly rivalries.",
+   "tags_en": [
+    "Mini-games",
+    "For everyone",
+    "Pixel art"
+   ]
+  },
   {
    "repo": "dungeons-and-deployments",
    "title": "Dungeons & Deployments",
@@ -109,11 +126,166 @@
  ],
  "tools": [
   {
+   "repo": "marquesina",
+   "title": "marquesina",
+   "url": "https://bendi.dev/marquesina/",
+   "img": "img/apps/marquesina.webp",
+   "tags": [
+    "Tiempo real",
+    "Madrid",
+    "Aviso al móvil"
+   ],
+   "tags_en": [
+    "Real time",
+    "Madrid",
+    "Phone alerts"
+   ],
+   "es": "Tus autobuses, Metro y trenes de Madrid en el mapa, en tiempo real: cuánto les falta y un aviso en el móvil cuando toca salir de casa.",
+   "en": "Your Madrid buses, Metro and trains on the map in real time: how long they'll be, and a phone alert when it's time to leave home."
+  },
+  {
    "repo": "bolsillo",
    "title": "bolsillo",
    "url": "https://bolsillo.bendi.dev/",
+   "img": "img/apps/bolsillo.webp",
+   "tags": [
+    "Datos oficiales",
+    "Luz y gasolina",
+    "Sin cookies"
+   ],
+   "tags_en": [
+    "Official data",
+    "Power & fuel",
+    "No cookies"
+   ],
    "es": "Luz hora a hora y cuándo poner la lavadora, gasolineras más baratas y abiertas cerca de ti, y cuánto te sube la hipoteca con el Euríbor. Datos oficiales, sin cookies.",
    "en": "Hourly electricity prices and when to run the washing machine, the cheapest open petrol stations near you, and how much your mortgage changes with the Euribor. Official Spanish data, no cookies."
+  },
+  {
+   "repo": "hucha",
+   "title": "hucha",
+   "url": "https://hucha.bendi.dev/",
+   "img": "img/apps/hucha.webp",
+   "tags": [
+    "Datos oficiales",
+    "Presupuestos",
+    "Se actualiza solo"
+   ],
+   "tags_en": [
+    "Official data",
+    "Public budgets",
+    "Auto-updated"
+   ],
+   "es": "A dónde va el dinero público en España, explicado claro: cuánto pones con tus impuestos y en qué se gasta, con datos oficiales que se actualizan solos.",
+   "en": "Where public money goes in Spain, explained clearly: how much you pay in taxes and what it's spent on, with official data that updates itself."
+  },
+  {
+   "repo": "ayudas",
+   "title": "ayudas",
+   "url": "https://ayudas.bendi.dev/",
+   "img": "img/apps/ayudas.webp",
+   "tags": [
+    "Para mayores",
+    "Paso a paso",
+    "Sin registro"
+   ],
+   "tags_en": [
+    "For older people",
+    "Step by step",
+    "No sign-up"
+   ],
+   "es": "Qué ayudas públicas te pueden tocar en España con unas pocas preguntas: familia, mayores, pensiones, dependencia, vivienda o paro, y cómo pedirlas paso a paso.",
+   "en": "Which public benefits you may be entitled to in Spain, from a few questions: family, older people, pensions, long-term care, housing or unemployment, and how to apply step by step."
+  },
+  {
+   "repo": "atalaya",
+   "title": "atalaya",
+   "url": "https://atalaya.bendi.dev/",
+   "img": "img/apps/atalaya.webp",
+   "tags": [
+    "Mapa mundial",
+    "Alerta por país",
+    "Informe diario"
+   ],
+   "tags_en": [
+    "World map",
+    "Country alerts",
+    "Daily report"
+   ],
+   "es": "La situación del mundo en un mapa: conflictos, protestas, desastres, epidemias y cortes de internet, con un nivel de alerta por país y un informe diario.",
+   "en": "The state of the world on one map: conflicts, protests, disasters, epidemics and internet shutdowns, with an alert level per country and a daily report."
+  },
+  {
+   "repo": "uptime",
+   "title": "uptime",
+   "url": "https://uptime.bendi.dev/",
+   "img": "img/apps/uptime.webp",
+   "tags": [
+    "Estado en vivo",
+    "27 servicios",
+    "Terminal"
+   ],
+   "tags_en": [
+    "Live status",
+    "27 services",
+    "Terminal"
+   ],
+   "es": "¿Se ha caído o soy yo? El estado en tiempo real de GitHub, Azure, Red Hat, Google Cloud, AWS, Cloudflare y otros 21 servicios, con un mapa de fallos y una terminal.",
+   "en": "Is it down, or is it just me? Real-time status of GitHub, Azure, Red Hat, Google Cloud, AWS, Cloudflare and 21 more services, with an outage map and a terminal."
+  },
+  {
+   "repo": "despensa",
+   "title": "despensa",
+   "url": "https://bendi.dev/despensa/",
+   "img": "img/apps/despensa.webp",
+   "tags": [
+    "Para la familia",
+    "Herramientas",
+    "Datos oficiales"
+   ],
+   "tags_en": [
+    "For the family",
+    "Tools",
+    "Official data"
+   ],
+   "es": "Comer bien en casa: perder peso sin dietas milagro, la alimentación de los peques y comer para entrenar, con herramientas y datos oficiales.",
+   "en": "Eating well at home: losing weight without miracle diets, feeding the little ones and eating for training, with interactive tools and official data."
+  },
+  {
+   "repo": "stand-up",
+   "title": "stand-up",
+   "url": "https://bendi.dev/stand-up/",
+   "img": "img/apps/stand-up.webp",
+   "tags": [
+    "Inglés técnico",
+    "Lecciones de 3 min",
+    "Lectura fácil"
+   ],
+   "tags_en": [
+    "Tech English",
+    "3-minute lessons",
+    "Easy reading"
+   ],
+   "es": "El inglés que se habla en los equipos técnicos: dailies, Slack, reuniones, entrevistas e incidencias, en lecciones de tres minutos con audio, pensadas para la dislexia.",
+   "en": "The English spoken in tech teams: dailies, Slack, meetings, interviews and incidents, in three-minute lessons with audio, designed with dyslexia in mind."
+  },
+  {
+   "repo": "radio",
+   "title": "radio",
+   "url": "https://radio.bendi.dev/",
+   "img": "img/apps/radio.webp",
+   "tags": [
+    "Radioafición",
+    "Emisoras del mundo",
+    "Examen"
+   ],
+   "tags_en": [
+    "Amateur radio",
+    "World stations",
+    "Exam prep"
+   ],
+   "es": "La radioafición para quien nunca ha tocado una radio: escucha emisoras de todo el mundo, aprende cómo funciona, practica tu primer contacto y prepara el examen.",
+   "en": "Amateur radio for people who've never touched one: listen to stations worldwide, learn how radio works, practise your first contact and prepare for the licence exam."
   },
   {
    "repo": "bankinter-visa-pdf-to-csv",
