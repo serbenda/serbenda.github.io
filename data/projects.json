@@ -1,5 +1,5 @@
 {
- "_comment": "Lo que muestra la web de cada proyecto. El orden es el de la web. Juegos en 'games' (zona arcade); apps y webs en 'tools': las que tienen 'img' salen como tarjetas, las demás en la lista de debajo. Las imágenes son de 640x360. Los repos que no estén aquí no salen en la web (sí en la tabla de récords).",
+ "_comment": "Lo que muestra la web de cada proyecto. El orden es el de la web. Juegos en 'games' (zona arcade); apps y webs en 'tools': las que tienen 'img' salen como tarjetas, las demás en la lista de debajo. Las imágenes son de 640x360. Un juego con \"web\": false sale sin botón de jugar. Los repos que no estén aquí no salen en la web (sí en la tabla de récords).",
  "games": [
   {
    "repo": "alvaros",
@@ -107,6 +107,7 @@
   },
   {
    "repo": "deploy-quest",
+   "web": false,
    "title": "Deploy Quest",
    "img": "img/games/deploy-quest.webp",
    "pixel": true,
