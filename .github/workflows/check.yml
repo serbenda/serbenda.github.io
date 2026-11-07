@@ -1,0 +1,21 @@
+# Checks the website on every pull request and every push to development,
+# so a broken link, a missing translation or a JavaScript error never reaches bendi.dev.
+name: Check website
+
+on:
+  pull_request:
+  push:
+    branches: [development]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: JavaScript has no syntax errors
+        run: node --check assets/site.js && node --check tools/simulate-visits.mjs
+      - name: Links, shared header and footer, translations and projects.json
+        run: python3 tools/check_site.py

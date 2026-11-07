@@ -6,6 +6,7 @@
 })();
 const T = {
   es: {
+    "skip": "Saltar al contenido", "nf.title": "Esta página no existe", "nf.lead": "Puede que el enlace esté mal escrito o que la página se haya movido. Prueba por aquí:",
     "nav.home": "Inicio", "nav.work": "Trabajo", "nav.projects": "Proyectos",
     "feat.title": "Lo último que he hecho", "feat.lead": "Apps para el día a día y juegos hechos en casa. Todo gratis, en el navegador y sin registro.", "feat.apps": "Apps y webs", "feat.games": "Juegos", "feat.allapps": "Ver todas las apps →", "feat.arcade": "Ir al arcade →",
     "work.lead": "20 años en sistemas: de las guardias 24x7 en UNIX a la infraestructura como código en la nube.",
@@ -23,7 +24,7 @@ const T = {
     "a.title": "ZONA ARCADE", "a.coin": "INSERTA MONEDA", "a.select": "SELECCIONA JUEGO", "a.hs": "TABLA DE RÉCORDS",
     "a.dedic": "🕹️ Estos juegos tienen dos testers oficiales, y son las mejores jugadoras que conozco. Todo esto es para vosotras. 💛", "a.lead": "Juegos que hago en casa con mis hijas. Todos se juegan en el navegador, también en el móvil, sin instalar nada y sin anuncios.",
     "play": "JUGAR", "code": "CÓDIGO", "soon": "PRÓXIMAMENTE",
-    "views": "vistas", "visits": "visitas", "plays": "partidas", "demo": "DATOS DE EJEMPLO, generados en tu ordenador con tools/simular-visitas.mjs. No son visitas reales.",
+    "views": "vistas", "visits": "visitas", "plays": "partidas", "demo": "DATOS DE EJEMPLO, generados en tu ordenador con tools/simulate-visits.mjs. No son visitas reales.",
     "hs.rank": "POS", "hs.name": "JUEGO", "hs.score": "PUNTOS", "hs.empty": "SIN RÉCORDS TODAVÍA",
     "tools.title": "Apps y webs", "tools.lead": "Herramientas para el día a día, hechas con datos públicos: sin registro, sin cookies y gratis.", "tools.more": "Y además", "tools.code": "Código",
     "dash.title": "Visitas", "dash.filter": "Proyecto", "all": "Todos los proyectos",
@@ -46,6 +47,7 @@ const T = {
     "updated": "Última actualización:"
   },
   en: {
+    "skip": "Skip to content", "nf.title": "This page doesn't exist", "nf.lead": "The link may be mistyped or the page may have moved. Try one of these:",
     "nav.home": "Home", "nav.work": "Work", "nav.projects": "Projects",
     "feat.title": "Latest things I've built", "feat.lead": "Everyday apps and home-made games. All free, in the browser and with no sign-up.", "feat.apps": "Apps and sites", "feat.games": "Games", "feat.allapps": "See all the apps →", "feat.arcade": "Go to the arcade →",
     "work.lead": "20 years in systems: from 24x7 UNIX on-call to infrastructure as code in the cloud.",
@@ -63,7 +65,7 @@ const T = {
     "a.title": "ARCADE ZONE", "a.coin": "INSERT COIN", "a.select": "SELECT GAME", "a.hs": "HIGH SCORES",
     "a.dedic": "🕹️ These games have two official testers, and they're the best players I know. All of this is for you. 💛", "a.lead": "Games I make at home with my daughters. They all run in the browser, phones included, nothing to install and no ads.",
     "play": "PLAY", "code": "CODE", "soon": "COMING SOON",
-    "views": "views", "visits": "visits", "plays": "played", "demo": "SAMPLE DATA, generated on your computer by tools/simular-visitas.mjs. These are not real visits.",
+    "views": "views", "visits": "visits", "plays": "played", "demo": "SAMPLE DATA, generated on your computer by tools/simulate-visits.mjs. These are not real visits.",
     "hs.rank": "RANK", "hs.name": "GAME", "hs.score": "SCORE", "hs.empty": "NO HIGH SCORES YET",
     "tools.title": "Apps and sites", "tools.lead": "Everyday tools built on public data: no sign-up, no cookies and free.", "tools.more": "And also", "tools.code": "Code",
     "dash.title": "Visits", "dash.filter": "Project", "all": "All projects",
@@ -623,6 +625,7 @@ document.querySelectorAll(".bar nav a").forEach(a => {
   if (here === to) a.setAttribute("aria-current", "page");
 });
 function render() {
+  const nf = $id("nf-path"); if (nf) nf.textContent = location.pathname;
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach(n => { n.textContent = t(n.dataset.t); });
   document.querySelectorAll("[data-t-aria]").forEach(n => n.setAttribute("aria-label", t(n.dataset.tAria)));
@@ -654,7 +657,7 @@ const dashIO = "IntersectionObserver" in window ? new IntersectionObserver(es =>
 if (!$id("visitas")) dashSeen = false; else if (dashIO) dashIO.observe($id("visitas")); else { dashSeen = true; renderDash(); }
 /* Visits are collected every morning by the workflow in github.com/serbenda/serbenda */
 const TRAFFIC_URL = "https://raw.githubusercontent.com/serbenda/serbenda/main/data/traffic.json";
-/* Demo: only on your own computer (localhost) with ?demo, data made by tools/simular-visitas.mjs */
+/* Demo: only on your own computer (localhost) with ?demo, data made by tools/simulate-visits.mjs */
 const DEMO = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) && new URLSearchParams(location.search).has("demo");
 const loadTraffic = () => DEMO ? getJSON("/data/traffic.demo.json") : getJSON(TRAFFIC_URL).then(d => d || getJSON("/data/traffic.json"));
 Promise.all([loadTraffic(), getJSON("/data/projects.json")]).then(([d, p]) => {

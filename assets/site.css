@@ -471,3 +471,14 @@ main > section:first-child { border-top: 0; }
 @media (max-width: 640px) {
   .bar nav { margin-left: 0; order: 3; width: 100%; }
 }
+
+/* ---------- accessibility and the 404 page ---------- */
+.skip { position: absolute; left: 16px; top: -48px; z-index: 10; background: var(--repo); color: var(--ink); padding: 8px 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+.skip:focus { top: 12px; }
+.notfound { padding: 64px 0 96px; }
+.notfound h1 { font-size: clamp(36px, 6vw, 56px); margin-top: 12px; }
+.notfound .prompt { font-family: "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+.notfound .prompt .u { color: #4ade80; } .notfound .prompt .d { color: #60a5fa; }
+.nf-links { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; margin: 24px 0 0; }
+.nf-links a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; color: var(--text); text-decoration: none; }
+.nf-links a:hover { border-color: var(--repo); }

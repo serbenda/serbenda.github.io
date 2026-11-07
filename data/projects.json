@@ -1,5 +1,5 @@
 {
- "_comment": "Lo que muestra la web de cada proyecto. El orden es el de la web. Juegos en 'games' (zona arcade); apps y webs en 'tools': las que tienen 'img' salen como tarjetas, las demás en la lista de debajo. Las imágenes son de 640x360. Un juego con \"web\": false sale sin botón de jugar. Los repos que no estén aquí no salen en la web (sí en la tabla de récords).",
+ "_comment": "What the website shows for each project, in the order it shows them. 'games' go to the arcade; 'tools' are apps and sites: those with 'img' are cards, the rest go in the list below them. Images are 640x360 webp. A game with \"web\": false has no play button. Repos missing from this file don't appear on the website. The GitHub profile README builds its games table from 'games' too.",
  "games": [
   {
    "repo": "alvaros",
