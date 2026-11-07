@@ -32,7 +32,7 @@ const T = {
     "k.repo": "vistas en GitHub", "k.pages": "visitas a los juegos", "k.plays": "partidas jugadas", "k.clones": "clonados",
     "l.repo": "Vistas en GitHub por día", "l.pages": "Visitas por día", "l.plays": "Partidas por día",
     "k.webs": "visitas a las webs", "k.rate": "de las visitas juegan", "k.week": "visitas esta semana", "k.vsweek": "frente a la anterior", "k.new": "primera semana",
-    "t.rate": "% juegan", "g.title": "Quién visita", "g.last": "últimos", "g.days": "días", "g.phone": "Móvil", "g.computer": "Ordenador", "g.refs": "De dónde llegan a la web", "g.direct": "Directas (sin origen)", "g.countries": "Países",
+    "t.rate": "% juegan", "g.title": "Quién visita", "g.last": "últimos", "g.days": "días", "g.phone": "Móvil", "g.computer": "Ordenador", "g.refs": "De dónde llegan a la web", "g.direct": "Directas (sin origen)", "g.directwhy": "suelen ser enlaces abiertos desde WhatsApp, Telegram u otras apps de mensajes, el correo, un PDF (como el CV) o un código QR, y quien escribe la dirección a mano o la tiene en marcadores. Esas apps no dicen de dónde viene la visita.", "g.countries": "Países",
     "t.title": "Por proyecto", "t.name": "Proyecto", "t.14": "Vistas 14 días", "t.total": "Vistas totales", "t.pages": "Visitas", "t.plays": "Partidas", "t.trend": "Últimos 30 días",
     "t.site": "Esta web (bendi.dev)", "t.profile": "Perfil de GitHub",
     "r.title": "De dónde llegan al código en GitHub", "r.none": "Todavía no hay referencias.",
@@ -73,7 +73,7 @@ const T = {
     "k.repo": "views on GitHub", "k.pages": "game visits", "k.plays": "games played", "k.clones": "clones",
     "l.repo": "GitHub views per day", "l.pages": "Visits per day", "l.plays": "Plays per day",
     "k.webs": "site visits", "k.rate": "of visitors play", "k.week": "visits this week", "k.vsweek": "vs last week", "k.new": "first week",
-    "t.rate": "% play", "g.title": "Who visits", "g.last": "last", "g.days": "days", "g.phone": "Phone", "g.computer": "Computer", "g.refs": "Where site visitors come from", "g.direct": "Direct (no referrer)", "g.countries": "Countries",
+    "t.rate": "% play", "g.title": "Who visits", "g.last": "last", "g.days": "days", "g.phone": "Phone", "g.computer": "Computer", "g.refs": "Where site visitors come from", "g.direct": "Direct (no referrer)", "g.directwhy": "usually links opened from WhatsApp, Telegram or other messaging apps, email, a PDF (like the CV) or a QR code, and people who type the address or use a bookmark. Those apps don't say where the visit comes from.", "g.countries": "Countries",
     "t.title": "By project", "t.name": "Project", "t.14": "Views, 14 days", "t.total": "Total views", "t.pages": "Visits", "t.plays": "Played", "t.trend": "Last 30 days",
     "t.site": "This site (bendi.dev)", "t.profile": "GitHub profile",
     "r.title": "Where GitHub visitors come from", "r.none": "No referrers yet.",
@@ -433,7 +433,7 @@ function renderDash() {
           <i class="ph" style="width:${(100 * dev.phone / devTotal).toFixed(1)}%"></i><i class="pc" style="width:${(100 * dev.computer / devTotal).toFixed(1)}%"></i></div>
         <p><span><i class="dot" style="background:var(--plays)"></i>📱 ${t("g.phone")} <b>${pct(dev.phone / devTotal)}</b></span><span><i class="dot" style="background:var(--repo)"></i>💻 ${t("g.computer")} <b>${pct(dev.computer / devTotal)}</b></span></p></div>` : ""}
       <div class="gcgrid">
-        ${gcRefs.length ? `<div><h4>${t("g.refs")}</h4>${bars(gcRefs.slice(0, 8), "one")}</div>` : ""}
+        ${gcRefs.length ? `<div><h4>${t("g.refs")}</h4>${bars(gcRefs.slice(0, 8), "one")}${gcRefs.some(([k]) => k === t("g.direct")) ? `<p class="refnote"><b>${t("g.direct")}:</b> ${t("g.directwhy")}</p>` : ""}</div>` : ""}
         ${countries.length ? `<div><h4>${t("g.countries")}</h4>${bars(countries.slice(0, 8), "one")}</div>` : ""}
       </div>
     </div>` : ""}
