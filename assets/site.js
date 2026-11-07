@@ -6,6 +6,7 @@
 })();
 const T = {
   es: {
+    "hero.who": "Automatizo la vida, un botón cada vez",
     "skip": "Saltar al contenido", "nf.title": "Esta página no existe", "nf.lead": "Puede que el enlace esté mal escrito o que la página se haya movido. Prueba por aquí:",
     "nav.home": "Inicio", "nav.work": "Trabajo", "nav.projects": "Proyectos",
     "feat.title": "Lo último que he hecho", "feat.lead": "Apps para el día a día y juegos hechos en casa. Todo gratis, en el navegador y sin registro.", "feat.apps": "Apps y webs", "feat.games": "Juegos", "feat.allapps": "Ver todas las apps →", "feat.arcade": "Ir al arcade →",
@@ -47,6 +48,7 @@ const T = {
     "updated": "Última actualización:"
   },
   en: {
+    "hero.who": "Automating life, one button at a time",
     "skip": "Skip to content", "nf.title": "This page doesn't exist", "nf.lead": "The link may be mistyped or the page may have moved. Try one of these:",
     "nav.home": "Home", "nav.work": "Work", "nav.projects": "Projects",
     "feat.title": "Latest things I've built", "feat.lead": "Everyday apps and home-made games. All free, in the browser and with no sign-up.", "feat.apps": "Apps and sites", "feat.games": "Games", "feat.allapps": "See all the apps →", "feat.arcade": "Go to the arcade →",
