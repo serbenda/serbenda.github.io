@@ -484,3 +484,67 @@ main > section:first-child { border-top: 0; }
 .nf-links { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; margin: 24px 0 0; }
 .nf-links a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; color: var(--text); text-decoration: none; }
 .nf-links a:hover { border-color: var(--repo); }
+
+/* ---------- design pass: hero, buttons, cards, Work page, mobile ---------- */
+/* hero: name and title on one line, the motto under it */
+.hero .who .dot { color: var(--muted); }
+.hero .who .cbr-t { color: var(--plays); font-weight: 700; white-space: nowrap; }
+.hero .who .btn { display: inline-block; vertical-align: middle; margin-left: 10px; width: 16px; height: 16px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fda4cf, #db2777); box-shadow: 0 2px 0 #9d174d; }
+.hero .motto { margin-top: 10px; font: 600 clamp(15px, 1.7vw, 18px)/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+/* buttons: the CV first, LinkedIn second, the rest quieter */
+.links a.pri { background: var(--repo); border-color: var(--repo); color: var(--ink); font-weight: 700; }
+.links a.pri:hover { background: var(--text); border-color: var(--text); color: var(--ink); }
+.links a.pri2 { border-color: var(--repo); color: var(--repo); font-weight: 700; }
+.links a.pri2:hover { background: rgba(56, 189, 248, .12); color: var(--text); }
+.links a:not(.pri):not(.pri2) { color: var(--muted); }
+.links a:not(.pri):not(.pri2):hover { color: var(--text); }
+.links a.play:not(.pri):not(.pri2) { color: #ffec27; opacity: .85; }
+.links a.play:not(.pri):not(.pri2):hover { opacity: 1; color: #000; }
+
+/* cards: the whole card opens the app, in a thin browser frame so every screenshot looks alike */
+.app { position: relative; }
+.app-link::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+.app-link:focus-visible { outline: none; }
+.app:focus-within { border-color: var(--repo); box-shadow: 0 0 0 2px var(--repo); }
+.app h3 a:hover, .app h3 a:focus-visible { text-decoration: none; }
+.app:hover h3 a { color: var(--repo); }
+.app-img { position: relative; padding-top: 22px; background: #1d2440; border-bottom: 1px solid var(--line); }
+.app-img::before { content: ""; position: absolute; top: 8px; left: 12px; width: 7px; height: 7px; border-radius: 50%;
+  background: #ff5f57; box-shadow: 11px 0 #febc2e, 22px 0 #28c840; }
+.app-img img { border-bottom: 0; filter: brightness(.94); transition: filter .15s; }
+.app:hover .app-img img { filter: none; }
+.app-tags { margin-top: 2px; }
+.app-foot { align-items: center; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.app-open { font-weight: 700; color: var(--repo); font-size: 15px; }
+.app-code { position: relative; z-index: 1; color: var(--muted); }
+.app-code:hover { color: var(--text); }
+/* "and also": a short list reads as sentences, not as an orphan block */
+.tools.few li { display: block; }
+.tools.few span::before { content: " — "; }
+
+/* Work page: the current role open, the others one click away */
+.career details > summary { list-style: none; cursor: pointer; }
+.career details > summary::-webkit-details-marker { display: none; }
+.career .more { display: inline-block; margin-top: 6px; font-size: 14px; color: var(--repo); }
+.career .more::after { content: " ▾"; }
+.career details[open] .more { display: none; }
+.career details > summary:hover b { color: var(--repo); }
+.fb-more { margin-top: 40px; border: 1px solid var(--line); border-radius: 14px; padding: 0 20px; background: rgba(21, 27, 49, .6); }
+.fb-more > summary { cursor: pointer; padding: 18px 0; font: 800 20px "Bricolage Grotesque", sans-serif; list-style: none; }
+.fb-more > summary::-webkit-details-marker { display: none; }
+.fb-more > summary::after { content: " ▾"; color: var(--repo); }
+.fb-more[open] > summary::after { content: " ▴"; }
+.fb-more[open] { padding-bottom: 24px; }
+.fb-more > h3.sub:first-of-type { margin-top: 4px; }
+
+/* phones: the home highlights slide sideways instead of six cards in a row */
+.exp .side > p:first-child { margin-top: 0; }
+@media (max-width: 640px) {
+  .hero .who .dot { display: none; }
+  .hero .who .cbr-t { display: block; margin-top: 2px; }
+  #feat-apps, #feat-games { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; grid-template-columns: none;
+    overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 10px; margin-right: -16px; padding-right: 16px; }
+  #feat-apps > .app, #feat-games > .app { scroll-snap-align: start; }
+  .app:hover { transform: none; }
+}
